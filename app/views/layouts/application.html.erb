@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tweetflick</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag    "jquery-ui-1.8.15.custom" %>
+   
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "jquery-ui-1.8.15.custom.min" %>
+  <%= csrf_meta_tags %>
+    <script type="text/javascript">
+     
+        function showMessage(message) {
+        $("div#divMessage").fadeToggle('slow');
+        $("#message").html(message);
+    }
+
+    function hideMessage() {
+        $("#divMessage").fadeToggle('slow');
+        $("#message").html('');
+    }
+  function showLoadingImage() {
+
+      //  $('.blockElements').block({ message: null, overlayCSS: { backgroundColor: 'transparent'} });
+
+       $('div#loading').css('display', 'block');
+    }
+function getDate(epoch)
+ {
+ var myDate = new Date(epoch *1000);
+ return myDate.toLocaleString();
+ }
+
+    function hideLoadingImage() {
+        $('div#loading').css('display', 'none');
+         //$('.blockElements').unblock();
+       // $.unblockUI();
+    }
+
+   
+
+    </script>
+</head>
+<body>
+  <div id="loading" align="center">
+    <%=  image_tag "loading.gif" %>
+    </div>
+  <div id="wrap">
+<div id="header">
+            <div id="innerHeader">
+                <span id="logo">
+                  <h2>TweetFlick</h2>
+                </span>
+       
+<div id="divLogin">
+    <%= render 'shared/navigation' %>
+  </div>
+
+            </div>
+
+  <div style="clear:both"></div>
+  <div id="divMessage" class="clearBoth" align="center">
+        <div class="edit">
+        <div id="message" class="message">
+       
+        </div>
+        <div class="hideMessage">
+            <a class="close" onclick="hideMessage();">
+               <%=image_tag "close_icon.png"%>
+            </a>
+            </div>
+        </div>
+
+    </div>
+ 
+
+
+        </div>
+    <div id="content">
+<%= yield %>
+</div>
+  </div>
+</body>
+</html>

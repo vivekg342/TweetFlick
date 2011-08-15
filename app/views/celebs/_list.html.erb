@@ -1,0 +1,15 @@
+
+
+<li><b><%= letter.upcase %></b>
+    <ul>
+ 
+<% celebs.each do |celeb| %>
+      <li>
+ 
+<div style="cursor: pointer" onclick="showCeleb('<%=  celeb_path(celeb) %>',<%=  celeb.id %>,'<%=  celeb.screenName %>');"><%= celeb.screenName%></div>
+  </li>
+  <% end %>
+</ul>
+</li>
+
+<script type="text/javascript"> $(document).ready(function () { $('ul.tree li:last-child').addClass('last'); }); </script>

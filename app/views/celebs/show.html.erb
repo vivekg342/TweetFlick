@@ -1,0 +1,19 @@
+
+  <div class="divProfile">
+    
+
+  <div class="divImg"><img src="<%= @celeb.profileImgUrl %>" alt=""/> </div>
+    
+    <div class="profile-content">
+      <div class="divName"><%= @celeb.screenName %></div>
+      <div>Tags: 
+    <%@celeb.tags.each do |tag| %>   
+        <i><%=  tag.to_s %></i>
+        <% end %>
+
+      </div>
+      </div>
+      <div style="clear:both"></div>
+    <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_celebs_path(@celeb,:time => @tweets.to_a.last.time)} %>
+    
+  </div>

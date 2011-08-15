@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+  <%unless current_user.image.nil? %>
+   <div class="divImg">
+
+     <img width="32" height="32" src="<%= current_user.image %>" alt=""/>
+
+   </div>
+<%end %>
+<div style="margin-left:40px;margin-top:5px">
+  <div class="divName"><%= current_user.name %></div>
+    <div> <%= link_to('Logout', signout_path) %> </div>
+    
+
+</div> 
+ 
+            <% else %>
+        <div>         <%= link_to('Signin with Twitter', signin_path)  %>  </div>
+
+                  <% end %>
+        

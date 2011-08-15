@@ -1,0 +1,6 @@
+# config/database.yml
+
+#development:
+#  adapter: mongodb
+#  database: mmyapp_development
+#  host: localhost

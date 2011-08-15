@@ -1,0 +1,21 @@
+<h1>Listing celebs</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @celebs.each do |celeb| %>
+  <tr>
+    <td><%= link_to 'Show', celeb %></td>
+    <td><%= link_to 'Edit', edit_celeb_path(celeb) %></td>
+    <td><%= link_to 'Destroy', celeb, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Celeb', new_celeb_path %>

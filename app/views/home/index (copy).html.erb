@@ -1,0 +1,62 @@
+<script type="text/javascript">
+  var count=0;
+  function showCeleb(path,id){
+     //showLoadingImage();
+
+     rem=count%2;
+    $(".divColumn:eq("+rem+")").prepend("<div class=\"celeb"+id+ " loading portlet\"><div class=\"portlet-content\"></div></div>");
+
+    $(".divColumn .celeb"+id).load(path,function(){
+          $(".divColumn .celeb"+id).removeClass("loading");
+        });
+        count++;
+  }
+  $(function(){
+
+$( ".portlet-header .minus" ).live("click",function() {
+			//$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
+			$( this ).parents( ".portlet:first" ).find( ".portlet-content" ).toggle();
+		});
+ $( ".portlet-header .close" ).live("click",function() {
+			//$( this ).toggleClass( "ui-icon-minusthick" ).toggleClass( "ui-icon-plusthick" );
+			$( this ).parents( ".portlet:first" ).remove();
+                        count--;
+		});
+                $( ".divColumn" ).sortable({
+			connectWith: ".divColumn"
+		});
+  });
+</script>
+<div id="divDashBoard">
+
+
+</div>
+  <div id="divLeft">
+    <strong>Celebs</strong>
+    <div>
+      <ul class="tree">
+<% @groups.each do |group| %>
+     <%= render :partial => "celebs/list", :locals =>{:group =>  group } %>
+  <% end %>
+        </ul>
+</div>
+<%#= render :partial => "celebs/list", :object =>  @celebs , :as => :items %>
+  </div>
+  <div id="divContent">
+    <div id="divDashBoard">
+      <table width="100%">
+
+        <tr>
+          <td><%= render :partial => "celebs/temp", :object =>  @topCelebs , :as => :items %></td>
+         <td><%= render :partial => "celebs/temp" , :object =>  @talkCelebs , :as => :items %></td>
+        </tr>
+      </table>
+
+    </div>
+ 
+    <div  class="divColumn"></div>
+    <div  class="divColumn"></div>
+
+  </div>
+
+  <div style="clear:both"></div>

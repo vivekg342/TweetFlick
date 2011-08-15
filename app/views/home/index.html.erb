@@ -1,0 +1,231 @@
+<script type="text/javascript">
+  
+  function showCeleb(path,id,label){
+     //showLoadingImage();
+    tabCount = $('#divTabs ul li').size();
+    if($('#div'+id).length>0){
+$('#divTabs').tabs("select",'div'+id);
+     
+    }
+    else {
+
+       $('#divTabs').append("<div id=\"div"+id+"\" class=\"loading tabCeleb\"></div>");
+       $('#divTabs').tabs("add","#div"+id,label);
+$('#divTabs').tabs("select",'div'+id);
+    }
+ 
+    $("#div"+id).load(path,function(){
+          $("#div"+id).removeClass("loading");
+          selectedDiv = $("#div"+id);
+        });
+  }
+
+  function gettweets(path){
+    //pt=$(this).parents('.divFeedLast');
+if(!flag){
+flag=true;  
+    pt=selectedDiv.find('.divFeedLast');
+    pt.addClass('loading');
+     pt.load(path,function(){
+          //pt.removeClass("loading");
+          //pt.removeClass('divFeedLast');
+          selectedDiv.append(pt.html());
+          pt.remove();
+          flag=false;
+        });
+}
+  }
+
+
+
+  $(window).scroll(function(){
+		if($(window).scrollTop() >= $('#divTabs').height() - $(window).height()){
+                        gettweets(path);
+		}
+	});
+
+ var tweetURL='';
+function openTweetDialog(ele,id) {
+  element =$(ele);
+  val=(element.parents('div.tweetBody').find('div.divName').html());
+  $('#tweet').val('@'+val+' ');
+      tweetURL= "/tweets/reply/"+id;
+	$( "#dialog-tweet" ).dialog( "open" );
+			}
+  $(function(){
+
+  
+var $tabs=$('#divTabs').tabs(
+{tabTemplate: "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' style='float:right'>Remove Tab</span></li>"}
+);
+ selectedDiv = $("#divFeed");
+ flag=false;
+
+
+  $( "#divTabs span.ui-icon-close" ).live( "click", function() {
+			var index = $( "li", $tabs ).index( $( this ).parent() );
+			$tabs.tabs( "remove", index );
+		});
+                
+        $('.celeb_ajax').live('ajax:beforeSend', function(event, xhr, status) {
+    showLoadingImage();
+});
+
+$('.celeb_ajax').live('ajax:complete', function(event, xhr, status) {
+    json=$.parseJSON(xhr.responseText);
+    hideLoadingImage();
+    showMessage(json.message);
+});
+$('.celeb_ajax').live('ajax:error', function(event, xhr, status) {
+    json=$.parseJSON(xhr.responseText);
+    hideLoadingImage();
+    showMessage("failed !");
+});
+
+$( "#dialog:ui-dialog" ).dialog( "destroy" );
+
+		var tweet = $( "#tweet" ),
+                allFields = $( [] ).add( tweet );
+			tips = $( ".validateTips" );
+
+		function updateTips( t ) {
+			tips
+				.text( t )
+				.addClass( "ui-state-highlight" );
+			setTimeout(function() {
+				tips.removeClass( "ui-state-highlight", 1500 );
+			}, 500 );
+		}
+
+		function checkLength( o, n, min, max ) {
+			if ( o.val().length > max || o.val().length < min ) {
+				o.addClass( "ui-state-error" );
+				updateTips( "Length of " + n + " must be between " +
+					min + " and " + max + "." );
+				return false;
+			} else {
+				return true;
+			}
+		}
+		$( "#dialog-tweet" ).dialog({
+			autoOpen: false,
+			height: 300,
+			width: 350,
+			modal: true,
+			buttons: {
+				"Reply": function() {
+					var bValid = true;
+					allFields.removeClass( "ui-state-error" );
+					bValid = bValid && checkLength( tweet, "Tweet", 0, 139 );
+					if ( bValid ) {
+                                          showLoadingImage();
+                                          $.ajax({
+                                          type: 'POST',
+                                          url: tweetURL,
+                                          data: {
+                                              tweet: tweet.val()
+                                          },
+                                          dataType:'json',
+                                          success: function(response, textStatus, XMLHttpRequest) {
+                                              hideLoadingImage();
+                                              showMessage(response.message);
+                                          }
+                                      });
+						$( this ).dialog( "close" );
+					}
+				},
+				Cancel: function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+				allFields.val( "" ).removeClass( "ui-state-error" );
+			}
+		});
+
+	
+			
+  });
+ 
+  
+</script>
+
+<div id="divDashBoard">
+
+
+</div>
+  <div id="divLeft">
+    <strong>Celebs</strong>
+    <div>
+      <ul class="tree">
+<% "b".upto("z") do |l| %>
+        <% @alphaCelebs = Celeb.where(:screenName.gte => @char, :screenName.lt => l) %>
+     <%= render :partial => "celebs/list", :locals =>{:letter =>   @char, :celebs =>  @alphaCelebs } %>
+        <%  @char=l %>
+  <% end %>
+         <% @alphaCelebs = Celeb.where(:screenName.gte => "z") %>
+     <%= render :partial => "celebs/list", :locals =>{:letter =>   "z", :celebs =>  @alphaCelebs } %>
+        </ul>
+</div>
+  </div>
+  <div id="divContent">
+    
+ <div id="divTabs" class="divColumn column1">
+   <ul>
+        <li><a href="#divFeed">Feed </a></li>
+        <li><a href="#divDiscussion">Discussions</a></li>
+      </ul>
+   <div id="divFeed">
+     
+    <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_tweets_path(:time => @tweets.to_a.last.time) } %>
+</div>
+   <div id="divDiscussion"></div>
+ </div>
+    <div  class="divColumn column2">
+      <div id="divFollowers">
+        Top Celebs:
+        <table>
+          <thead>
+          <tr><th>Celeb</th><th>Followers</th></tr>
+          </thead>
+          <tbody>
+        <%# Celeb.paginate({:order => :followers.desc,:per_page => 5 , :page => 1}).each do |celeb| %>
+<%@topCelebs.each do |celeb| %>
+
+            <tr>
+              <td>
+  
+   <div class="divImg"><img width="32" height="32" src="<%= celeb.profileImgUrl %>" alt=""/></div>
+   </td>
+   <td>
+     <div><%= celeb.screenName %></div>
+     <div><%= celeb.followers %></div>
+   </td>
+   </tr>
+
+
+  <% end %>
+        </tbody>
+        </table>
+        
+      </div>
+      <div id="divTalkative"></div>
+      <div id="divLoved"></div>
+
+    </div>
+    <div  class="divColumn column3"></div>
+
+  </div>
+
+  <div style="clear:both"></div>
+  <div id="dialog-tweet" title="Reply">
+	<p class="validateTips">Reply.</p>
+<form>
+	<fieldset>
+		<label for="tweet">Tweet</label>
+                <textarea  name="tweet" id="tweet" class="text ui-corner-all" ></textarea>
+
+	</fieldset>
+	</form>
+	
+</div>

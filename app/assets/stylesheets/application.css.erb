@@ -1,0 +1,76 @@
+
+#dialog-tweet{
+background-color: #5C955C;
+color:black;
+top:20%
+}
+#divMessage
+{
+    background-color: #5C955C;
+    position: fixed;
+    right: 40%;
+    left: 40%;
+    top: 0%;
+    z-index: 25;
+    display: none;
+    border: 1px solid #40B440;
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+.message{position:relative;color:#000;*position:static; float:left;}
+
+.hideMessage{position:relative;*position:static; float:right;}
+
+body{padding:0px;margin:0px;font-family:Candara;font-size:11px;color:#FFF;}
+#logo{float:left; margin-left:10px;}
+#divLogin{float:right;text-align:left;margin: 10px 20px 0 0;padding:2px}
+
+#divLogin a{text-decoration:none; color:#3B7091;text-transform:uppercase;font-weight:bold;}
+
+#divLogin a:hover{text-decoration:underline; color:#7DBA06;}
+
+
+#content {margin:10px}
+
+#loading {height: 500px;display: none;position: fixed;margin-top: 250px; margin-left: 600px; z-index: 40; background-color: transparent;}
+
+.loading {background:url(<%= asset_path "loading.gif" %>) center center no-repeat !important;min-height:200px}
+
+
+#header {background: #1A1A1A ; height:50px; color:#EA5E0A}
+
+
+#wrap{width:1080px;margin:0 auto;background:#1F1F1F;}
+
+#wrap #divContent{float:left; width:870px;margin:10px 0px 0px 10px;background:transparent;overflow:auto;padding:2px 0 2px 0px}
+
+#wrap #divLeft{float:left; width:150px; padding:10px;}
+
+#wrap #divLeft strong{font-size:14px; font-weight:bold; margin-left:-10px;}
+ .divName{font-weight:bold; color:#2BB7DB;}
+ 
+.divCeleb{background:#363A3A; padding:5px; margin-top:5px;pointer:click;font-size: 11px;color: #AAA9FF;}
+
+ 
+
+
+.divImg{float:left;height:48px;margin-top:5px}
+.profile-content {margin-left:50px}
+
+
+#divContent .divColumn {float:left;padding:5px;}
+
+#divContent .divColumn .portlet{margin: 0 1em 1em 0;width:100%;-webkit-border-radius:15px;-moz-border-radius:15px;border:1px solid #E0E0E0; }
+#divContent .divColumn .portlet .portlet-header{background:#E0E0E0 !important;padding:5px;overflow:hidden;-moz-border-radius-topleft:5px;-moz-border-radius-topright:5px;-webkit-border-top-left-radius:5px;-webkit-border-top-right-radius:5px;border-top-right-radius:5px;border-top-left-radius:5px;}
+#divContent .divColumn .portlet .portlet-content{height:200px;overflow:auto;}
+
+.column1 {width:450px}
+.column2 {width:250px}
+.column3 {width:125px}
+
+
+ul.tree, ul.tree ul { list-style-type: none; background: url(<%= asset_path "vline.png" %>) repeat-y; margin: 0; padding: 0; }
+ul.tree ul { margin-left: 8px; }
+ul.tree li { margin: 0; padding: 0 10px; line-height: 20px; background: url(<%= asset_path "node.png" %>) no-repeat; color: #369; font-weight: bold;}
+ul.tree li.last { background: url(<%= asset_path "lastnode.png" %>) no-repeat; }
