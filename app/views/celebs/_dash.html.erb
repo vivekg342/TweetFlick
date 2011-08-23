@@ -1,8 +1,13 @@
-
-        <table>
+ <div class="dash ui-corner-all" >
+                    <div class="dashHead ui-corner-top">
+                    Most Followed
+                  </div>
+                  
+                <div class="dashBody">
+                          <table>
           <tbody>
 
-<%  celebs.each do |celeb| %>
+<%  @followCelebs.each do |celeb| %>
 
             <tr>
               <td>
@@ -11,7 +16,7 @@
    </td>
    <td>
      <div><%= celeb.name %></div>
-     <div><%= celeb.followers %></div>
+     <div><%= celeb.followers %> followers</div>
    </td>
    </tr>
 
@@ -19,4 +24,66 @@
   <% end %>
         </tbody>
         </table>
+              
+              </div>
+                </div>
+               
+              </td>
+              <td>
+                 <div class="dash ui-corner-all">
+                    <div class="dashHead ui-corner-top">Most Mentioned</div>
+                    
+                  <div class="dashBody">
+                                         <table>
+          <tbody>
+
+<%  @mentionCelebs.each do |celeb| %>
+
+            <tr>
+              <td>
+
+   <div class="left"><img width="32" height="32" src="<%= celeb.profileImgUrl %>" alt=""/></div>
+   </td>
+   <td>
+     <div><%= celeb.name %></div>
+     <div><%= celeb.followers %> Replies</div>
+   </td>
+   </tr>
+
+
+  <% end %>
+        </tbody>
+        </table>
+              
+            </div>
+            </div>
+            </td>
+              <td>
+                 <div class="dash ui-corner-all">
+                    <div class="dashHead ui-corner-top">Most Talkative</div>
+                    
+                <div class="dashBody">
+                     <table>
+          <tbody>
+
+<%  @talkCelebs.each do |celeb| %>
+
+            <tr>
+              <td>
+
+   <div class="left"><img width="32" height="32" src="<%= celeb.profileImgUrl %>" alt=""/></div>
+   </td>
+   <td>
+     <div><%= celeb.name %></div>
+     <div><%= celeb.followers %> tweets</div>
+   </td>
+   </tr>
+
+
+  <% end %>
+        </tbody>
+      </table>
+                </div>
+                </div>
+                
 

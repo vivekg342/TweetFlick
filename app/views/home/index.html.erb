@@ -87,35 +87,7 @@
           <tr>
               <td>
                 
-                <div class="dash ui-corner-all" >
-                    <div class="dashHead ui-corner-top">
-                    Most Followed
-                  </div>
-                  
-                <div class="dashBody">
-               <%= render :partial => "celebs/dash", :locals =>{:celebs =>  @followCelebs } %>
-              </div>
-                </div>
-               
-              </td>
-              <td>
-                 <div class="dash ui-corner-all">
-                    <div class="dashHead ui-corner-top">Most Mentioned</div>
-                    
-                  <div class="dashBody">
-                  
-            <%= render :partial => "celebs/dash", :locals =>{:celebs =>  @mentionCelebs } %>
-            </div>
-            </div>
-            </td>
-              <td>
-                 <div class="dash ui-corner-all">
-                    <div class="dashHead ui-corner-top">MostTalkative</div>
-                    
-                <div class="dashBody">
-                <%= render :partial => "celebs/dash", :locals =>{:celebs =>  @talkCelebs } %>
-                </div>
-                </div>
+                 <%= render :partial => "celebs/dash" %>
               </td>
           </tr>
           
