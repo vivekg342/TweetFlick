@@ -3,13 +3,33 @@ class Celeb
 field :_id ,type: Integer
 field :followers,type: Integer
 field :friends,type: Integer
+field :mentions,type: Integer
 field :tags ,type: Array
 field :screenName,type: String
-  def today
-    tweets.today
+field :name,type: String
+
+  def self.alltags
+     tags = Mongoid.master.collection('tags').find().first["value"]["tags"].split(/,/).to_a.uniq
   end
-  def firChar
-  screenName.to_s.chars.first
+  def self.rebuild_tags
+    map = <<MAP
+      function() {
+          emit({}, {tags: this.tags})
+        }
+MAP
+
+    reduce = <<REDUCE
+    function(key, values) {
+       var arr=new Array
+ values.forEach(function(doc){
+ arr=arr+","+doc.tags
+ })
+ return {tags:arr};
+ }
+REDUCE
+
+    collection.mapreduce(map, reduce,{:out => "tags"})
+
   end
 
 has_many :tweets do

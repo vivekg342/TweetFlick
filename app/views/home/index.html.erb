@@ -1,214 +1,157 @@
-<script type="text/javascript">
-  
-  function showCeleb(path,id,label){
-     //showLoadingImage();
-    tabCount = $('#divTabs ul li').size();
-    if($('#div'+id).length>0){
-$('#divTabs').tabs("select",'div'+id);
-     
-    }
-    else {
-
-       $('#divTabs').append("<div id=\"div"+id+"\" class=\"loading tabCeleb\"></div>");
-       $('#divTabs').tabs("add","#div"+id,label);
-$('#divTabs').tabs("select",'div'+id);
-    }
- 
-    $("#div"+id).load(path,function(){
-          $("#div"+id).removeClass("loading");
-          selectedDiv = $("#div"+id);
-        });
-  }
-
-  function gettweets(path){
-    //pt=$(this).parents('.divFeedLast');
-if(!flag){
-flag=true;  
-    pt=selectedDiv.find('.divFeedLast');
-    pt.addClass('loading');
-     pt.load(path,function(){
-          //pt.removeClass("loading");
-          //pt.removeClass('divFeedLast');
-          selectedDiv.append(pt.html());
-          pt.remove();
-          flag=false;
-        });
-}
-  }
+<style type="text/css">
+/* Vertical Tabs
+----------------------------------*/
+.ui-tabs-vertical { width: 55em; }
+.ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
+.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
+.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
+.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
+</style>
 
 
+    <div id="fixedTags" class="ui-corner-all">
+    
+  <div class="right">
+      <a href="#" id="closefixedTag"> <%=image_tag "delete_icon.png"%></a>
+  </div>
+<div class="clr"></div>
 
-  $(window).scroll(function(){
-		if($(window).scrollTop() >= $('#divTabs').height() - $(window).height()){
-                        gettweets(path);
-		}
-	});
-
- var tweetURL='';
-function openTweetDialog(ele,id) {
-  element =$(ele);
-  val=(element.parents('div.tweetBody').find('div.divName').html());
-  $('#tweet').val('@'+val+' ');
-      tweetURL= "/tweets/reply/"+id;
-	$( "#dialog-tweet" ).dialog( "open" );
-			}
-  $(function(){
-
-  
-var $tabs=$('#divTabs').tabs(
-{tabTemplate: "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' style='float:right'>Remove Tab</span></li>"}
-);
- selectedDiv = $("#divFeed");
- flag=false;
-
-
-  $( "#divTabs span.ui-icon-close" ).live( "click", function() {
-			var index = $( "li", $tabs ).index( $( this ).parent() );
-			$tabs.tabs( "remove", index );
-		});
-                
-        $('.celeb_ajax').live('ajax:beforeSend', function(event, xhr, status) {
-    showLoadingImage();
-});
-
-$('.celeb_ajax').live('ajax:complete', function(event, xhr, status) {
-    json=$.parseJSON(xhr.responseText);
-    hideLoadingImage();
-    showMessage(json.message);
-});
-$('.celeb_ajax').live('ajax:error', function(event, xhr, status) {
-    json=$.parseJSON(xhr.responseText);
-    hideLoadingImage();
-    showMessage("failed !");
-});
-
-$( "#dialog:ui-dialog" ).dialog( "destroy" );
-
-		var tweet = $( "#tweet" ),
-                allFields = $( [] ).add( tweet );
-			tips = $( ".validateTips" );
-
-		function updateTips( t ) {
-			tips
-				.text( t )
-				.addClass( "ui-state-highlight" );
-			setTimeout(function() {
-				tips.removeClass( "ui-state-highlight", 1500 );
-			}, 500 );
-		}
-
-		function checkLength( o, n, min, max ) {
-			if ( o.val().length > max || o.val().length < min ) {
-				o.addClass( "ui-state-error" );
-				updateTips( "Length of " + n + " must be between " +
-					min + " and " + max + "." );
-				return false;
-			} else {
-				return true;
-			}
-		}
-		$( "#dialog-tweet" ).dialog({
-			autoOpen: false,
-			height: 300,
-			width: 350,
-			modal: true,
-			buttons: {
-				"Reply": function() {
-					var bValid = true;
-					allFields.removeClass( "ui-state-error" );
-					bValid = bValid && checkLength( tweet, "Tweet", 0, 139 );
-					if ( bValid ) {
-                                          showLoadingImage();
-                                          $.ajax({
-                                          type: 'POST',
-                                          url: tweetURL,
-                                          data: {
-                                              tweet: tweet.val()
-                                          },
-                                          dataType:'json',
-                                          success: function(response, textStatus, XMLHttpRequest) {
-                                              hideLoadingImage();
-                                              showMessage(response.message);
-                                          }
-                                      });
-						$( this ).dialog( "close" );
-					}
-				},
-				Cancel: function() {
-					$( this ).dialog( "close" );
-				}
-			},
-			close: function() {
-				allFields.val( "" ).removeClass( "ui-state-error" );
-			}
-		});
-
-	
-			
-  });
- 
-  
-</script>
-
-<div id="divDashBoard">
-
-
+  <div>Please select tags to filter list-
 </div>
-  <div id="divLeft">
+    
+<%@tags.each do |tag| %>
+<%unless tag.to_s.empty? %>
+<div class="tags"><%=  tag.to_s %></div>
+<% end %>
+        <% end %>
+
+<div style="clear:both"></div>
+ </div>
+<div id="divLeft" class="ui-corner-right">
+<div class="scrollbar ui-corner-all">
+  <div class="track ui-corner-all">
+    <div class="thumb ui-corner-all">
+      <div class="end ui-corner-top"></div>
+    </div></div></div>
+		<div class="viewport">
+                  <div class="overview">
+                      <div>
+                         Search <input type="" id="inpSearch" value="" name="Search" />
+                      </div>
+                      <div class="right">
+                          <a href="#" id="toggleTags">Filter by tags</a>
+                      </div>
     <strong>Celebs</strong>
     <div>
       <ul class="tree">
-<% "b".upto("z") do |l| %>
-        <% @alphaCelebs = Celeb.where(:screenName.gte => @char, :screenName.lt => l) %>
-     <%= render :partial => "celebs/list", :locals =>{:letter =>   @char, :celebs =>  @alphaCelebs } %>
-        <%  @char=l %>
+     <%  @alphaCelebs.each do |celeb| %>
+        <%  tagClass = celeb.tags.join("_tag ") + "_tag" %>
+      <li>
+        <div class="<%= tagClass %> alphaCeleb" style="cursor: pointer" onclick="showCeleb('<%=  celeb_path(celeb) %>',<%=  celeb.id %>,'<%=  celeb.name %>');"><%= celeb.name %></div>
+  </li>
   <% end %>
-         <% @alphaCelebs = Celeb.where(:screenName.gte => "z") %>
-     <%= render :partial => "celebs/list", :locals =>{:letter =>   "z", :celebs =>  @alphaCelebs } %>
         </ul>
 </div>
-  </div>
+    <strong>Celebs</strong>
+    <div>
+      <ul class="tree">
+     <%  @alphaCelebs.each do |celeb| %>
+        <%  tagClass = celeb.tags.join("_tag ") + "_tag" %>
+      <li>
+        <div class="<%= tagClass %> alphaCeleb" style="cursor: pointer" onclick="showCeleb('<%=  celeb_path(celeb) %>',<%=  celeb.id %>,'<%=  celeb.name %>');"><%= celeb.name %></div>
+  </li>
+  <% end %>
+        </ul>
+</div>
+<strong>Celebs</strong>
+    <div>
+      <ul class="tree">
+     <%  @alphaCelebs.each do |celeb| %>
+        <%  tagClass = celeb.tags.join("_tag ") + "_tag" %>
+      <li>
+        <div class="<%= tagClass %> alphaCeleb" style="cursor: pointer" onclick="showCeleb('<%=  celeb_path(celeb) %>',<%=  celeb.id %>,'<%=  celeb.name %>');"><%= celeb.name %></div>
+  </li>
+  <% end %>
+        </ul>
+</div>
+</div>
+                  </div>
+</div>
+  
+  
+
+<div id="divDashBoard">
+  <table cellspacing="10px">
+      <tbody>
+          <tr>
+              <td>
+                
+                <div class="dash ui-corner-all" >
+                    <div class="dashHead ui-corner-top">
+                    Most Followed
+                  </div>
+                  
+                <div class="dashBody">
+               <%= render :partial => "celebs/dash", :locals =>{:celebs =>  @followCelebs } %>
+              </div>
+                </div>
+               
+              </td>
+              <td>
+                 <div class="dash ui-corner-all">
+                    <div class="dashHead ui-corner-top">Most Mentioned</div>
+                    
+                  <div class="dashBody">
+                  
+            <%= render :partial => "celebs/dash", :locals =>{:celebs =>  @mentionCelebs } %>
+            </div>
+            </div>
+            </td>
+              <td>
+                 <div class="dash ui-corner-all">
+                    <div class="dashHead ui-corner-top">MostTalkative</div>
+                    
+                <div class="dashBody">
+                <%= render :partial => "celebs/dash", :locals =>{:celebs =>  @talkCelebs } %>
+                </div>
+                </div>
+              </td>
+          </tr>
+          
+      </tbody>
+  </table>
+  
+
+</div>
+
+
   <div id="divContent">
     
- <div id="divTabs" class="divColumn column1">
-   <ul>
-        <li><a href="#divFeed">Feed </a></li>
-        <li><a href="#divDiscussion">Discussions</a></li>
-      </ul>
-   <div id="divFeed">
-     
-    <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_tweets_path(:time => @tweets.to_a.last.time) } %>
+   <div id="divTabs">
+        <ul>
+          <li><a href="#divFeed">Feed </a></li>
+        </ul>
+        <div id="divFeed">
+          <div class="left column1">
+            <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_tweets_path(:time => @tweets.to_a.last.time) } %>
+            </div>
+          <div class="left column2">
+  <div style="border:1px dotted green;color:#000;padding:10px" class="ui-corner-all">
+    <span style="color:red"> Tweets : </span><%=Tweet.today %> <br /> <br />
+    <span style="color:red">    Fan Tweets :</span> <%= FanTweet.today %> <br />
 </div>
-   <div id="divDiscussion"></div>
- </div>
-    <div  class="divColumn column2">
-      <div id="divFollowers">
-        Top Celebs:
-        <table>
-          <thead>
-          <tr><th>Celeb</th><th>Followers</th></tr>
-          </thead>
-          <tbody>
-        <%# Celeb.paginate({:order => :followers.desc,:per_page => 5 , :page => 1}).each do |celeb| %>
-<%@topCelebs.each do |celeb| %>
-
-            <tr>
-              <td>
-  
-   <div class="divImg"><img width="32" height="32" src="<%= celeb.profileImgUrl %>" alt=""/></div>
-   </td>
-   <td>
-     <div><%= celeb.screenName %></div>
-     <div><%= celeb.followers %></div>
-   </td>
-   </tr>
-
-
-  <% end %>
-        </tbody>
-        </table>
-        
-      </div>
+  <div style="margin-top:10px">
+    <span style="color:#2F7A26;font-weight:bold"> Recent fan replies to all celebs :</span>  <br />
+  <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.last.time) } %>
+</div>
+            </div>
+            <div class="clr"></div>
+            
+        </div>
+   </div>
+  <div  class="divColumn column2">
+     
       <div id="divTalkative"></div>
       <div id="divLoved"></div>
 

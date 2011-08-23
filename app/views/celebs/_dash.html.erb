@@ -1,0 +1,22 @@
+
+        <table>
+          <tbody>
+
+<%  celebs.each do |celeb| %>
+
+            <tr>
+              <td>
+
+   <div class="left"><img width="32" height="32" src="<%= celeb.profileImgUrl %>" alt=""/></div>
+   </td>
+   <td>
+     <div><%= celeb.name %></div>
+     <div><%= celeb.followers %></div>
+   </td>
+   </tr>
+
+
+  <% end %>
+        </tbody>
+        </table>
+

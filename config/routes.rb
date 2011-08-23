@@ -8,6 +8,7 @@ match '/signin' => 'sessions#new', :as => :signin
   resources :tweets do
 collection do
 get 'feed/:time',:action=>'feed',:as => 'feed'
+get 'fanfeed/:time',:action=>'fanfeed',:as => 'fanfeed'
 post 'retweet/:id',:action=>'retweet',:as => 'retweet'
 post 'follow/:id',:action=>'follow',:as => 'follow'
 post 'reply/:id',:action=>'reply',:as => 'reply'

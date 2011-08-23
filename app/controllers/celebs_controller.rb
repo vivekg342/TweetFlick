@@ -16,6 +16,7 @@ class CelebsController < ApplicationController
    
     @celeb = Celeb.find(Integer(params[:id]))
     @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15)
+            @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(5)
     respond_to do |format|
       format.html { render html: @celeb,:layout=>false}# show.html.erb
       format.json { render json: @celeb }

@@ -8,16 +8,21 @@ format.html {   render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweet
 format.json{render json: @tweets}
 end
 end
- def follow
+def follow
+  begin
    auth = request.env["omniauth.auth"]
     unless !user_signed_in?
      # current_user.update_status(@tweet.text)
-     @c = Celeb.find(Integer(params[:id]))
+    @c = Celeb.first(conditions: {id: Integer(params[:id])}) || FanTweet.first(conditions: {fan_id: Integer(params[:id])})
+
       current_user.follow(Integer(params[:id]))
-result={:success =>  "true", :message => "Following #{@c.screenName}!"}
+result={:success =>  "true", :message => "Following #{@c.name}!"}
  else
   result={:success =>  "false",:message => "Failed !"}
  end
+rescue
+  result={:success =>  "false",:message => "Failed !"}
+end
 respond_to do |format|
 format.html { redirect_to root_url }#_list.html.erb
 format.js {render :json => result}

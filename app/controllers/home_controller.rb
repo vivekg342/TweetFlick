@@ -1,9 +1,13 @@
 class HomeController < ApplicationController
   def index
-#    @tweets=Tweet.paginate(:per_page => 15 , :page => 1)
-@tweets=Tweet.order_by([[:time,:desc]]).limit(15)
-@reply=Tweet.new
-@topCelebs=Celeb.order_by([[:followers,:desc]]).limit(5)
+
+ @alphaCelebs=Celeb.order_by([[:name]])
+    @tweets=Tweet.order_by([[:time,:desc]]).limit(15)
+        @fantweets=FanTweet.order_by([[:time,:desc]]).limit(5)
+@followCelebs=Celeb.order_by([[:followers,:desc]]).limit(5)
+@mentionCelebs=Celeb.order_by([[:followers,:desc]]).limit(5)
+@talkCelebs=Celeb.order_by([[:followers,:desc]]).limit(5)
+@tags=Celeb.alltags
 @tmstamp=@tweets.to_a.last.time
 @char="A"
 respond_to do |format|

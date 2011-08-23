@@ -1,5 +1,5 @@
 development:
-  host: localhost
+  host: 50.16.191.161
   database: TweetFlick
 
 test:

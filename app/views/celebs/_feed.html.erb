@@ -1,11 +1,14 @@
 <%  tweets.each do |tweet|%>
 <% unless tweet.celeb.nil? %>
-   <div class="divCeleb">
-     <div class="divImg"><img width="32" height="32" src="<%= tweet.celeb.profileImgUrl %>" alt=""/></div>
-<div class="tweetBody" style="margin-left:40px;">
-  <div class="divName"><%= tweet.celeb.screenName %></div>
-  <div>
-    <table><tbody>
+<div class="divCeleb divTweet ui-corner-all">
+  <div class="divImg"><img width="32" height="32" src="<%= tweet.celeb.profileImgUrl %>" alt=""/></div>
+  <div class="tweetBody ui-corner-all" style="margin-left:40px;">
+    <div class="divName"><%= tweet.celeb.name %></div>
+<div><%= tweet.text %></div>
+<div class="divTime">Updated <span class="epoch"><%= tweet.time %></span></div>
+<div style="height:15px">
+    <div class="links">
+      <table><tbody>
         <tr>
           <td><%=  link_to "Follow" , follow_tweets_path(:id => tweet.celeb.id),:remote=> true, :method => :post , :class=>'celeb_ajax' , 'data-type' => 'json' %> </td>
           <td><%=  link_to "Retweet" , retweet_tweets_path(:id => tweet.id),:remote=> true , :method => :post , :class=>'celeb_ajax',  'data-type' => 'json' %> </td>
@@ -14,29 +17,22 @@
       </tbody>
     </table>
   </div>
-
-    <div><%= tweet.text %></div>
-    <div class="divTime">Updated <span class="epoch" style="display:non"><%= tweet.time %></span></div>
+</div>
 
 </div>
-  <div style="clear:both"></div>
+<div style="clear:both"></div>
 
-   </div>
-   <%end%>
-  <%  end %>
+</div>
+<%end%>
+<%  end %>
 
 <div class="divFeedLast">
-  
-  
+
+
 </div>
 <script type="text/javascript">
-$(function(){
+  $(function(){
     path='<%= url %>';
-    $('.divTime span.epoch').each(function(index)
-    {
-      epoch= $(this);
-        epoch.html(getDate(epoch.val()));
-        epoch.removeClass('epoch');
-    });
-});
+    showDate();
+  });
 </script>

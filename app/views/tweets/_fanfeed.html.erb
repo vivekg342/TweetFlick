@@ -1,0 +1,40 @@
+<%  tweets.each do |tweet|%>
+<% unless tweet.nil? %>
+<div class="divFan divTweet ui-corner-all">
+  <div class="divImg"><img width="32" height="32" src="<%= tweet.profileImgUrl %>" alt=""/></div>
+  <div class="tweetBody ui-corner-all" style="margin-left:40px;">
+    <div class="divName"><%= tweet.name %></div>
+    
+
+<div><%= tweet.text %></div>
+<div class="divTime">Updated <span class="epoch"><%= tweet.time %></span></div>
+<div style="height:15px">
+<div class="links">
+      <table><tbody>
+        <tr>
+          <td><%=  link_to "Follow" , follow_tweets_path(:id => tweet.fan_id),:remote=> true, :method => :post , :class=>'celeb_ajax' , 'data-type' => 'json' %> </td>
+          <td><%=  link_to "Retweet" , retweet_tweets_path(:id => tweet.id),:remote=> true , :method => :post , :class=>'celeb_ajax',  'data-type' => 'json' %> </td>
+          <td><a onclick="openTweetDialog(this,<%=  tweet.fan_id %>);">Reply</a> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+<div style="clear:both"></div>
+
+</div>
+<%end%>
+<%  end %>
+
+<div class="divFanFeedLast">
+
+
+</div>
+<script type="text/javascript">
+  $(function(){
+    
+    showDate();
+  });
+</script>
