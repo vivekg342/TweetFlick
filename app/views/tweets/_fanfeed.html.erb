@@ -2,7 +2,7 @@
 <%  tweets.each do |tweet|%>
 <% unless tweet.nil? %>
 <div class="divFan divTweet ui-corner-all">
-  <div class="divImg"><a href="http://twitter.com/<%= tweet.screenName %>"><img width="32" height="32" src="<%= tweet.profileImgUrl %>" alt=""/></div>
+  <div class="divImg"><a href="http://twitter.com/<%= tweet.screenName %>"><img width="32" height="32" src="<%= tweet.profileImgUrl %>" alt="" /></a></div>
   <div class="tweetBody ui-corner-all" style="margin-left:40px;">
     <div class="divName"><%= tweet.name %></div>
     

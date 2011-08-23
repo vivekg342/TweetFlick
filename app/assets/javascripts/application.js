@@ -26,11 +26,9 @@ jQuery.expr[':'].contains = function (a, i, m)
 function getDate(epoch)
  {
  var myDate = new Date(epoch *1);
- time = myDate.toLocaleString();
- 
- //return prettyDate(myDate);
- //return time;
- return humane_date(myDate.toString());
+ // myDate.toLocaleString();
+// myDate.toGMTString();
+ return humane_date(myDate);
  }
 
     function hideLoadingImage() {
