@@ -8,6 +8,43 @@ field :tags ,type: Array
 field :screenName,type: String
 field :name,type: String
 
+def self.mosttweetstoday
+keyf = <<KEYF
+function(doc) {
+celeb=db.celebs.findOne({_id : doc.celeb_id})
+return {"celeb" : celeb }
+ }
+KEYF
+today = DateTime.now.beginning_of_day.to_i * 1000
+cond = {:time => {'$gte' => today }}
+reduce = <<REDUCE
+  function(key,values){
+values.tweets+=1;
+}
+REDUCE
+
+array=Tweet.collection.group( {:keyf => keyf,:cond => cond ,:initial => {tweets:0},:reduce => reduce}).delete_if {|doc| doc["celeb"].nil?}
+array.sort {|a,b| b["tweets"] <=> a ["tweets"]}
+end
+def self.mostmentionedtoday
+keyf = <<KEYF
+function(doc) {
+celeb=db.celebs.findOne({screenName : doc.reply_to})
+return {"celeb" : celeb }
+ }
+KEYF
+today = DateTime.now.beginning_of_day.to_i * 1000
+cond = {:time => {'$gte' => today }}
+reduce = <<REDUCE
+  function(key,values){
+values.tweets+=1;
+}
+REDUCE
+  array=FanTweet.collection.group( {:keyf => keyf,:cond => cond ,:initial => {tweets:0},:reduce => reduce}).delete_if {|doc| doc["celeb"].nil?}
+array.sort {|a,b| b["tweets"] <=> a ["tweets"]}
+end
+
+
   def self.alltags
      tags = Mongoid.master.collection('tags').find().first["value"]["tags"].split(/,/).to_a.uniq
   end

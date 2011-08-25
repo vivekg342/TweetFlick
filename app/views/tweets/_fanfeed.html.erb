@@ -1,15 +1,16 @@
 <% require 'rails_autolink' %>
+<ul class="divScrollable jcarousel-skin-fan">
 <%  tweets.each do |tweet|%>
 <% unless tweet.nil? %>
-<div class="divFan divTweet ui-corner-all">
-  <div class="divImg"><a href="http://twitter.com/<%= tweet.screenName %>"><img width="32" height="32" src="<%= tweet.profileImgUrl %>" alt="" /></a></div>
+<li class="divFan divTweet ui-corner-all">
+  <div class="divImg"><a target="_blank" href="http://twitter.com/<%= tweet.screenName %>"><img width="32" height="32" src="<%= tweet.profileImgUrl %>" alt="" /></a></div>
   <div class="tweetBody ui-corner-all" style="margin-left:40px;">
     <div class="divName"><%= tweet.name %></div>
     
 
-<div><%= raw auto_link(tweet.link_twitter_user,:link =>:urls, :sanitize => false) %></div>
+<div><%= raw auto_link(tweet.link_twitter_user,:link =>:urls, :sanitize => false,:html => {:target => "_blank" }) %></div>
 <div class="divTime">Updated <span class="epoch"><%= tweet.time %></span></div>
-<div style="height:15px">
+<div style="height:20px">
 <div class="links">
       <table><tbody>
         <tr>
@@ -25,17 +26,21 @@
 </div>
 <div style="clear:both"></div>
 
-</div>
+</li>
 <%end%>
 <%  end %>
 
-<div class="divFanFeedLast">
-
-
-</div>
+</ul>
 <script type="text/javascript">
   $(function(){
-    
+        fanpath='<%= url %>';
     showDate();
+selectedDiv.find('.divScrollable').jcarousel({
+    vertical: true,
+    start: 9,
+	auto: 2,
+        scroll: 1,
+        itemFallbackDimension:75
+  });
   });
 </script>

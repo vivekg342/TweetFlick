@@ -1,4 +1,7 @@
  <div class="dash ui-corner-all" >
+     <div id="divTalkative"></div>
+      <div id="divLoved"></div>
+
                     <div class="dashHead ui-corner-top">
                     Most Followed
                   </div>
@@ -12,7 +15,10 @@
             <tr>
               <td>
 
-   <div class="left"><img width="32" height="32" src="<%= celeb.profileImgUrl %>" alt=""/></div>
+   <div class="left">
+    <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb.screenName %>"><img width="32" height="32" src="<%= celeb.profileImgUrl %>" alt=""/></a>
+    
+    </div>
    </td>
    <td>
      <div><%= celeb.name %></div>
@@ -31,26 +37,34 @@
               </td>
               <td>
                  <div class="dash ui-corner-all">
-                    <div class="dashHead ui-corner-top">Most Mentioned</div>
+                    <div class="dashHead ui-corner-top">Today's most mentioned</div>
                     
                   <div class="dashBody">
                                          <table>
-          <tbody>
-
-<%  @mentionCelebs.each do |celeb| %>
-
+                                          <tbody>
+<%  @mentionCelebs[0..4].each do |celeb| %>
+  <% unless celeb["celeb"].nil? %>
             <tr>
               <td>
 
-   <div class="left"><img width="32" height="32" src="<%= celeb.profileImgUrl %>" alt=""/></div>
+   <div class="left">
+
+ <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb["celeb"]["screenName"] %>">
+    <img width="32" height="32" src="<%= celeb["celeb"]["profileImgUrl"] %>" alt=""/>
+</a>
+</div>
    </td>
    <td>
-     <div><%= celeb.name %></div>
-     <div><%= celeb.followers %> Replies</div>
+  <div>
+   <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb["celeb"]["screenName"] %>">
+  <%= celeb["celeb"]["name"] %>
+</a>
+</div>
+     <div><%= celeb["tweets"].to_i %> Replies</div>
    </td>
    </tr>
 
-
+  <% end %>
   <% end %>
         </tbody>
         </table>
@@ -60,22 +74,28 @@
             </td>
               <td>
                  <div class="dash ui-corner-all">
-                    <div class="dashHead ui-corner-top">Most Talkative</div>
+                    <div class="dashHead ui-corner-top">Today's most talkative</div>
                     
                 <div class="dashBody">
                      <table>
           <tbody>
 
-<%  @talkCelebs.each do |celeb| %>
-
+<%  @talkCelebs[0..4].each do |celeb| %>
             <tr>
               <td>
 
-   <div class="left"><img width="32" height="32" src="<%= celeb.profileImgUrl %>" alt=""/></div>
+   <div class="left">
+   <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb["celeb"]["screenName"] %>">
+<img width="32" height="32" src="<%= celeb["celeb"]["profileImgUrl"] %>" alt=""/>
+</a>
+</div>
    </td>
    <td>
-     <div><%= celeb.name %></div>
-     <div><%= celeb.followers %> tweets</div>
+<a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb["celeb"]["screenName"] %>">
+  <div><%= celeb["celeb"]["name"] %>
+</a>
+</div>
+     <div><%= celeb["tweets"].to_i %> tweets</div>
    </td>
    </tr>
 

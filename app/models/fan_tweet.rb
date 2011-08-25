@@ -4,7 +4,8 @@ class FanTweet
   field :reply_to,type: Integer
   field :time,type: Integer
   def self.today
-      where(:time.gte => 1.days.ago.to_i).count
+      today = DateTime.now.beginning_of_day.to_i * 1000
+      where(:time.gte => today).count
 end
 
 def link_twitter_user

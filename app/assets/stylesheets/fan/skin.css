@@ -1,0 +1,98 @@
+.jcarousel-skin-fan .jcarousel-container {
+}
+
+.jcarousel-skin-fan .jcarousel-direction-rtl {
+	direction: rtl;
+}
+
+
+.jcarousel-skin-fan .jcarousel-container-vertical {
+    height: 550px;
+    padding: 40px 0px;
+}
+
+.jcarousel-skin-fan .jcarousel-clip {
+    overflow: hidden;
+}
+
+
+.jcarousel-skin-fan .jcarousel-clip-vertical {
+    width:  100%;
+    height: 550px;
+}
+
+.jcarousel-skin-fan .jcarousel-item {
+width:100%;
+}
+
+
+.jcarousel-skin-fan .jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-left: 10px;
+    margin-right: 0;
+}
+
+.jcarousel-skin-fan .jcarousel-item-vertical {
+
+}
+
+.jcarousel-skin-fan .jcarousel-item-placeholder {
+    background: #fff;
+    color: #000;
+}
+
+/**
+ *  Vertical Buttons
+ */
+.jcarousel-skin-fan .jcarousel-next-vertical {
+    position: absolute;
+    bottom: 5px;
+    left: 143px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(next-vertical.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-fan .jcarousel-next-vertical:hover,
+.jcarousel-skin-fan .jcarousel-next-vertical:focus {
+    background-position: 0 -32px;
+}
+
+.jcarousel-skin-fan .jcarousel-next-vertical:active {
+    background-position: 0 -64px;
+}
+
+.jcarousel-skin-fan .jcarousel-next-disabled-vertical,
+.jcarousel-skin-fan .jcarousel-next-disabled-vertical:hover,
+.jcarousel-skin-fan .jcarousel-next-disabled-vertical:focus,
+.jcarousel-skin-fan .jcarousel-next-disabled-vertical:active {
+    cursor: default;
+    background-position: 0 -96px;
+}
+
+.jcarousel-skin-fan .jcarousel-prev-vertical {
+    position: absolute;
+    top: 5px;
+    left: 143px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: transparent url(prev-vertical.png) no-repeat 0 0;
+}
+
+.jcarousel-skin-fan .jcarousel-prev-vertical:hover,
+.jcarousel-skin-fan .jcarousel-prev-vertical:focus {
+    background-position: 0 -32px;
+}
+
+.jcarousel-skin-fan .jcarousel-prev-vertical:active {
+    background-position: 0 -64px;
+}
+
+.jcarousel-skin-fan .jcarousel-prev-disabled-vertical,
+.jcarousel-skin-fan .jcarousel-prev-disabled-vertical:hover,
+.jcarousel-skin-fan .jcarousel-prev-disabled-vertical:focus,
+.jcarousel-skin-fan .jcarousel-prev-disabled-vertical:active {
+    cursor: default;
+    background-position: 0 -96px;
+}

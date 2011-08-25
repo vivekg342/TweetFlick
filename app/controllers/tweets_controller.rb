@@ -8,6 +8,20 @@ format.html {   render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweet
 format.json{render json: @tweets}
 end
 end
+
+def fanfeed
+#  @tweets=Tweet.paginate({:order => :time.desc,:per_page => 15 , :page => Integer(params[:page])})
+ @tweets=FanTweet.order_by([[:time,:desc]]).limit(15).where(:time.gt =>Integer(params[:time]) )
+respond_to do |format|
+format.html {   render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @tweets ,:url=> fanfeed_tweets_path(:time => @tweets.to_a.first.time) } }#_list.html.erb
+format.json{render json: @tweets}
+end
+end
+def latest
+  @tweets=Tweet.order_by([[:time,:desc]]).limit(15).where(:time.gt =>Integer(params[:time]) )
+  @fantweets=FanTweet.order_by([[:time,:desc]]).limit(15).where(:time.gt =>Integer(params[:time]) )
+  celebs= render_to_string :partial => "celebs/feed"
+end
 def follow
   begin
    auth = request.env["omniauth.auth"]

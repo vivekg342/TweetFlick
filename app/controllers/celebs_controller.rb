@@ -10,13 +10,26 @@ class CelebsController < ApplicationController
     end
   end
 
+def profile
+  begin
+  @celeb = Celeb.first(conditions: {screenName: params[:name]})
+    @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15)
+    @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(15)
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @celeb }
+    end
+  rescue
+  redirect_to :root
+end
+end
   # GET /celebs/1
   # GET /celebs/1.json
   def show
    
     @celeb = Celeb.find(Integer(params[:id]))
     @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15)
-            @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(5)
+    @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(15)
     respond_to do |format|
       format.html { render html: @celeb,:layout=>false}# show.html.erb
       format.json { render json: @celeb }

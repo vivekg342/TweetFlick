@@ -13,26 +13,31 @@ $('#divTabs').tabs("select",'div'+id);
        $('#divTabs').tabs("add","#div"+id,label);
 $('#divTabs').tabs("select",'div'+id);
     }
- 
-    $("#div"+id).load(path,function(){
+    selectedDiv.find('.ulGallery').jcarousel({scroll: 1 });
+    
+  selectedDiv = $("#div"+id);
+  $("#div"+id).load(path,function(){
           $("#div"+id).removeClass("loading");
-          selectedDiv = $("#div"+id);
         });
+  }
+  function getmorefantweets(){
+    fts=selectedDiv.find('.divScrollable');
+    $.get(fanpath, function(data) {
+    fts.append(data);
+    });
   }
 
   function gettweets(path){
     //pt=$(this).parents('.divFeedLast');
 if(!flag){
 flag=true;
-    pt=selectedDiv.find('.divFeedLast');
-    pt.addClass('loading');
-     pt.load(path,function(){
-          //pt.removeClass("loading");
-          //pt.removeClass('divFeedLast');
-          selectedDiv.find('.column1').append(pt.html());
-          pt.remove();
-          flag=false;
-        });
+    pt=selectedDiv.find('.column1');
+    pt.append('<div class="loading"></div>')
+    $.get(path, function(data) {
+    pt.append(data);
+    pt.find('.loading').remove();
+     flag=false;
+  });
 }
   }
 
@@ -62,21 +67,24 @@ var showDate=function showDate(){
 
  }
   $(function(){
+     selectedDiv = $("#divFeed");
+ flag=false;
+      selectedDiv.find('.ulGallery').jcarousel({scroll: 1 });
+    
 $("#divLeft").tinyscrollbar();
 var $tabs=$('#divTabs').tabs(
 {tabTemplate: "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' style='float:right'>Remove Tab</span></li>"}
 );
- selectedDiv = $("#divFeed");
- flag=false;
+
 function filterCelebs(){
   if($(".tagChecked").size()>0){
 tagClass="";
     $(".tagChecked").each(function(index){
-      tag=$(".tagChecked").text().trim();
+      tag=$(this).text().trim();
       tagClass+=","+'.'+tag+'_tag';
     });
     $(tagClass).fadeIn();
-    $('.alphaCeleb').not(tagClass).fadeOut();
+    $('.alphaCeleb').not(tagClass.substr(1,tagClass.length -1)).fadeOut();
   }
   else{
     $('.alphaCeleb').fadeIn();

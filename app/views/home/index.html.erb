@@ -108,27 +108,38 @@
           <div class="left column1">
             <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_tweets_path(:time => @tweets.to_a.last.time) } %>
             </div>
-          <div class="left column2">
-  <div style="border:1px dotted green;color:#000;padding:10px" class="ui-corner-all">
-    <span style="color:red"> Tweets : </span><%=Tweet.today %> <br /> <br />
-    <span style="color:red">    Fan Tweets :</span> <%= FanTweet.today %> <br />
-</div>
-  <div style="margin-top:10px">
-    <span style="color:#2F7A26;font-weight:bold"> Recent fan replies to all celebs :</span>  <br />
-  <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.last.time) } %>
-</div>
-            </div>
+          <div class="left column3">
+            <div>
+          <ul class="ulGallery jcarousel-skin-tango">
+            <%  @images.each do |image|%>
+              <li>
+                 <a target="_blank" href="<%= url_for :controller =>"celebs", :action => "profile", :name => image.screenName %>"><%= image.name %></a>
+                
+                <a target="_blank" href="<%= image.url %>"><img width="150" height="150" src="<%= image.small %>" alt="<%= image.name %>"/></a>
+                <div class="divTime">
+                <span class="epoch"><%= image.time %></span>
+                </div>
+            </li>
+              <% end %>
+          </ul>
+          
+          </div>
+            <div class="column2">
+            
+                  <div style="padding:10px" class="ui-corner-all">
+                    <span style="color:red"><%=Tweet.today %></span> total tweets from celebs today !  <br /> <br />
+                    <span style="color:red"> <%= FanTweet.today %></span> total celeb mentions today !<br />
+                  </div>
+                  <div style="margin-top:10px">
+                    <span style="color:#2F7A26;font-weight:bold"> Recent fan replies to all celebs :</span>  <br />
+                    <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.first.time) } %>
+                    </div>
+          </div>
+        </div>
             <div class="clr"></div>
             
         </div>
-   </div>
-  <div  class="divColumn column2">
-     
-      <div id="divTalkative"></div>
-      <div id="divLoved"></div>
-
-    </div>
-    <div  class="divColumn column3"></div>
+      </div>
 
   </div>
 
