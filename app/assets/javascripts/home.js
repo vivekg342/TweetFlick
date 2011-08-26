@@ -237,7 +237,13 @@ var $tabs=$('#divTabs').tabs(
             allFields.val("").removeClass("ui-state-error");
         }
     });
-    //UPdate time every min
-    window.setInterval(showDate, 60000);
+    //Auto update every min
+    window.setInterval(autoUpdate, 60000);
 
 });
+
+var autoUpdate=function autoupdate(){
+showDate();
+
+
+}

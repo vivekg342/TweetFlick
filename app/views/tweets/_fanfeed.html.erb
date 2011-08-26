@@ -9,7 +9,7 @@
     
 
 <div><%= raw auto_link(tweet.link_twitter_user,:link =>:urls, :sanitize => false,:html => {:target => "_blank" }) %></div>
-<div class="divTime">Updated <span class="epoch"><%= tweet.time %></span></div>
+<div class="divTime">Updated <span class="epoch"><%= tweet.time %></span><span class="ltime"></span></div>
 <div style="height:20px">
 <div class="links">
       <table><tbody>

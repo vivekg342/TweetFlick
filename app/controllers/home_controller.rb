@@ -9,7 +9,7 @@ class HomeController < ApplicationController
 @imageStr=Array.new
 @images.each do |image|
 urlstr=  url_for :controller =>"celebs", :action => "profile", :name => image.screenName
-@imageStr <<  "<li><a target=\"_blank\" href=\"#{urlstr}\">#{image.name}</a><a target=\"_blank\" href=\"#{image.url}\"><img width=\"150\" height=\"150\" src=\"#{image.small}\"/></a><div class=\"divTime\"><span class=\"epoch\">#{image.time}</span></div></li>"
+@imageStr <<  "<li><a target=\"_blank\" href=\"#{urlstr}\">#{image.name}</a><a target=\"_blank\" href=\"#{image.url}\"><img width=\"150\" height=\"150\" src=\"#{image.small}\"/></a><div class=\"divTime\"><span class=\"epoch\">#{image.time}</span><span class=\"ltime\">#{image.time}</span></div></li>"
 end
 @mentionCelebs=Celeb.mostmentionedtoday
 @talkCelebs=Celeb.mosttweetstoday

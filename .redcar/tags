@@ -1,4 +1,4 @@
-1314368664
+1314374210
 Application	/home/vivek/tweetflick/config/application.rb	  class Application 
 ApplicationController	/home/vivek/tweetflick/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/vivek/tweetflick/app/helpers/application_helper.rb	module ApplicationHelper
@@ -38,6 +38,7 @@ UserTest	/home/vivek/tweetflick/test/unit/user_test.rb	class UserTest
 a	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function a(f){return{position:f.position,offset:f.offset}}var b=this,d=b.options,e=c(document)
 alltags	/home/vivek/tweetflick/app/models/celeb.rb	  def self.alltags
 authenticate_user!	/home/vivek/tweetflick/app/controllers/application_controller.rb	    def authenticate_user!
+autoupdate	/home/vivek/tweetflick/app/assets/javascripts/home.js	function autoupdate()
 b	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function b(f)
 celeb	/home/vivek/tweetflick/app/models/photo.rb	def celeb
 celeb	/home/vivek/tweetflick/app/models/tweet.rb	def celeb

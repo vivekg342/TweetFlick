@@ -46,15 +46,14 @@ function openTweetDialog(ele, id) {
     $("#dialog-tweet").dialog("open");
 }
 var showDate = function showDate() {
-        $('.divTime span.epoch').each(function (index) {
-            epoch = $(this);
-            epoch.html(getDate(epoch.html()));
-            epoch.removeClass('epoch');
+        $('.divTime').each(function (index) {
+            epoch = $(this).find('span.epoch');
+            ltime=$(this).find('span.ltime');
+            ltime.html(getDate(epoch.html()));
+            
         });
 
     }
-
-
 
 
 
