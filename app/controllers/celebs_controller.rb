@@ -15,6 +15,12 @@ def profile
   @celeb = Celeb.first(conditions: {screenName: params[:name]})
     @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15)
     @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(15)
+    @images=Photo.order_by([[:time,:desc]]).limit(30)
+@imageStr=Array.new
+@images.each do |image|
+urlstr=  url_for :controller =>"celebs", :action => "profile", :name => image.screenName
+@imageStr <<  "<li><a target=\"_blank\" href=\"#{urlstr}\">#{image.name}</a><a target=\"_blank\" href=\"#{image.url}\"><img width=\"150\" height=\"150\" src=\"#{image.small}\"/></a><div class=\"divTime\"><span class=\"epoch\">#{image.time}</span></div></li>"
+end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @celeb }

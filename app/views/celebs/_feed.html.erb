@@ -26,6 +26,7 @@
   </div>
 </div>
 
+            <input class="hdnPath" type="hidden" value="<%= url %>" name="hiddenPath" />
 </div>
 <div style="clear:both"></div>
 
@@ -33,8 +34,7 @@
 <%end%>
 <%  end %>
 <script type="text/javascript">
-  $(function(){
-    path='<%= url %>';
+$(function(){
     showDate();
   });
 </script>

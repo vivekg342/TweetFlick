@@ -19,4 +19,26 @@ def link_twitter_user
 	end
 	@txt
 end
+def self.weekstats
+keyf = <<KEYF
+ function(doc) {
+var weekday=new Array("Sun","Mon","Tue","Wed","Thu",
+                "Fri","Sat")
+                myDate = new Date(doc.time *1).getDay()
+return {"day" : weekday[myDate],"index":myDate  }
+
+ }
+KEYF
+sixdays = 6.days.ago.beginning_of_day.to_i * 1000
+cond = {:time => {'$gte' => sixdays }}
+reduce = <<REDUCE
+  function(key,values){
+values.tweets+=1;
+}
+REDUCE
+array=FanTweet.collection.group( {:keyf => keyf,:cond => cond ,:initial => {tweets:0},:reduce => reduce})
+
+end
+
+
 end

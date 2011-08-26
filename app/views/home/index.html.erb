@@ -1,14 +1,5 @@
-<style type="text/css">
-/* Vertical Tabs
-----------------------------------*/
-.ui-tabs-vertical { width: 55em; }
-.ui-tabs-vertical .ui-tabs-nav { padding: .2em .1em .2em .2em; float: left; width: 12em; }
-.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom-width: 1px !important; border-right-width: 0 !important; margin: 0 -1px .2em 0; }
-.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
-.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
-.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; width: 40em;}
-</style>
 
+  <%= javascript_include_tag "home" %>
 
     <div id="fixedTags" class="ui-corner-all">
     
@@ -78,21 +69,18 @@
 </div>
                   </div>
 </div>
-  
+    
   
 
 <div id="divDashBoard">
-  <table cellspacing="10px">
-      <tbody>
-          <tr>
-              <td>
+    
+               <%= render :partial => "celebs/dash" %>
+      
+        
+        <div class="clr"></div>
+        
                 
-                 <%= render :partial => "celebs/dash" %>
-              </td>
-          </tr>
-          
-      </tbody>
-  </table>
+        
   
 
 </div>
@@ -110,17 +98,9 @@
             </div>
           <div class="left column3">
             <div>
+              <input id="hdnImages" type="hidden" value="<%=  @imageStr.to_json %>" />
           <ul class="ulGallery jcarousel-skin-tango">
-            <%  @images.each do |image|%>
-              <li>
-                 <a target="_blank" href="<%= url_for :controller =>"celebs", :action => "profile", :name => image.screenName %>"><%= image.name %></a>
-                
-                <a target="_blank" href="<%= image.url %>"><img width="150" height="150" src="<%= image.small %>" alt="<%= image.name %>"/></a>
-                <div class="divTime">
-                <span class="epoch"><%= image.time %></span>
-                </div>
-            </li>
-              <% end %>
+           
           </ul>
           
           </div>
