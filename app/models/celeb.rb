@@ -8,6 +8,9 @@ field :tags ,type: Array
 field :screenName,type: String
 field :name,type: String
 
+def large
+screenName
+end
 def self.random
        # Grabs a random entry from the MongoDB Entry.
        # Returns an array

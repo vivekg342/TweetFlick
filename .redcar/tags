@@ -1,4 +1,4 @@
-1314364351
+1314368664
 Application	/home/vivek/tweetflick/config/application.rb	  class Application 
 ApplicationController	/home/vivek/tweetflick/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/vivek/tweetflick/app/helpers/application_helper.rb	module ApplicationHelper
@@ -75,6 +75,7 @@ index	/home/vivek/tweetflick/app/controllers/home_controller.rb	  def index
 initialize	/home/vivek/tweetflick/app/assets/javascripts/jquery.tinyscrollbar.min.js	function initialize(){oSelf.update();setEvents()
 k	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function k(a,b){var d=a.nodeName.toLowerCase();if("area"===d){b=a.parentNode;d=b.name;if(!a.href||!d||b.nodeName.toLowerCase()!=="map")return false;a=c("img[usemap=#"+d+"]")[0];return!!a&&l(a)}return(/input|select|textarea|button|object/.test(d)?!a.disabled:"a"==d?a.href||b:b)&&l(a)}function l(a){return!c(a).parents().andSelf().filter(function(){return c.curCSS(this,"visibility")==="hidden"||c.expr.filters.hidden(this)}).length}c.ui=c.ui||{};if(!c.ui.version)
 l	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function l(c){if(!c||typeof c==="number"||f.fx.speeds[c])return true;if(typeof c==="string"&&!f.effects[c])
+large	/home/vivek/tweetflick/app/models/celeb.rb	def large
 latest	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	def latest
 link_twitter_user	/home/vivek/tweetflick/app/models/fan_tweet.rb	def link_twitter_user
 link_twitter_user	/home/vivek/tweetflick/app/models/tweet.rb	def link_twitter_user
