@@ -137,6 +137,8 @@ background: -o-linear-gradient(top, rgba(233,246,253,1) 0%,rgba(211,238,251,1) 1
 background: -ms-linear-gradient(top, rgba(233,246,253,1) 0%,rgba(211,238,251,1) 100%); /* IE10+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9f6fd', endColorstr='#d3eefb',GradientType=0 ); /* IE6-9 */
 background: linear-gradient(top, rgba(233,246,253,1) 0%,rgba(211,238,251,1) 100%); /* W3C */
+position:relative;
+min-height:900px;
 }
 
  .divName{font-weight:bold; color:#2BB7DB;}
@@ -183,11 +185,16 @@ padding:5px; margin-top:5px;pointer:click;font-size: 11px;color: #000 !important
 .column2 {width:330px;}
 .column3 {width:500px;}
 
-
+/*
 ul.tree, ul.tree ul { list-style-type: none; background: url(<%= asset_path "vline.png" %>) repeat-y; margin: 0; padding: 0; }
 ul.tree ul { margin-left: 8px; }
 ul.tree li { margin: 0; padding: 0 10px; line-height: 20px; background: url(<%= asset_path "node.png" %>) no-repeat; color: #369; font-weight: bold;}
 ul.tree li.last { background: url(<%= asset_path "lastnode.png" %>) no-repeat; }
+*/
+ul.tree, ul.tree ul { list-style-type: none; margin: 0; padding: 0; }
+ul.tree ul { margin-left: 8px; }
+ul.tree li { margin: 0; padding:0 0 0 10px; line-height: 20px; color: #369; font-weight: bold;}
+
 
 #fixedTags {display:none;background: #FFF ; height:auto; color:#995833;position:fixed;top:35px;left:200px;width:200px;padding:10px;border:1px dotted #E81F1F;z-index:999;}
 .tags{margin:2px 2px 0 2px;padding:3px;float:left;color:green;}
@@ -213,3 +220,5 @@ position:fixed;top:55px;left:0px;
 #divLeft .disable { display: none; }
 
 span.epoch{display:none;}
+
+.gadsense{position:absolute;top:300px;right:2px;;}

@@ -22,7 +22,7 @@ get 'feed/:id/:time',:action=>'feed',:as => 'feed'
     end
 end
   get "home/index"
-  
+    match "/sitemap" => "sitemap#index"
   match "/:name" => "celebs#profile", :as => 'profile'
 root:to=>"home#index"
   # The priority is based upon order of creation:

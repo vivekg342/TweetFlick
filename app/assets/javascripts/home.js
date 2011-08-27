@@ -38,10 +38,12 @@ $('#divTabs').tabs("select",'div'+id);
     selectedDiv.find('.ulGallery').jcarousel({scroll: 1 });
     
   selectedDiv = $("#div"+id);
-  $("#div"+id).load(path,function(){
+$.get(path,function(data){
+        $("#div"+id).html(data);
           $("#div"+id).removeClass("loading");
-        });
         path= selectedDiv.find('.hdnPath:last').val();
+        });
+
   }
 
 
@@ -259,7 +261,7 @@ showDate();
 }
 
 function updateClient(data){
- $('#hdnLtstTime').val(data.time);
+ selectedDiv.find('.hdnLtstTime').val(data.time);
 celebs=data.celebs;
 fans=data.fans;
 if(celebs){

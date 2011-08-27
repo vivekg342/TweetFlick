@@ -11,6 +11,8 @@ gem "twitter"
 gem "bson_ext"
 gem 'omniauth'
 gem 'will_paginate'
+gem 'builder'
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 

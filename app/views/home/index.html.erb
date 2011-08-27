@@ -32,9 +32,8 @@
                       </div>
                       <div class="right">
                           <a href="#" id="toggleTags">Filter by tags</a>
-                      </div>
-    <strong>Celebs</strong>
-    <div>
+                        </div>
+      <div style="margin-top:20px">
       <ul class="tree">
      <%  @alphaCelebs.each do |celeb| %>
         <%  tagClass = celeb.tags.join("_tag ") + "_tag" %>
@@ -43,29 +42,8 @@
   </li>
   <% end %>
         </ul>
-</div>
-    <strong>Celebs</strong>
-    <div>
-      <ul class="tree">
-     <%  @alphaCelebs.each do |celeb| %>
-        <%  tagClass = celeb.tags.join("_tag ") + "_tag" %>
-      <li>
-        <div class="<%= tagClass %> alphaCeleb" style="cursor: pointer" onclick="showCeleb('<%=  celeb_path(celeb) %>',<%=  celeb.id %>,'<%=  celeb.name %>');"><%= celeb.name %></div>
-  </li>
-  <% end %>
-        </ul>
-</div>
-<strong>Celebs</strong>
-    <div>
-      <ul class="tree">
-     <%  @alphaCelebs.each do |celeb| %>
-        <%  tagClass = celeb.tags.join("_tag ") + "_tag" %>
-      <li>
-        <div class="<%= tagClass %> alphaCeleb" style="cursor: pointer" onclick="showCeleb('<%=  celeb_path(celeb) %>',<%=  celeb.id %>,'<%=  celeb.name %>');"><%= celeb.name %></div>
-  </li>
-  <% end %>
-        </ul>
-</div>
+      </div>
+    
 </div>
                   </div>
 </div>
@@ -89,6 +67,9 @@
   <div id="divContent">
     
    <div id="divTabs">
+    <div  class ="gadsense">
+            <%= render :partial => "shared/googleadsense" %>
+        </div>
         <ul>
           <li><a href="#divFeed">Feed </a></li>
         </ul>
@@ -116,10 +97,9 @@
                     <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.first.time) } %>
                   </ul>
                     </div>
+                        <input class="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />
           </div>
-          <div  class ="right">
-            <%= render :partial => "shared/googleadsense" %>
-        </div>
+<input class="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />
         </div>
             <div class="clr"></div>
             

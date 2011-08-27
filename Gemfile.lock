@@ -207,6 +207,7 @@ PLATFORMS
 
 DEPENDENCIES
   bson_ext
+  builder
   coffee-rails (~> 3.1.0.rc)
   execjs
   jquery-rails (>= 1.0.12)

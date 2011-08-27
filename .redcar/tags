@@ -1,4 +1,4 @@
-1314448108
+1314466794
 Application	/home/vivek/tweetflick/config/application.rb	  class Application 
 ApplicationController	/home/vivek/tweetflick/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/vivek/tweetflick/app/helpers/application_helper.rb	module ApplicationHelper
@@ -25,6 +25,10 @@ SessionsController	/home/vivek/tweetflick/app/controllers/sessions_controller.rb
 SessionsControllerTest	/home/vivek/tweetflick/test/functional/sessions_controller_test.rb	class SessionsControllerTest 
 SessionsHelper	/home/vivek/tweetflick/app/helpers/sessions_helper.rb	module SessionsHelper
 SessionsHelperTest	/home/vivek/tweetflick/test/unit/helpers/sessions_helper_test.rb	class SessionsHelperTest 
+SitemapController	/home/vivek/tweetflick/app/controllers/sitemap_controller.rb	class SitemapController 
+SitemapControllerTest	/home/vivek/tweetflick/test/functional/sitemap_controller_test.rb	class SitemapControllerTest 
+SitemapHelper	/home/vivek/tweetflick/app/helpers/sitemap_helper.rb	module SitemapHelper
+SitemapHelperTest	/home/vivek/tweetflick/test/unit/helpers/sitemap_helper_test.rb	class SitemapHelperTest 
 TestCase	/home/vivek/tweetflick/test/test_helper.rb	class ActiveSupport::TestCase
 Tweet	/home/vivek/tweetflick/app/models/tweet.rb	class Tweet
 TweetTest	/home/vivek/tweetflick/test/unit/tweet_test.rb	class TweetTest 
@@ -74,6 +78,7 @@ humane_date	/home/vivek/tweetflick/app/assets/javascripts/pretty.js	function hum
 imglink	/home/vivek/tweetflick/app/models/photo.rb	def imglink
 index	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	  def index
 index	/home/vivek/tweetflick/app/controllers/home_controller.rb	  def index
+index	/home/vivek/tweetflick/app/controllers/sitemap_controller.rb	   def index
 initialize	/home/vivek/tweetflick/app/assets/javascripts/jquery.tinyscrollbar.min.js	function initialize(){oSelf.update();setEvents()
 k	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function k(a,b){var d=a.nodeName.toLowerCase();if("area"===d){b=a.parentNode;d=b.name;if(!a.href||!d||b.nodeName.toLowerCase()!=="map")return false;a=c("img[usemap=#"+d+"]")[0];return!!a&&l(a)}return(/input|select|textarea|button|object/.test(d)?!a.disabled:"a"==d?a.href||b:b)&&l(a)}function l(a){return!c(a).parents().andSelf().filter(function(){return c.curCSS(this,"visibility")==="hidden"||c.expr.filters.hidden(this)}).length}c.ui=c.ui||{};if(!c.ui.version)
 l	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function l(c){if(!c||typeof c==="number"||f.fx.speeds[c])return true;if(typeof c==="string"&&!f.effects[c])
