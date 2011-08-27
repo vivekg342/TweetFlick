@@ -8,7 +8,7 @@
 
 .jcarousel-skin-fan .jcarousel-container-vertical {
     height: 550px;
-    padding: 40px 0px;
+    padding: 0px 40px 0px 0px;
 }
 
 .jcarousel-skin-fan .jcarousel-clip {
@@ -45,8 +45,8 @@ width:100%;
  */
 .jcarousel-skin-fan .jcarousel-next-vertical {
     position: absolute;
-    bottom: 5px;
-    left: 143px;
+    top: 100px;
+    right: 0px;
     width: 32px;
     height: 32px;
     cursor: pointer;
@@ -72,8 +72,8 @@ width:100%;
 
 .jcarousel-skin-fan .jcarousel-prev-vertical {
     position: absolute;
-    top: 5px;
-    left: 143px;
+    top: 45px;
+    right: 0px;
     width: 32px;
     height: 32px;
     cursor: pointer;

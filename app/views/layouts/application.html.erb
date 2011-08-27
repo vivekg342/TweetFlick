@@ -56,8 +56,10 @@
     <div id="content">
 <%= yield %>
 </div>
-<input id="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" name="" />
-
+<input id="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />
+<% if Rails.env.production? %>
+<%= render :partial => "shared/googleanalytics" %>
+<%end%>
   </div>
   
 

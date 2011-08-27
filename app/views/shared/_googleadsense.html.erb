@@ -1,0 +1,15 @@
+<% if Rails.env.production? %>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-7459561568356572";
+/* tweetflick */
+google_ad_slot = "5788773018";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<%else%>
+<%= image_tag "160x600.gif" %>
+<%end%>

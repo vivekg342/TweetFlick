@@ -1,13 +1,16 @@
 class FanTweet
   include Mongoid::Document
 
-  field :reply_to,type: Integer
+  field :reply_to,type: String
   field :time,type: Integer
   def self.today
-      today = DateTime.now.beginning_of_day.to_i * 1000
+      today = 1.days.ago.to_i * 1000
       where(:time.gte => today).count
 end
-
+  def self.todayby(name)
+      today = 1.days.ago.to_i * 1000
+      where(:reply_to => name, :time.gte => today).count
+end
 def link_twitter_user
   @txt= self.text
   if matches = @txt.scan(/.*?(@)((?:[a-z][a-z]+))(:|\s)/i)
@@ -29,7 +32,7 @@ return {"day" : weekday[myDate],"index":myDate  }
 
  }
 KEYF
-sixdays = 6.days.ago.beginning_of_day.to_i * 1000
+sixdays = 6.days.ago.to_i * 1000
 cond = {:time => {'$gte' => sixdays }}
 reduce = <<REDUCE
   function(key,values){

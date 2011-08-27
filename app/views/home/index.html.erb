@@ -104,17 +104,22 @@
           </ul>
           
           </div>
-            <div class="column2">
+            <div class="left column2">
             
                   <div style="padding:10px" class="ui-corner-all">
                     <span style="color:red"><%=Tweet.today %></span> total tweets from celebs today !  <br /> <br />
                     <span style="color:red"> <%= FanTweet.today %></span> total celeb mentions today !<br />
                   </div>
-                  <div style="margin-top:10px">
+                  <div>
                     <span style="color:#2F7A26;font-weight:bold"> Recent fan replies to all celebs :</span>  <br />
+                    <ul class="divScrollable jcarousel-skin-fan">
                     <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.first.time) } %>
+                  </ul>
                     </div>
           </div>
+          <div  class ="right">
+            <%= render :partial => "shared/googleadsense" %>
+        </div>
         </div>
             <div class="clr"></div>
             

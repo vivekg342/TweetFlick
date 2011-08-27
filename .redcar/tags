@@ -1,4 +1,4 @@
-1314374210
+1314439404
 Application	/home/vivek/tweetflick/config/application.rb	  class Application 
 ApplicationController	/home/vivek/tweetflick/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/vivek/tweetflick/app/helpers/application_helper.rb	module ApplicationHelper
@@ -63,6 +63,7 @@ filterCelebs	/home/vivek/tweetflick/app/assets/javascripts/home.js	function filt
 follow	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	def follow
 follow	/home/vivek/tweetflick/app/models/user.rb	def follow(id)
 getDate	/home/vivek/tweetflick/app/assets/javascripts/application.js	function getDate(epoch)
+getLatest	/home/vivek/tweetflick/app/assets/javascripts/home.js	function getLatest()
 getmorefantweets	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function getmorefantweets()
 getmorefantweets	/home/vivek/tweetflick/app/assets/javascripts/home.js	function getmorefantweets()
 gettweets	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function gettweets()
@@ -110,9 +111,11 @@ test_homepage	/home/vivek/tweetflick/test/performance/browsing_test.rb	  def tes
 today	/home/vivek/tweetflick/app/models/celeb.rb	  def today
 today	/home/vivek/tweetflick/app/models/fan_tweet.rb	  def self.today
 today	/home/vivek/tweetflick/app/models/tweet.rb	def self.today
+todayby	/home/vivek/tweetflick/app/models/fan_tweet.rb	  def self.todayby(name)
 top	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	  def top
 u	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function u(){return++v}function w(){return++x}var v=0,x=0;d.widget("ui.tabs",{options:{add:null,ajaxOptions:null,cache:false,cookie:null,collapsible:false,disable:null,disabled:[],enable:null,event:"click",fx:null,idPrefix:"ui-tabs-",load:null,panelTemplate:"<div></div>",remove:null,select:null,show:null,spinner:"<em>Loading&#8230;</em>",tabTemplate:"<li><a href='#{href}'><span>#{label}</span></a></li>"},_create:function(){this._tabify(true)},_setOption:function(b,e){if(b=="selected")
 update	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	  def update
+updateClient	/home/vivek/tweetflick/app/assets/javascripts/home.js	function updateClient(data)
 updateTips	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function updateTips(t)
 updateTips	/home/vivek/tweetflick/app/assets/javascripts/home.js	function updateTips(t)
 update_status	/home/vivek/tweetflick/app/models/user.rb	def update_status(msg)

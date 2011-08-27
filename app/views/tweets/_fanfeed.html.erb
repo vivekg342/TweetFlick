@@ -1,5 +1,5 @@
 <% require 'rails_autolink' %>
-<ul class="divScrollable jcarousel-skin-fan">
+
 <%  tweets.each do |tweet|%>
 <% unless tweet.nil? %>
 <li class="divFan divTweet ui-corner-all">
@@ -29,12 +29,11 @@
 </li>
 <%end%>
 <%  end %>
-
-</ul>
 <script type="text/javascript">
-  $(function(){
-        fanpath='<%= url %>';
+$(function(){
     showDate();
+    if(!selectedDiv)
+    selectedDiv=$('.divProfile');
 selectedDiv.find('.divScrollable').jcarousel({
     vertical: true,
     start: 9,

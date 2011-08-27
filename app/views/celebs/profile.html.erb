@@ -19,15 +19,33 @@
   <div class="left column1">
     <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_celebs_path(@celeb,:time => @tweets.to_a.last.time)} %>
             </div>
-          <div class="left column2">
-            <div style="color:#000;padding:10px" class="ui-corner-all">
-   <span style="color:red"><%=Tweet.today %></span> total tweets from celebs today !  <br /> <br />
-                    <span style="color:red"> <%= FanTweet.today %></span> total celeb mentions today !<br />
-</div>
-  <div style="margin-top:10px">
-    <span style="color:#2F7A26;font-weight:bold"> Recent Fan Replies :</span>  <br />
-            <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.last.time) } %>
-            </div>
-            </div>
-            <div class="clr"></div>
+          <div class="left column3">
+            <div>
+              <input id="hdnImages" type="hidden" value="<%=  @imageStr.to_json %>" />
+          <ul class="ulGallery jcarousel-skin-tango">
+           
+          </ul>
+          
+          </div>
+  <div class="left column2">
+    <div style="color:#000;padding:10px" class="ui-corner-all">
+      <span style="color:red"><%=@celeb.tweets.today %></span> total tweets today !  <br /> <br />
+      <span style="color:red"> <%= FanTweet.todayby(@celeb.screenName) %></span> total mentions today !<br />
+    </div>
+    <div>
+      
+      <% unless @fantweets.nil? || @fantweets.empty? %>
+      <span style="color:#2F7A26;font-weight:bold"> Recent Fan Replies :</span>  <br />
+      <ul class="divScrollable jcarousel-skin-fan">
+        <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.last.time) } %>
+      </ul>
+      <% end %>
+    </div>
   </div>
+     <div  class ="right">
+       <%= render :partial => "shared/googleadsense" %>
+    </div>
+  <div class="clr"></div>
+</div>
+  <div class="clr"></div>
+</div>

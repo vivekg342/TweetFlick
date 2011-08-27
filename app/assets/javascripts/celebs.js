@@ -1,8 +1,8 @@
 
 $(function(){
-var     selectedDiv = $(".divProfile:first");
- var flag=false;
-var path= selectedDiv.find('.hdnPath').val();
+ selectedDiv = $(".divProfile:first");
+ flag=false;
+path= selectedDiv.find('.hdnPath').val();
 
 $(window).scroll(function () {
     if ($(window).scrollTop() >= $('#divTabs').height() - $(window).height()) {
@@ -12,11 +12,12 @@ $(window).scroll(function () {
 
 
 var  images= $.parseJSON($('#hdnImages').val());
+if(images && images.length>0){
       $('.ulGallery').jcarousel({
         scroll: 1,
         itemLoadCallback: {onBeforeAnimation: mycarousel_itemLoadCallback}
     });
-
+  }
     $("#divLeft").tinyscrollbar();
 
 
