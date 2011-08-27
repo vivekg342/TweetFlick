@@ -27,7 +27,7 @@ return {"day" : weekday[myDate.getDay()],"index":myDate.getDate()  }
 
  }
 KEYF
-sixdays = 6.days.ago.beginning_of_day.to_i * 1000
+sixdays = 4.days.ago.beginning_of_day.to_i * 1000
 #sixdays = 6.days.ago.to_i * 1000
 cond = {:time => {'$gte' => sixdays }}
 reduce = <<REDUCE

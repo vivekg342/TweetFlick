@@ -10,16 +10,23 @@ end
 end
 
 def fanfeed
-#  @tweets=Tweet.paginate({:order => :time.desc,:per_page => 15 , :page => Integer(params[:page])})
+  
  @tweets=FanTweet.order_by([[:time,:desc]]).limit(15).where(:time.gt =>Integer(params[:time]) )
+
 respond_to do |format|
 format.html {   render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @tweets ,:url=> fanfeed_tweets_path(:time => @tweets.to_a.first.time) } }#_list.html.erb
 format.json{render json: @tweets}
 end
 end
 def latest
-  @tweets=Tweet.order_by([[:time,:desc]]).limit(15).where(:time.gt =>Integer(params[:time]) )
-  @fantweets=FanTweet.order_by([[:time,:desc]]).limit(15).where(:time.gt =>Integer(params[:time]) )
+   unless params[:id].nil?
+     celeb = Celeb.find(Integer(params[:id]))
+     @tweets=celeb.tweets.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).limit(15)
+    @fantweets=FanTweet.order_by([[:time,:desc]]).where(:reply_to => celeb.screenName,:time.gt =>Integer(params[:time])).limit(15)
+  else
+  @tweets=Tweet.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).limit(15)
+  @fantweets=FanTweet.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).limit(15)
+end
   unless @tweets.nil? || @tweets.empty?
   celebs= render_to_string :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets,:url => nil }
 end

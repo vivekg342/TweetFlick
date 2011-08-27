@@ -38,7 +38,11 @@
      <%  @alphaCelebs.each do |celeb| %>
         <%  tagClass = celeb.tags.join("_tag ") + "_tag" %>
       <li>
-        <div class="<%= tagClass %> alphaCeleb" style="cursor: pointer" onclick="showCeleb('<%=  celeb_path(celeb) %>',<%=  celeb.id %>,'<%=  celeb.name %>');"><%= celeb.name %></div>
+        <div class="<%= tagClass %> alphaCeleb">
+          <%= link_to celeb.name ,profile_path(:name => celeb.screenName), :target => '_blank' %>
+          <span  style="cursor: pointer" class="preview right" onclick="showCeleb('<%=  celeb_path(celeb) %>',<%=  celeb.id %>,'<%=  celeb.name %>');">
+        <%=image_tag "preview.png" ,:height=>'16px',:width=>'16px',:alt => 'preview' %></span>
+    </div>
   </li>
   <% end %>
         </ul>

@@ -22,7 +22,7 @@
       <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>">
     <%= @featured.name %>
   </a></div>
-     <div><%= @featured.followers %> followers</div>
+     <div><%= @featured.followers %> -followers</div>
   </div>
 </div>
   <div id="divFollowed" class="dash ui-corner-all" >
@@ -47,7 +47,7 @@
       <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb.screenName %>">
     <%= celeb.name %>
   </a></div>
-     <div><%= celeb.followers %> followers</div>
+     <div><%= celeb.followers %> -followers</div>
    </td>
    </tr>
 
@@ -82,7 +82,7 @@
   <%= celeb["celeb"]["name"] %>
 </a>
 </div>
-     <div><%= celeb["tweets"].to_i %> Replies</div>
+     <div><%= celeb["tweets"].to_i %> -mentions</div>
    </td>
    </tr>
 
@@ -115,7 +115,7 @@
   <div><%= celeb["celeb"]["name"] %>
 </a>
 </div>
-     <div><%= celeb["tweets"].to_i %> tweets</div>
+     <div><%= celeb["tweets"].to_i %> -tweets</div>
    </td>
    </tr>
 
@@ -133,7 +133,7 @@
   <span style="margin:5px 5px;font-weight:bold;color:green;">No of tweets over the last 6 days : </span> <br />
       <div id="divChartStats" style="width:100%;height:205px;padding:5px"></div>
       <input id="hdnweekstats"  type="hidden" value="<%= @weekstats.to_json %>"/>
-      <input id="hdnfanweekstats"  type="hidden" value="<%= @fanweekstats.to_json %>"/>
+      <input id="hdnfanweekstats"  type="hidden" value=""/>
       </td>
     </tr>
 </table>

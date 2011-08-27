@@ -14,7 +14,7 @@ end
 @mentionCelebs=Celeb.mostmentionedtoday
 @talkCelebs=Celeb.mosttweetstoday
 @weekstats=Celeb.weekstats
-@fanweekstats=FanTweet.weekstats
+#@fanweekstats=FanTweet.weekstats
 @featured=Celeb.random
 @tags=Celeb.alltags
 @tmstamp=@tweets.to_a.last.time

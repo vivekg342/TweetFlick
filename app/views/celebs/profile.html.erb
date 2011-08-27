@@ -41,11 +41,13 @@
       </ul>
       <% end %>
     </div>
+        <input class="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />
   </div>
      <div  class ="right">
        <%= render :partial => "shared/googleadsense" %>
     </div>
   <div class="clr"></div>
+  
 </div>
   <div class="clr"></div>
 </div>

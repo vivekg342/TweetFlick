@@ -1,4 +1,4 @@
-1314469855
+1314479823
 Application	/home/vivek/tweetflick/config/application.rb	  class Application 
 ApplicationController	/home/vivek/tweetflick/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/vivek/tweetflick/app/helpers/application_helper.rb	module ApplicationHelper
@@ -42,6 +42,7 @@ UserTest	/home/vivek/tweetflick/test/unit/user_test.rb	class UserTest
 a	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function a(f){return{position:f.position,offset:f.offset}}var b=this,d=b.options,e=c(document)
 alltags	/home/vivek/tweetflick/app/models/celeb.rb	  def self.alltags
 authenticate_user!	/home/vivek/tweetflick/app/controllers/application_controller.rb	    def authenticate_user!
+autoupdate	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function autoupdate()
 autoupdate	/home/vivek/tweetflick/app/assets/javascripts/home.js	function autoupdate()
 b	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function b(f)
 celeb	/home/vivek/tweetflick/app/models/photo.rb	def celeb
@@ -59,6 +60,8 @@ destroy	/home/vivek/tweetflick/app/controllers/sessions_controller.rb	def destro
 e	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function e(g,f){g.css("display","");!d.support.opacity&&f.opacity&&g[0].style.removeAttribute("filter")}var a=this,c=this.options,h=/^#.+/;this.list=this.element.find("ol,ul").eq(0);this.lis=d(" > li:has(a[href])",this.list);this.anchors=this.lis.map(function(){return d("a",this)[0]});this.panels=d([]);this.anchors.each(function(g,f){var i=d(f).attr("href"),l=i.split("#")[0],q;if(l&&(l===location.toString().split("#")
 edit	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	  def edit
 failure	/home/vivek/tweetflick/app/controllers/sessions_controller.rb	def failure
+fanCarousel	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function fanCarousel()
+fanCarousel	/home/vivek/tweetflick/app/assets/javascripts/home.js	function fanCarousel()
 fanfeed	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	def fanfeed
 feed	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	 def feed
 feed	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	 def feed
@@ -67,6 +70,7 @@ filterCelebs	/home/vivek/tweetflick/app/assets/javascripts/home.js	function filt
 follow	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	def follow
 follow	/home/vivek/tweetflick/app/models/user.rb	def follow(id)
 getDate	/home/vivek/tweetflick/app/assets/javascripts/application.js	function getDate(epoch)
+getLatest	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function getLatest()
 getLatest	/home/vivek/tweetflick/app/assets/javascripts/home.js	function getLatest()
 getmorefantweets	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function getmorefantweets()
 getmorefantweets	/home/vivek/tweetflick/app/assets/javascripts/home.js	function getmorefantweets()
@@ -121,6 +125,7 @@ todayby	/home/vivek/tweetflick/app/models/fan_tweet.rb	  def self.todayby(name)
 top	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	  def top
 u	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function u(){return++v}function w(){return++x}var v=0,x=0;d.widget("ui.tabs",{options:{add:null,ajaxOptions:null,cache:false,cookie:null,collapsible:false,disable:null,disabled:[],enable:null,event:"click",fx:null,idPrefix:"ui-tabs-",load:null,panelTemplate:"<div></div>",remove:null,select:null,show:null,spinner:"<em>Loading&#8230;</em>",tabTemplate:"<li><a href='#{href}'><span>#{label}</span></a></li>"},_create:function(){this._tabify(true)},_setOption:function(b,e){if(b=="selected")
 update	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	  def update
+updateClient	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function updateClient(data)
 updateClient	/home/vivek/tweetflick/app/assets/javascripts/home.js	function updateClient(data)
 updateTips	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function updateTips(t)
 updateTips	/home/vivek/tweetflick/app/assets/javascripts/home.js	function updateTips(t)

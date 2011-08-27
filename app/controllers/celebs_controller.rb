@@ -15,7 +15,7 @@ def profile
   @celeb = Celeb.first(conditions: {screenName: params[:name]})
     @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15)
     @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(15)
-    @images=Photo.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(30)
+    @images=Photo.where(:screenName => @celeb.screenName).order_by([[:time,:desc]]).limit(30)
 @imageStr=Array.new
 @images.each do |image|
 urlstr=  url_for :controller =>"celebs", :action => "profile", :name => image.screenName

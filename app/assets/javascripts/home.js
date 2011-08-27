@@ -5,6 +5,18 @@ function getmorefantweets() {
         fts.append(data);
     });
 }
+function fanCarousel(){
+    showDate();
+    if(!selectedDiv)
+    selectedDiv=$('.divProfile');
+selectedDiv.find('.divScrollable').jcarousel({
+    vertical: true,
+    start: 9,
+	auto: 2,
+        scroll: 1,
+        itemFallbackDimension:75
+  });
+  }
 
 function gettweets() {
     //pt=$(this).parents('.divFeedLast');
@@ -42,6 +54,7 @@ $.get(path,function(data){
         $("#div"+id).html(data);
           $("#div"+id).removeClass("loading");
         path= selectedDiv.find('.hdnPath:last').val();
+      fanCarousel();
         });
 
   }
@@ -60,14 +73,19 @@ $(window).scroll(function () {
         gettweets();
     }
 });
+//Fan Carousel
+fanCarousel();
 
+//Gallery carousel
 var  images= $.parseJSON($('#hdnImages').val());
       selectedDiv.find('.ulGallery').jcarousel({
         scroll: 1,
+         size:images.length,
         itemLoadCallback: {onBeforeAnimation: mycarousel_itemLoadCallback}
     });
+    
 var weekstats=$.parseJSON($('#hdnweekstats').val());
-var fanweekstats=$.parseJSON($('#hdnfanweekstats').val());
+//var fanweekstats=$.parseJSON($('#hdnfanweekstats').val());
 var jqArray=[];
 var fanArray=[];
 var ticks=[];
@@ -84,7 +102,10 @@ ticks.push(weekstats[i].day);
             xaxis: {
                 renderer: $.jqplot.CategoryAxisRenderer,
                 ticks: ticks
-            }},
+            },
+            yaxis:{min:0,
+                tickOptions: {formatString: '%d'}}
+            },
             seriesDefaults: {
         showMarker:false,
         pointLabels: { show:true }
@@ -119,6 +140,7 @@ var $tabs=$('#divTabs').tabs(
 
             carousel.add(i, images[i - 1]);
         }
+        showDate();
     }
 
  function filterCelebs() {
@@ -251,8 +273,16 @@ getLatest();
 
 }
 function getLatest(){
-lastTime = $('#hdnLtstTime').val();
-$.get('/tweets/latest/'+lastTime, function (data) {
+lastTime = selectedDiv.find('.hdnLtstTime:first').val();
+iddiv=selectedDiv.attr('id');
+if(iddiv!='divFeed'){
+id=iddiv.substr(3,iddiv.length-1);
+ltPath='/tweets/latest/'+lastTime+'/'+id;
+}
+else {
+ltPath='/tweets/latest/'+lastTime;
+}
+$.get(ltPath, function (data) {
 updateClient(data);
 showDate();
         },"json"
@@ -265,8 +295,13 @@ function updateClient(data){
 celebs=data.celebs;
 fans=data.fans;
 if(celebs){
+  
+  tempdiv=$('<div style="display:none"></div>').html(celebs);
+  tempdiv.prependTo(selectedDiv.find('.column1'));
+  tempdiv.fadeIn(3000);
 }
-var carousel = $('.divScrollable').data('jcarousel');
+ divScroll=selectedDiv.find('.divScrollable');
+var carousel = divScroll.data('jcarousel');
 if(fans){
 tempdiv=$('<div style="display:none"></div>').html(fans);
 pos=tempdiv.find('li').size()+carousel.first;
@@ -275,7 +310,7 @@ pos=tempdiv.find('li').size()+carousel.first;
 //$('.divScrollable li:first').addClass('divFan divTweet ui-corner-all');
 //});
 //tempdiv.remove();
-$('.divScrollable').prepend(fans);
+divScroll.prepend(fans);
 carousel.reload();
 carousel.scroll(pos,true);
 }

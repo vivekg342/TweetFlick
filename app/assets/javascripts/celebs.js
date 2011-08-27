@@ -1,4 +1,15 @@
-
+function fanCarousel(){
+    showDate();
+    if(!selectedDiv)
+    selectedDiv=$('.divProfile');
+selectedDiv.find('.divScrollable').jcarousel({
+    vertical: true,
+    start: 9,
+	auto: 2,
+        scroll: 1,
+        itemFallbackDimension:75
+  });
+  }
 $(function(){
  selectedDiv = $(".divProfile:first");
  flag=false;
@@ -10,11 +21,12 @@ $(window).scroll(function () {
     }
 });
 
-
+fanCarousel();
 var  images= $.parseJSON($('#hdnImages').val());
 if(images && images.length>0){
       $('.ulGallery').jcarousel({
         scroll: 1,
+        size:images.length,
         itemLoadCallback: {onBeforeAnimation: mycarousel_itemLoadCallback}
     });
   }
@@ -150,10 +162,48 @@ if(images && images.length>0){
             allFields.val("").removeClass("ui-state-error");
         }
     });
-    //UPdate time every min
-    window.setInterval(showDate, 60000);
+    //Auto update every min
+    window.setInterval(autoUpdate, 60000);
 
 });
+var autoUpdate=function autoupdate(){
+getLatest();
+}
+function getLatest(){
+lastTime = $('.hdnLtstTime:first').val();
+$.get('/tweets/latest/'+lastTime, function (data) {
+updateClient(data);
+showDate();
+        },"json"
+);
+
+}
+
+function updateClient(data){
+ selectedDiv.find('.hdnLtstTime').val(data.time);
+celebs=data.celebs;
+fans=data.fans;
+if(celebs){
+  
+  tempdiv=$('<div style="display:none"></div>').html(celebs);
+  tempdiv.prependTo(selectedDiv.find('.column1'));
+  tempdiv.fadeIn(3000);
+}
+var carousel = $('.divScrollable').data('jcarousel');
+if(fans){
+tempdiv=$('<div style="display:none"></div>').html(fans);
+pos=tempdiv.find('li').size()+carousel.first;
+//tempdiv.find('li').each(function (index) {
+//carousel.add(0, $(this).html());
+//$('.divScrollable li:first').addClass('divFan divTweet ui-corner-all');
+//});
+//tempdiv.remove();
+$('.divScrollable').prepend(fans);
+carousel.reload();
+carousel.scroll(pos,true);
+}
+
+}
 
 
 
