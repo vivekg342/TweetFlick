@@ -22,7 +22,7 @@
       <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>">
     <%= @featured.name %>
   </a></div>
-     <div><%= @featured.followers %> -followers</div>
+     <div><%= @featured.followers %> - followers</div>
   </div>
 </div>
   <div id="divFollowed" class="dash ui-corner-all" >
@@ -47,7 +47,7 @@
       <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb.screenName %>">
     <%= celeb.name %>
   </a></div>
-     <div><%= celeb.followers %> -followers</div>
+     <div><%= celeb.followers %> - followers</div>
    </td>
    </tr>
 
@@ -82,7 +82,7 @@
   <%= celeb["celeb"]["name"] %>
 </a>
 </div>
-     <div><%= celeb["tweets"].to_i %> -mentions</div>
+     <div><%= celeb["tweets"].to_i %> - mentions</div>
    </td>
    </tr>
 
@@ -115,7 +115,7 @@
   <div><%= celeb["celeb"]["name"] %>
 </a>
 </div>
-     <div><%= celeb["tweets"].to_i %> -tweets</div>
+     <div><%= celeb["tweets"].to_i %> - tweets</div>
    </td>
    </tr>
 
