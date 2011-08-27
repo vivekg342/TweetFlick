@@ -1,9 +1,13 @@
 //= require jquery
 //= require jquery_ujs
-
+//= require "jquery.cookie"
 jQuery.expr[':'].contains = function (a, i, m) {
     return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
 };
+if(!($.cookie('timezone'))) {
+  current_time = new Date();
+  $.cookie('timezone', current_time.getTimezoneOffset(), { path: '/', expires: 10 } );
+}
 
 function showMessage(message) {
     $("div#divMessage").fadeToggle('slow');
