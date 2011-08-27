@@ -96,8 +96,7 @@
                     <ul class="divScrollable jcarousel-skin-fan">
                     <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.first.time) } %>
                   </ul>
-                    </div>
-                        <input class="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />
+                </div>
           </div>
 <input class="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />
         </div>
