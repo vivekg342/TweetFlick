@@ -1,4 +1,4 @@
-1314507469
+1314507671
 Application	/home/vivek/tweetflick/config/application.rb	  class Application 
 ApplicationController	/home/vivek/tweetflick/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/vivek/tweetflick/app/helpers/application_helper.rb	module ApplicationHelper
