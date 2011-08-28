@@ -36,12 +36,12 @@ end
 # gem 'capistrano'
 
 # To use debugger
- 
-
-group :test do
   gem 'execjs'
 
 gem 'therubyracer'
+
+group :test do
+
 gem 'ruby-debug19', :require => 'ruby-debug'
 # Pretty printed test output
   gem 'turn', :require => false
