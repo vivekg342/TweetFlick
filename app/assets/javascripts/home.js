@@ -266,7 +266,7 @@ var $tabs=$('#divTabs').tabs(
         close: function () {
             allFields.val("").removeClass("ui-state-error");
         }
-    });
+      });
     //Auto update every min
     window.setInterval(autoUpdate, 60000);
 

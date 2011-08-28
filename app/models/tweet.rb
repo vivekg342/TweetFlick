@@ -4,6 +4,9 @@ class Tweet
   field :text,type: String
     field :time,type: Integer
 
+def self.keywords(array)
+  array=Celeb.mostt
+end
 def celeb
   Celeb.first(:id=>Integer(celeb_id))
 end

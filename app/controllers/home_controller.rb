@@ -19,6 +19,7 @@ end
 @tags=Celeb.alltags
 @tmstamp=@tweets.to_a.last.time
 @date = 0.days.ago.beginning_of_day.to_i * 1000
+
 respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @celebs }

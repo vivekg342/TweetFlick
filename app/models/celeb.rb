@@ -8,6 +8,18 @@ field :tags ,type: Array
 field :screenName,type: String
 field :name,type: String
 
+def title_page
+  tagStr=self.tags.join(" #{self.name},")+" #{self.name}"
+"#{self.name}-Follow #{self.name} and all your favourite celebs on Tweetflick. Check out #{self.name} tweets ,#{self.name} pics,#{self.name} mentions, follow #{self.name} ,#{tagStr}"
+end
+def keywords
+    tagStr=self.tags.join(" #{self.name},")+" #{self.name}"
+      tagStr2=self.tags.join(" #{self.name} tweets,")+" #{self.name}"
+  "#{self.name} twitter, #{self.name} twitter id, #{self.name} tweets,#{self.name} pictures, #{self.name} replies,#{self.name} mentions on twitter, #{self.name} stats, celebrity #{self.name}, #{self.screenName} twitter,#{self.name} bollywood, #{self.name} tollywood, #{tagStr}, #{tagStr2}"
+end
+def description
+   "Tweets from #{self.name} using his id #{self.screenName}. See all the tweets from #{self.name},replies, retweets, images etc. See who are mentioning and retweeting #{self.name} 's tweets and know more about your favorite celebrity #{self.name}"
+end
 def large
 screenName
 end

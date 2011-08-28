@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Tweetflick.in</title>
-<meta name="description" content="One stop location to follow,reply and retweet all your favourite celebrity tweets.Find out what fans think about your favourite twitter celebrities.Checkout images uploaded by twitter celebrities. Follow celebrities from Hollywood, Bollywood, Kollywood, Tollywood. Celebrities from tamil,telugu,hindi,malayalam etc." />
-<meta name="keywords" content="twitter ,tweet,celebrities,celeb,twitter fans ,twitter celebrities,bollywood, hollywood, tollywood, kollywood, tamil, telugu,hindi,english,twitter pictures,twitter images,Bollywood Celebrities Twitter, Bollywood Celebrities tweets, Bollywood Celebrities,Bollywood Celebrities photos, Bollywood Celebrities pictures,Bollywood Celebrities fans,Bollywood Celebrities latest photos, Bollywood Celebrities latest movie, Bollywood Celebrities latest pictures, Bollywood Celebrities new photos, Bollywood Celebrities new pictures" />
+ <title><%= content_for?(:title) ? content_for(:title) : "Tweetflick - Follow all your favourite celebrities' tweets, mentions, replies. Find out what fans think about your favourite celebs on twitter." %></title>
+<%= display_meta(:keywords => "twitter celebrities , twitter fans,celeb tweets, celebrity tweets,bollywood tweets,tollywood tweets,tolly  tweets,bolly tweets,bolly pics,tolly pictures,bolly pictures,tolly pictures") %>
+
+<meta property="og:site_name" content="Tweetflick.in"/>
+<meta property="og:title" content="<%= yield(:ogtitle) %>"/>
+<meta property="og:url" content="<%= request.url %>"/>
+<meta property="og:image" content="<%= yield(:ogimage) %>">
+<meta property="fb:app_id" content="162610627152827">
+
   <%= stylesheet_link_tag    "application" %>
   <%= stylesheet_link_tag    "jquery-ui-1.8.15.custom" %>
    

@@ -1,5 +1,8 @@
   <%= javascript_include_tag "celebs" %>
-  
+    <%ogtitle "#{@celeb.name}'s home page -TweetFlick.in" %>
+  <%title @celeb.title_page %>
+    <%ogimage @celeb.profileImgUrl %>
+ <%set_meta( :keywords => @celeb.keywords,:description => @celeb.description)%>
   <%=  render :partial => "tweets/list" %>
    <div id="divTabs">
 <div class="divProfile">
@@ -22,6 +25,7 @@
     <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_celebs_path(@celeb,:time => @tweets.to_a.last.time)} %>
             </div>
           <div class="left column3">
+            <%=  render :partial => "shared/fb" %>
             <div>
               <input id="hdnImages" type="hidden" value="<%=  @imageStr.to_json %>" />
           <ul class="ulGallery jcarousel-skin-tango">

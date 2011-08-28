@@ -1,6 +1,6 @@
-
 <%= javascript_include_tag "home" %>
-
+<%ogtitle "Tweetflick.in -Home page"%>
+<%set_meta( :keywords => "twitter celebrities , twitter fans,celeb tweets, celebrity tweets,bollywood tweets,tollywood tweets,tolly  tweets,bolly tweets,bolly pics,tolly pictures,bolly pictures,tolly pictures" , :description => "One stop location to follow,reply and retweet all your favourite celebrity tweets.Find out what fans think about your favourite twitter celebrities.Checkout images uploaded by twitter celebrities. Follow celebrities from Hollywood, Bollywood, Kollywood, Tollywood. Celebrities from tamil,telugu,hindi,malayalam etc.")%>
 <div id="fixedTags" class="ui-corner-all">
 
 <div class="right">
@@ -101,7 +101,9 @@
 <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.first.time) } %>
 </ul>
 </div>
+<%=  render :partial => "shared/fb" %>
 <%=  render :partial => "tweets/archivelist" %>
+
 </div>
 <input class="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />
 </div>

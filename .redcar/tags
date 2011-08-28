@@ -1,4 +1,4 @@
-1314528672
+1314563567
 Application	/home/vivek/tweetflick/config/application.rb	  class Application 
 ApplicationController	/home/vivek/tweetflick/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/vivek/tweetflick/app/helpers/application_helper.rb	module ApplicationHelper
@@ -57,6 +57,7 @@ create	/home/vivek/tweetflick/app/controllers/sessions_controller.rb	  def creat
 create_with_omniauth	/home/vivek/tweetflick/app/models/user.rb	def self.create_with_omniauth(auth)
 current_user	/home/vivek/tweetflick/app/controllers/application_controller.rb	    def current_user
 d	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function d(f,g,m,n){c.each(e,function(){g-=parseFloat(c.curCSS(f,"padding"+this,true))||0;if(m)g-=parseFloat(c.curCSS(f,"border"+this+"Width",true))||0;if(n)g-=parseFloat(c.curCSS(f,"margin"+this,true))||0});return g}var e=b==="Width"?["Left","Right"]:["Top","Bottom"],h=b.toLowerCase()
+description	/home/vivek/tweetflick/app/models/celeb.rb	def description
 destroy	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	  def destroy
 destroy	/home/vivek/tweetflick/app/controllers/sessions_controller.rb	def destroy
 e	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function e(g,f){g.css("display","");!d.support.opacity&&f.opacity&&g[0].style.removeAttribute("filter")}var a=this,c=this.options,h=/^#.+/;this.list=this.element.find("ol,ul").eq(0);this.lis=d(" > li:has(a[href])",this.list);this.anchors=this.lis.map(function(){return d("a",this)[0]});this.panels=d([]);this.anchors.each(function(g,f){var i=d(f).attr("href"),l=i.split("#")[0],q;if(l&&(l===location.toString().split("#")
@@ -88,6 +89,8 @@ index	/home/vivek/tweetflick/app/controllers/home_controller.rb	  def index
 index	/home/vivek/tweetflick/app/controllers/sitemap_controller.rb	  def index
 initialize	/home/vivek/tweetflick/app/assets/javascripts/jquery.tinyscrollbar.min.js	function initialize(){oSelf.update();setEvents()
 k	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function k(a,b){var d=a.nodeName.toLowerCase();if("area"===d){b=a.parentNode;d=b.name;if(!a.href||!d||b.nodeName.toLowerCase()!=="map")return false;a=c("img[usemap=#"+d+"]")[0];return!!a&&l(a)}return(/input|select|textarea|button|object/.test(d)?!a.disabled:"a"==d?a.href||b:b)&&l(a)}function l(a){return!c(a).parents().andSelf().filter(function(){return c.curCSS(this,"visibility")==="hidden"||c.expr.filters.hidden(this)}).length}c.ui=c.ui||{};if(!c.ui.version)
+keywords	/home/vivek/tweetflick/app/models/celeb.rb	def keywords
+keywords	/home/vivek/tweetflick/app/models/tweet.rb	def self.keywords(array)
 l	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function l(c){if(!c||typeof c==="number"||f.fx.speeds[c])return true;if(typeof c==="string"&&!f.effects[c])
 large	/home/vivek/tweetflick/app/models/celeb.rb	def large
 latest	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	def latest
@@ -101,6 +104,8 @@ mycarousel_itemLoadCallback	/home/vivek/tweetflick/app/assets/javascripts/celebs
 mycarousel_itemLoadCallback	/home/vivek/tweetflick/app/assets/javascripts/home.js	function mycarousel_itemLoadCallback(carousel, state)
 new	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	  def new
 new	/home/vivek/tweetflick/app/controllers/sessions_controller.rb	def new
+ogimage	/home/vivek/tweetflick/app/helpers/application_helper.rb	def ogimage(image)
+ogtitle	/home/vivek/tweetflick/app/helpers/application_helper.rb	def ogtitle(otitle)
 openTweetDialog	/home/vivek/tweetflick/app/assets/javascripts/application.js	function openTweetDialog(ele, id)
 p	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function p(c){var a,b;for(a in c){b=c[a];if(b==null||f.isFunction(b)||a in t||/scrollbar/.test(a)||!/color/i.test(a)&&isNaN(parseFloat(b)))delete c[a]}return c}function u(c,a){var b={_:0},d;for(d in a)if(c[d]!=a[d])b[d]=a[d];return b}function k(c,a,b,d){if(typeof c=="object")
 profile	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	def profile
@@ -120,6 +125,8 @@ showMessage	/home/vivek/tweetflick/app/assets/javascripts/application.js	functio
 showPreview	/home/vivek/tweetflick/app/assets/javascripts/application.js	function showPreview(id)
 start	/home/vivek/tweetflick/app/assets/javascripts/jquery.tinyscrollbar.min.js	function start(oEvent){iMouse.start=sAxis?oEvent.pageX:oEvent.pageY;var oThumbDir=parseInt(oThumb.obj.css(sDirection));iPosition.start=oThumbDir=='auto'?0:oThumbDir;$(document).bind('mousemove',drag);document.ontouchmove=function(oEvent){$(document).unbind('mousemove');drag(oEvent.touches[0]);};$(document).bind('mouseup',end);oThumb.obj.bind('mouseup',end);oThumb.obj[0].ontouchend=document.ontouchend=function(oEvent){$(document).unbind('mouseup');oThumb.obj.unbind('mouseup');end(oEvent.touches[0]);};return false;};function wheel(oEvent){if(!(oContent.ratio>=1)){oEvent=$.event.fix(oEvent||window.event);var iDelta=oEvent.wheelDelta?oEvent.wheelDelta/120:-oEvent.detail/3;iScroll-=iDelta*options.wheel;iScroll=Math.min((oContent[options.axis]-oViewport[options.axis]),Math.max(0,iScroll));oThumb.obj.css(sDirection,iScroll/oScrollbar.ratio);oContent.obj.css(sDirection,-iScroll);oEvent.preventDefault();};};function end(oEvent){$(document).unbind('mousemove',drag);$(document).unbind('mouseup',end);oThumb.obj.unbind('mouseup',end);document.ontouchmove=oThumb.obj[0].ontouchend=document.ontouchend=null;return false;};function drag(oEvent){if(!(oContent.ratio>=1)){iPosition.now=Math.min((oTrack[options.axis]-oThumb[options.axis]),Math.max(0,(iPosition.start+((sAxis?oEvent.pageX:oEvent.pageY)-iMouse.start))));iScroll=iPosition.now*oScrollbar.ratio;oContent.obj.css(sDirection,-iScroll);oThumb.obj.css(sDirection,iPosition.now)
 test_homepage	/home/vivek/tweetflick/test/performance/browsing_test.rb	  def test_homepage
+title	/home/vivek/tweetflick/app/helpers/application_helper.rb	  def title(page_title, options={})
+title_page	/home/vivek/tweetflick/app/models/celeb.rb	def title_page
 today	/home/vivek/tweetflick/app/models/celeb.rb	  def today
 today	/home/vivek/tweetflick/app/models/fan_tweet.rb	  def self.today
 today	/home/vivek/tweetflick/app/models/tweet.rb	def self.today
