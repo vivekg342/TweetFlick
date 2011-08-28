@@ -1,4 +1,4 @@
-1314506463
+1314507469
 Application	/home/vivek/tweetflick/config/application.rb	  class Application 
 ApplicationController	/home/vivek/tweetflick/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/vivek/tweetflick/app/helpers/application_helper.rb	module ApplicationHelper
@@ -109,7 +109,6 @@ retweet	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	 def retweet
 retweet	/home/vivek/tweetflick/app/models/user.rb	def retweet(id)
 s	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function s(c,a){var b;do{b=f.curCSS(c,a);if(b!=""&&b!="transparent"||f.nodeName(c,"body"))break;a="backgroundColor"}while(c=c.parentNode);return m(b)}function o(){var c=document.defaultView?document.defaultView.getComputedStyle(this,null)
 setSize	/home/vivek/tweetflick/app/assets/javascripts/jquery.tinyscrollbar.min.js	function setSize(){oThumb.obj.css(sDirection,iScroll/oScrollbar.ratio);oContent.obj.css(sDirection,-iScroll);iMouse['start']=oThumb.obj.offset()[sDirection];var sCssSize=sSize.toLowerCase();oScrollbar.obj.css(sCssSize,oTrack[options.axis]);oTrack.obj.css(sCssSize,oTrack[options.axis]);oThumb.obj.css(sCssSize,oThumb[options.axis]);};function setEvents(){oThumb.obj.bind('mousedown',start);oThumb.obj[0].ontouchstart=function(oEvent){oEvent.preventDefault();oThumb.obj.unbind('mousedown');start(oEvent.touches[0]);return false;};oTrack.obj.bind('mouseup',drag);if(options.scroll&&this.addEventListener){oWrapper[0].addEventListener('DOMMouseScroll',wheel,false);oWrapper[0].addEventListener('mousewheel',wheel,false)
-set_time_zone	/home/vivek/tweetflick/app/controllers/application_controller.rb	  def set_time_zone
 show	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	  def show
 showCeleb	/home/vivek/tweetflick/app/assets/javascripts/home.js	function showCeleb(path,id,label)
 showDate	/home/vivek/tweetflick/app/assets/javascripts/application.js	function showDate()
