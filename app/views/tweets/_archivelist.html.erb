@@ -1,0 +1,13 @@
+<%  if !local_assigns.has_key?(:name) %>
+<% name=nil %>
+<%end%>
+<div style="margin-top:10px">
+  <b>Archives:</b> <br  />
+<% start= [@date + 4 *86400000,0.days.ago.beginning_of_day.to_i * 1000].min %>
+<%(0..10).each do |i| %>
+<%time = start - i * 86400000  %>
+<div class="archive">
+<%= link_to Time.at(time/1000).strftime("%a, %b %e %Y") , archive_tweets_path(:time => time,:name => name || nil) %>
+</div>
+<%end%>
+</div>

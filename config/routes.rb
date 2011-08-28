@@ -10,6 +10,7 @@ collection do
 get 'feed/:time',:action=>'feed',:as => 'feed'
 get 'fanfeed/:time',:action=>'fanfeed',:as => 'fanfeed'
 get 'latest/:time(/:id)',:action=>'latest',:as => 'latest'
+get 'archive/:time(/:name)',:action=>'archive',:as => 'archive'
 post 'retweet/:id',:action=>'retweet',:as => 'retweet'
 post 'follow/:id',:action=>'follow',:as => 'follow'
 post 'reply/:id',:action=>'reply',:as => 'reply'

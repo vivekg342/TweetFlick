@@ -1,5 +1,19 @@
 class TweetsController < ApplicationController
 
+def archive
+      @date=Integer(params[:time])
+          nextdate=@date+86400000
+           @alphaCelebs=Celeb.order_by([[:name]])
+            @id=params[:id]
+@tags=Celeb.alltags
+   unless params[:name].nil?
+       @celeb = Celeb.first(conditions: {screenName: params[:name]})
+     @tweets=@celeb.tweets.order_by([[:time,:desc]]).where(:time => { "$lt" => nextdate, "$gte" => @date })
+  else
+  @tweets=Tweet.order_by([[:time,:desc]]).where(:time => { "$lt" => nextdate, "$gte" => @date })
+end
+end
+
  def feed
 #  @tweets=Tweet.paginate({:order => :time.desc,:per_page => 15 , :page => Integer(params[:page])})
  @tweets=Tweet.order_by([[:time,:desc]]).limit(15).where(:time.lt =>Integer(params[:time]) )

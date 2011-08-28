@@ -1,4 +1,4 @@
-1314507671
+1314528672
 Application	/home/vivek/tweetflick/config/application.rb	  class Application 
 ApplicationController	/home/vivek/tweetflick/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/vivek/tweetflick/app/helpers/application_helper.rb	module ApplicationHelper
@@ -41,6 +41,7 @@ User	/home/vivek/tweetflick/app/models/user.rb	class User
 UserTest	/home/vivek/tweetflick/test/unit/user_test.rb	class UserTest 
 a	/home/vivek/tweetflick/app/assets/javascripts/jquery-ui-1.8.15.custom.min.js	function a(f){return{position:f.position,offset:f.offset}}var b=this,d=b.options,e=c(document)
 alltags	/home/vivek/tweetflick/app/models/celeb.rb	  def self.alltags
+archive	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	def archive
 authenticate_user!	/home/vivek/tweetflick/app/controllers/application_controller.rb	    def authenticate_user!
 autoupdate	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function autoupdate()
 autoupdate	/home/vivek/tweetflick/app/assets/javascripts/home.js	function autoupdate()
@@ -49,6 +50,7 @@ celeb	/home/vivek/tweetflick/app/models/photo.rb	def celeb
 celeb	/home/vivek/tweetflick/app/models/tweet.rb	def celeb
 checkLength	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function checkLength(o, n, min, max)
 checkLength	/home/vivek/tweetflick/app/assets/javascripts/home.js	function checkLength(o, n, min, max)
+checkLength	/home/vivek/tweetflick/app/assets/javascripts/tweets.js	function checkLength(o, n, min, max)
 correct_user?	/home/vivek/tweetflick/app/controllers/application_controller.rb	    def correct_user?
 create	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	  def create
 create	/home/vivek/tweetflick/app/controllers/sessions_controller.rb	  def create
@@ -67,6 +69,7 @@ feed	/home/vivek/tweetflick/app/controllers/celebs_controller.rb	 def feed
 feed	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	 def feed
 filterCelebs	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function filterCelebs()
 filterCelebs	/home/vivek/tweetflick/app/assets/javascripts/home.js	function filterCelebs()
+filterCelebs	/home/vivek/tweetflick/app/assets/javascripts/tweets.js	function filterCelebs()
 follow	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	def follow
 follow	/home/vivek/tweetflick/app/models/user.rb	def follow(id)
 getDate	/home/vivek/tweetflick/app/assets/javascripts/application.js	function getDate(epoch)
@@ -128,6 +131,7 @@ updateClient	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function up
 updateClient	/home/vivek/tweetflick/app/assets/javascripts/home.js	function updateClient(data)
 updateTips	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function updateTips(t)
 updateTips	/home/vivek/tweetflick/app/assets/javascripts/home.js	function updateTips(t)
+updateTips	/home/vivek/tweetflick/app/assets/javascripts/tweets.js	function updateTips(t)
 update_status	/home/vivek/tweetflick/app/models/user.rb	def update_status(msg)
 user_signed_in?	/home/vivek/tweetflick/app/controllers/application_controller.rb	    def user_signed_in?
 weekstats	/home/vivek/tweetflick/app/models/celeb.rb	def self.weekstats

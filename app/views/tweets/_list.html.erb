@@ -1,0 +1,48 @@
+<div id="fixedTags" class="ui-corner-all">
+
+<div class="right">
+<a href="#" id="closefixedTag"> <%=image_tag "delete_icon.png"%></a>
+</div>
+<div class="clr"></div>
+
+<div>Please select tags to filter list-
+</div>
+
+<%@tags.each do |tag| %>
+  <%unless tag.to_s.empty? %>
+    <div class="tags"><%=  tag.to_s %></div>
+    <% end %>
+    <% end %>
+
+<div style="clear:both"></div>
+</div>
+<div id="divLeft" class="ui-corner-right">
+  <div class="scrollbar ui-corner-all">
+    <div class="track ui-corner-all">
+      <div class="thumb ui-corner-all">
+      <div class="end ui-corner-top"></div>
+    </div></div></div>
+    <div class="viewport">
+      <div class="overview">
+        <div>
+        Search <input type="" id="inpSearch" value="" name="Search" />
+      </div>
+      <div class="right">
+      <a href="#" id="toggleTags">Filter by tags</a>
+    </div>
+    <div style="margin-top:20px">
+      <ul class="tree">
+      <%  @alphaCelebs.each do |celeb| %>
+        <%  tagClass = celeb.tags.join("_tag ") + "_tag" %>
+        <li>
+          <div class="<%= tagClass %> alphaCeleb">
+          <%= link_to celeb.name ,profile_path(:name => celeb.screenName) %>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+</div>
+</div>

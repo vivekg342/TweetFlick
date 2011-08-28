@@ -12,21 +12,26 @@ class CelebsController < ApplicationController
 
 def profile
   begin
+       
   @celeb = Celeb.first(conditions: {screenName: params[:name]})
+          @alphaCelebs=Celeb.order_by([[:name]])
+    @date = 0.days.ago.beginning_of_day.to_i * 1000
     @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15)
     @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(15)
-    @images=Photo.where(:screenName => @celeb.screenName).order_by([[:time,:desc]]).limit(30)
+    @tags=Celeb.alltags
+    images=Photo.where(:screenName => @celeb.screenName).order_by([[:time,:desc]]).limit(30)
 @imageStr=Array.new
-@images.each do |image|
+unless images.empty?
+images.each do |image|
 urlstr=  url_for :controller =>"celebs", :action => "profile", :name => image.screenName
 @imageStr <<  "<li><a target=\"_blank\" href=\"#{urlstr}\">#{image.name}</a><a target=\"_blank\" href=\"#{image.url}\"><img width=\"150\" height=\"150\" src=\"#{image.small}\"/></a><div class=\"divTime\"><span class=\"epoch\">#{image.time}</span></div></li>"
+end
 end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @celeb }
     end
-  rescue
-  redirect_to :root
+  
 end
 end
   # GET /celebs/1

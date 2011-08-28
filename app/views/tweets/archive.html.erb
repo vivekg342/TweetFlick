@@ -1,0 +1,36 @@
+<%= javascript_include_tag "tweets" %>
+
+<%=  render :partial => "tweets/list" %>
+<div id="divTabs">
+<div class="divProfile">
+<div class="left column1">
+
+<b>Tweets on </b><%=Time.at(@date/1000).strftime("%a, %b %e %Y")%> <br /><br />
+<%unless @tweets.empty?%>
+  <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_tweets_path(:time => @tweets.to_a.last.time) } %>
+<%else%>
+<div style="width:100%;margin:0 auto">
+No tweets on this date.
+</div>
+  <%end%>
+</div>
+<div class="left column3">
+
+<div class="left column2">
+  <div style="color:#000;padding:10px" class="ui-corner-all">
+  <span style="color:red"><%=@tweets.count %></span> total tweets on this day !  <br /> <br />
+</div>
+<%=  render :partial => "tweets/archivelist" %>
+</div>
+
+
+
+<div  class ="right">
+<%= render :partial => "shared/googleadsense" %>
+</div>
+<div class="clr"></div>
+
+</div>
+<div class="clr"></div>
+</div>
+</div>

@@ -8,7 +8,7 @@ def celeb
   Celeb.first(:id=>Integer(celeb_id))
 end
 def self.today
-  today = DateTime.now.beginning_of_day.to_i * 1000
+  today = 0.days.ago.beginning_of_day.to_i * 1000
       where(:time.gte => today).count
 end
 def link_twitter_user

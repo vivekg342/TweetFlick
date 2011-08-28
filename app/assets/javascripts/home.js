@@ -91,7 +91,11 @@ var fanArray=[];
 var ticks=[];
 for (var i = 0; i < weekstats.length; i++) {
 //weekstats[i].day
-ticks.push(weekstats[i].day);
+//ticks.push(weekstats[i].day);
+ d=new Date();
+d.setFullYear(weekstats[i].year,weekstats[i].month,weekstats[i].index);
+str='<a target="_blank" href="/tweets/archive/'+weekstats[i].epoch +'">'+weekstats[i].day+'</a>';
+ticks.push(unescape(str));
         jqArray.push(weekstats[i].tweets);
 //  fanArray.push(fanweekstats[i].tweets);
     }
@@ -101,7 +105,8 @@ ticks.push(weekstats[i].day);
             // Use a category axis on the x axis and use our custom ticks.
             xaxis: {
                 renderer: $.jqplot.CategoryAxisRenderer,
-                ticks: ticks
+                ticks: ticks,
+                escapeHTML:true
             },
             yaxis:{min:0,
                 tickOptions: {formatString: '%d'}}
