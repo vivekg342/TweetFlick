@@ -46,7 +46,7 @@ celeb=db.celebs.findOne({_id : doc.celeb_id})
 return {"celeb" : celeb }
  }
 KEYF
-today = DateTime.now.beginning_of_day.to_i * 1000
+today = 0.days.ago.beginning_of_day.to_i * 1000
 #today = 1.days.ago.to_i * 1000
 cond = {:time => {'$gte' => today }}
 reduce = <<REDUCE
@@ -66,7 +66,7 @@ return {"celeb" : celeb }
  }
 KEYF
 #today = 1.days.ago.to_i * 1000
-today = DateTime.now.beginning_of_day.to_i * 1000
+today = 0.days.ago.beginning_of_day.to_i * 1000
 cond = {:time => {'$gte' => today }}
 reduce = <<REDUCE
   function(key,values){
@@ -105,7 +105,7 @@ REDUCE
 has_many :tweets do
   def today
   #  today = 1.days.ago.to_i * 1000
-  today = DateTime.now.beginning_of_day.to_i * 1000
+  today = 0.days.ago.beginning_of_day.to_i * 1000
     where(:time.gte => today).count
   end
 
