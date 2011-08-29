@@ -23,10 +23,14 @@ gem 'rails_autolink'
 group :assets do
   gem 'sass-rails', "~> 3.1.0.rc"
   gem 'coffee-rails', "~> 3.1.0.rc"
-  gem 'uglifier'
+
 end
 
-
+group :js do
+    gem 'uglifier'
+   gem 'execjs'
+gem 'therubyracer'
+end
 
 
 # Use unicorn as the web server
@@ -36,9 +40,7 @@ end
 # gem 'capistrano'
 
 # To use debugger
-  gem 'execjs'
-
-gem 'therubyracer'
+ 
 
 group :test do
 
