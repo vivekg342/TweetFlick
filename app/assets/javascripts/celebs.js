@@ -9,6 +9,12 @@ selectedDiv.find('.divScrollable').jcarousel({
         scroll: 1,
         itemFallbackDimension:75
   });
+var carousel=selectedDiv.find('.divScrollable').data('jcarousel');
+carousel.clip.hover(function() {
+carousel.stopAuto();
+}, function() {
+carousel.startAuto();
+});
   }
 $(function(){
  selectedDiv = $(".divProfile:first");
@@ -192,8 +198,9 @@ if(celebs){
   tempdiv.prependTo(selectedDiv.find('.column1'));
   tempdiv.fadeIn(3000);
 }
+
+if(fans && images && images.length>0){
 var carousel = $('.divScrollable').data('jcarousel');
-if(fans){
 tempdiv=$('<div style="display:none"></div>').html(fans);
 pos=tempdiv.find('li').size()+carousel.first;
 //tempdiv.find('li').each(function (index) {

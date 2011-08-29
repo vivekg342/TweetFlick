@@ -16,6 +16,12 @@ selectedDiv.find('.divScrollable').jcarousel({
         scroll: 1,
         itemFallbackDimension:75
   });
+var carousel=selectedDiv.find('.divScrollable').data('jcarousel');
+carousel.clip.hover(function() {
+carousel.stopAuto();
+}, function() {
+carousel.startAuto();
+});
   }
 
 function gettweets() {
@@ -75,7 +81,6 @@ $(window).scroll(function () {
 });
 //Fan Carousel
 fanCarousel();
-
 //Gallery carousel
 var  images= $.parseJSON($('#hdnImages').val());
       selectedDiv.find('.ulGallery').jcarousel({
