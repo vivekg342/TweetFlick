@@ -14,24 +14,21 @@
 <div><%= raw auto_link(tweet.link_twitter_user,:link =>:urls, :sanitize => false ,:html => { :target => '_blank' }) %></div>
 <div class="divTime">Updated <span class="epoch"><%= tweet.time %></span><span class="ltime"></span></div>
 <div style="height:15px">
-    <div class="links">
-      <table><tbody>
-        <tr>
-          <td><%=  link_to "Follow" , follow_tweets_path(:id => tweet.celeb.id),:remote=> true, :method => :post , :class=>'celeb_ajax' , 'data-type' => 'json' %> </td>
-          <td><%=  link_to "Retweet" , retweet_tweets_path(:id => tweet.id),:remote=> true , :method => :post , :class=>'celeb_ajax',  'data-type' => 'json' %> </td>
-          <td><a onclick="openTweetDialog(this,<%=  tweet.celeb.id %>);">Reply</a> </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="links right">
+     <%=  link_to image_tag("follow.png",:alt =>'follow',:width =>'18') , follow_tweets_path(:id => tweet.celeb.id),:remote=> true, :method => :post , :class=>'celeb_ajax' , :title => 'retweet','data-type' => 'json' %> 
+          <%=  link_to image_tag("retweet.png",:alt =>'retweet',:width =>'18') , retweet_tweets_path(:id => tweet.id),:remote=> true , :method => :post , :class=>'celeb_ajax', :title => 'retweet', 'data-type' => 'json' %> 
+          <a onclick="openTweetDialog(this,<%=  tweet.celeb.id %>);" title="reply"><%=image_tag("reply.png",:alt =>'reply',:width =>'18')%></a>
   </div>
+<input type="hidden" class="screenName" value="<%=tweet.celeb.screenName%>" name=""/>
 </div>
-            <input class="hdnPath" type="hidden" value="<%= url %>" name="hiddenPath" />
+
 </div>
 <div style="clear:both"></div>
 
 </div>
 <%end%>
 <%  end %>
+            <input class="hdnPath" type="hidden" value="<%= url %>" name="hiddenPath" />
 <script type="text/javascript">
 $(function(){
     showDate();

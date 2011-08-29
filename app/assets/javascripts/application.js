@@ -44,7 +44,7 @@ var tweetURL = '';
 
 function openTweetDialog(ele, id) {
     element = $(ele);
-    val = (element.parents('div.tweetBody').find('div.divName').html());
+    val = (element.parents('div.tweetBody').find('input.screenName').val());
     $('#tweet').val('@' + val + ' ');
     tweetURL = "/tweets/reply/" + id;
     $("#dialog-tweet").dialog("open");

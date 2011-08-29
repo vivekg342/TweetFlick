@@ -1,31 +1,40 @@
 
 <div class="divProfile">
-  
-  
-  <div class="divImg"><img src="<%= @celeb.profileImgUrl %>" alt=""/> </div>
-  
-  <div class="profile-content">
-    <div class="divName"><%= @celeb.name %></div>
-    <%=  link_to "View complete profile" , profile_path(:name => @celeb.screenName), :class=>'right',:target => "_blank" %>
-    <div><span style="color:#2F7A26;">Tags:
-      <%@celeb.tags.each do |tag| %>
-      <i><%=  tag.to_s %></i>
-      <% end %>
-    </span>
-  </div>
-</div>
-<div style="clear:both"></div>
 
+ <div class="divImg">
+<a target="_blank" href="<%= url_for :controller =>"celebs", :action => "profile", :name => @celeb.screenName %>">
+<img src="<%= @celeb.profileImgUrl %>" alt=""/> 
+</a>
+</div> 
+  <%=  link_to "View complete profile" , profile_path(:name => @celeb.screenName), :class=>'right',:target => "_blank" %>
+  <div class="profile-content">
+      <h2 class="divName">
+<a target="_blank" href="<%= url_for :controller =>"celebs", :action => "profile", :name => @celeb.screenName %>">      
+    <%= @celeb.name %>
+</a>
+</h2>
+      <div><span style="color:#2F7A26;">Tags:
+    <%@celeb.tags.each do |tag| %>
+        <i><%=  tag.to_s %></i>
+        <% end %>
+      </span>
+      </div> <br />
+ <div "padding:5px">
+<span style="color:red"><%= @celeb.followers %> </span> - followers  &nbsp;&nbsp;
+ <span style="color:red"><%=@celeb.tweets.today %></span> - tweets today !  &nbsp;&nbsp;    
+<span style="color:red"> <%= FanTweet.todayby(@celeb.screenName) %></span>  mentions today !
+    </div>
+<br />
+      </div>
+      <div style="clear:both"></div>
+  
+  
 <div class="left column1">
   
   <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_celebs_path(@celeb,:time => @tweets.to_a.last.time)} %>
 </div>
 <div class="left column3">
   <div class="left column2">
-    <div style="color:#000;padding:10px" class="ui-corner-all">
-      <span style="color:red"><%=@celeb.tweets.today %></span> total tweets today !  <br /> <br />
-      <span style="color:red"> <%= FanTweet.todayby(@celeb.screenName) %></span> total mentions today !<br />
-    </div>
     <div>
       
       <% unless @fantweets.nil? || @fantweets.empty? %>
@@ -35,6 +44,7 @@
       </ul>
       <% end %>
     </div>
+                <input class="hdnprofile" value="<%= @celeb.id %>" type="hidden" name="" />
     <input class="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />
   </div>
   <div class="clr"></div>

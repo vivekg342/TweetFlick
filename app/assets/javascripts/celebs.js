@@ -169,9 +169,12 @@ if(images && images.length>0){
 var autoUpdate=function autoupdate(){
 getLatest();
 }
+
 function getLatest(){
-lastTime = $('.hdnLtstTime:first').val();
-$.get('/tweets/latest/'+lastTime, function (data) {
+lastTime = selectedDiv.find('.hdnLtstTime:first').val();
+id=selectedDiv.find('.hdnprofile:first').val();
+ltPath='/tweets/latest/'+lastTime+'/'+id;
+$.get(ltPath, function (data) {
 updateClient(data);
 showDate();
         },"json"

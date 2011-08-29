@@ -1,4 +1,4 @@
-1314601497
+1314609556
 Application	/home/vivek/tweetflick/config/application.rb	  class Application 
 ApplicationController	/home/vivek/tweetflick/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/home/vivek/tweetflick/app/helpers/application_helper.rb	module ApplicationHelper
@@ -74,6 +74,7 @@ filterCelebs	/home/vivek/tweetflick/app/assets/javascripts/tweets.js	function fi
 follow	/home/vivek/tweetflick/app/controllers/tweets_controller.rb	def follow
 follow	/home/vivek/tweetflick/app/models/user.rb	def follow(id)
 getDate	/home/vivek/tweetflick/app/assets/javascripts/application.js	function getDate(epoch)
+getLatest	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function getLatest()
 getLatest	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function getLatest()
 getLatest	/home/vivek/tweetflick/app/assets/javascripts/home.js	function getLatest()
 getmorefantweets	/home/vivek/tweetflick/app/assets/javascripts/celebs.js	function getmorefantweets()

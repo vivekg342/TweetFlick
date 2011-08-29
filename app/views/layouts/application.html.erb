@@ -1,76 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title><%= content_for?(:title) ? content_for(:title) : "Tweetflick - Follow all your favourite celebrities' tweets, mentions, replies. Find out what fans think about your favourite celebs on twitter." %></title>
-<%= display_meta(:keywords => "twitter celebrities , twitter fans,celeb tweets, celebrity tweets,bollywood tweets,tollywood tweets,tolly  tweets,bolly tweets,bolly pics,tolly pictures,bolly pictures,tolly pictures") %>
-
-<meta property="og:site_name" content="Tweetflick.in"/>
-<meta property="og:title" content="<%= yield(:ogtitle) %>"/>
-<meta property="og:url" content="<%= request.url %>"/>
-<meta property="og:image" content="<%= yield(:ogimage) %>">
-<meta property="fb:app_id" content="162610627152827">
-
+  <title><%= content_for?(:title) ? content_for(:title) : "Tweetflick - Follow all your favourite celebrities' tweets, mentions, replies. Find out what fans think about your favourite celebs on twitter." %></title>
+  <%= display_meta(:keywords => "twitter celebrities , twitter fans,celeb tweets, celebrity tweets,bollywood tweets,tollywood tweets,tolly  tweets,bolly tweets,bolly pics,tolly pictures,bolly pictures,tolly pictures") %>
+  
+  <meta property="og:site_name" content="Tweetflick.in"/>
+  <meta property="og:title" content="<%= yield(:ogtitle) %>"/>
+  <meta property="og:url" content="<%= request.url %>"/>
+  <meta property="og:image" content="<%= yield(:ogimage) %>">
+  <meta property="fb:app_id" content="162610627152827">
+  
   <%= stylesheet_link_tag    "application" %>
   <%= stylesheet_link_tag    "jquery-ui-1.8.15.custom" %>
-   
+  
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "jquery-ui-1.8.15.custom.min" %>
   <%= javascript_include_tag "pretty" %>
-
+  
   <%= javascript_include_tag "jquery.tinyscrollbar.min" %>
   <%= javascript_include_tag "jquery.jcarousel" %>
   <%= javascript_include_tag "jquery.jqplot.min" %>
   <!--[if lt IE 9]>  <%= javascript_include_tag "excanvas.min" %><![endif]-->
   <%= javascript_include_tag "plugins/jqplot.categoryAxisRenderer.min" %>
-    <%= javascript_include_tag "plugins/jqplot.pointLabels.min" %>
-
-<%= stylesheet_link_tag    "tango/skin.css" %>
-<%= stylesheet_link_tag    "fan/skin.css" %>
+  <%= javascript_include_tag "plugins/jqplot.pointLabels.min" %>
+  
+  <%= stylesheet_link_tag    "tango/skin.css" %>
+  <%= stylesheet_link_tag    "fan/skin.css" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div id="loading" align="center">
     <%=  image_tag "loading.gif" %>
-    </div>
-  <div id="wrap">
-<div id="header">
-            <div id="innerHeader">
-                <span id="logo">
-                  <h2>TweetFlick</h2>
-                </span>
-       
-<div id="divLogin">
-    <%= render 'shared/navigation' %>
   </div>
-  <div style="clear:both"></div>
-            </div>
-
-
-  <div id="divMessage" class="clearBoth" align="center">
+  <div id="wrap">
+    <div id="header">
+      <div id="innerHeader">
+        <span id="logo">
+          <h2>TweetFlick</h2>
+        </span>
+        
+        <div id="divLogin">
+          <%= render 'shared/navigation' %>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      
+      
+      <div id="divMessage" class="clearBoth" align="center">
         <div class="edit">
-        <div id="message" class="message">
-       
-        </div>
-        <div class="hideMessage">
+          <div id="message" class="message">
+            
+          </div>
+          <div class="hideMessage">
             <a class="close" onclick="hideMessage();">
-               <%=image_tag "close_icon.png"%>
+              <%=image_tag "close_icon.png"%>
             </a>
-            </div>
+          </div>
         </div>
-
+        
+      </div>
+      
+      
+      
     </div>
- 
-
-
-        </div>
     <div id="content">
-<%= yield %>
+      <%= yield %>
+    </div>
+<div id="dialog-tweet" title="Reply">
+<p class="validateTips">Reply.</p>
+<form>
+  <fieldset>
+  <label for="tweet">Tweet</label>
+  <textarea  name="tweet" id="tweet" class="text ui-corner-all" ></textarea>
+
+</fieldset>
+</form>
+
 </div>
-<% if Rails.env.production? %>
-<%= render :partial => "shared/googleanalytics" %>
-<%end%>
+    <% if Rails.env.production? %>
+    <%= render :partial => "shared/googleanalytics" %>
+    <%end%>
   </div>
   
-
+  
 </body>
 </html>
