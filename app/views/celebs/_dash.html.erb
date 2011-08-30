@@ -17,12 +17,12 @@
      <div>
 
 
-    <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>"><img width="150"  src="<%= @featured.large %>" alt=""/></a>
+    <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>"><img width="150" height="165"  src="<%= @featured.large %>" alt=""/></a>
     
     </div>
     <div>
       <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>">
-    <h3><%= @featured.name %></h3>
+    <h3 style="margin:5px 0"><%= @featured.name %></h3>
   </a></div>
      <div><%= @featured.followers %> - followers</div>
   </div>
