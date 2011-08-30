@@ -20,18 +20,19 @@ def profile
     @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(15)
     @tags=Celeb.alltags
     images=Photo.where(:screenName => @celeb.screenName).order_by([[:time,:desc]]).limit(30)
-@imageStr=Array.new
-unless images.empty?
-images.each do |image|
-urlstr=  url_for :controller =>"celebs", :action => "profile", :name => image.screenName
-@imageStr <<  "<li><a target=\"_blank\" href=\"#{urlstr}\">#{image.name}</a><a target=\"_blank\" href=\"#{image.url}\"><img width=\"150\" height=\"150\" src=\"#{image.small}\"/></a><div class=\"divTime\"><span class=\"epoch\">#{image.time}</span></div></li>"
-end
-end
+    @imageStr=Array.new
+  unless images.empty?
+    images.each do |image|
+    urlstr=  url_for :controller =>"celebs", :action => "profile", :name => image.screenName
+    @imageStr <<  "<li><a target=\"_blank\" href=\"#{urlstr}\">#{image.name}</a><a target=\"_blank\" href=\"#{image.url}\"><img width=\"150\" height=\"150\" src=\"#{image.small}\"/></a><div class=\"divTime\"><span class=\"epoch\">#{image.time}</span></div></li>"
+    end
+  end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @celeb }
     end
-  
+rescue Exception => e
+  redirect_to root_url
 end
 end
   # GET /celebs/1

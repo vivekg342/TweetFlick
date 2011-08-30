@@ -21,7 +21,10 @@ def description
    "Tweets from #{self.name} using his id #{self.screenName}. See all the tweets from #{self.name},replies, retweets, images etc. See who are mentioning and retweeting #{self.name} 's tweets and know more about your favorite celebrity #{self.name}"
 end
 def large
-self.profileImgUrl.gsub!(/_([a-z0-9-]+).(png|gif|jpg|jpeg|JPG|JPEG|GIF|PNG)/, '.\2')
+#self.profileImgUrl.gsub!(/_([a-z0-9-]+).(png|gif|jpg|jpeg|JPG|JPEG|GIF|PNG)/, '.\2')
+self.profileImgUrl.gsub!(/_normal\.(?=png|gif|jpg|jpeg|JPG|JPEG|GIF|PNG +\z)/,'.\2')
+
+
 end
 def self.random
        # Grabs a random entry from the MongoDB Entry.
