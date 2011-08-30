@@ -17,11 +17,13 @@ selectedDiv.find('.divScrollable').jcarousel({
         itemFallbackDimension:75
   });
 var carousel=selectedDiv.find('.divScrollable').data('jcarousel');
+if(carousel){
 carousel.clip.hover(function() {
 carousel.stopAuto();
 }, function() {
 carousel.startAuto();
 });
+}
   }
 
 function gettweets() {

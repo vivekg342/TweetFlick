@@ -79,7 +79,13 @@
 </ul>
 <div id="divFeed">
   <div class="left column1">
+<%unless @tweets.empty? %>
   <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_tweets_path(:time => @tweets.to_a.last.time) } %>
+<%else%>
+<div style="width:100%;margin:0 auto">
+No tweets on this date.
+</div>
+<%end%>
 </div>
 <div class="left column3">
   <div>
@@ -96,13 +102,15 @@
 <span style="color:red"> <%= FanTweet.today %></span> total celeb mentions today !<br />
 </div>
 <div>
+<% unless @fantweets.nil? || @fantweets.empty? %>
 <span style="color:#2F7A26;font-weight:bold"> Recent fan replies to all celebs :</span>  <br />
 <ul class="divScrollable jcarousel-skin-fan">
 <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.first.time) } %>
 </ul>
+      <% end %>
 </div>
 <%=  render :partial => "shared/fb" %>
-<%=  render :partial => "tweets/archivelist" %>
+
 
 </div>
 <input class="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />

@@ -8,35 +8,48 @@
 <div class="divProfile">
     
 
-  <div class="divImg">
+  <div class="profile_divImg">
 <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @celeb.screenName %>">      
-<img src="<%= @celeb.profileImgUrl %>" alt=""/> 
+<img src="<%= @celeb.large %>" width="120"/> 
 </a>
 </div>
-    
-    <div class="profile-content">
+
+    <div class="profile_profile-content">
       <h2 class="divName">
 <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @celeb.screenName %>">      
 <%= @celeb.name %>
-</a>
+</a> &nbsp;
+<%if @celeb.isVerified==1 %>
+<%=image_tag "verified.png" %>
+<%end%>
 </h2>
-      <div><span style="color:#2F7A26;">Tags:
+<div style="margin:2px"><span style="color:#2F7A26;">Location : </span><%= @celeb.location %></div><br />
+      <div><span style="color:#2F7A26;">Tags: </span>
     <%@celeb.tags.each do |tag| %>
         <i><%=  tag.to_s %></i>
         <% end %>
-      </span>
+      
       </div> <br />
- <div "padding:5px">
-<span style="color:red"><%= @celeb.followers %> </span> - followers  &nbsp;&nbsp;
- <span style="color:red"><%=@celeb.tweets.today %></span> - tweets today !  &nbsp;&nbsp;    
+ <div "padding:3px">
+Followers : <span style="color:blue"><%= @celeb.followers %> </span>  &nbsp;&nbsp;
+Friends :<span style="color:blue"><%= @celeb.friends %> </span>    &nbsp;&nbsp;
+Statuses : <span style="color:blue"><%= @celeb.statuses %> </span>   &nbsp;&nbsp;
+    </div><br /><br />
+<div> <span style="color:red"><%=@celeb.tweets.today %></span> - tweets today !  &nbsp;&nbsp;    
 <span style="color:red"> <%= FanTweet.todayby(@celeb.screenName) %></span>  mentions today !
-    </div>
-<br />
+</div>
+    <div class="clr"></div>
       </div>
       <div style="clear:both"></div>
     
   <div class="left column1">
+<%unless @tweets.empty? %>
     <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_celebs_path(@celeb,:time => @tweets.to_a.last.time)} %>
+<%else%>
+<div style="width:100%;margin:0 auto">
+No tweets on this date.
+</div>
+<%end%>
             </div>
           <div class="left column3">
             <%=  render :partial => "shared/fb" %>

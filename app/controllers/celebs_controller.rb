@@ -50,7 +50,7 @@ end
     @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15).where(:time.lt =>Integer(params[:time]) )
   
 respond_to do |format|
-format.html {   render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_tweets_path(:time => @tweets.to_a.last.time) } }#_list.html.erb
+format.html {   render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_celebs_path(:time => @tweets.to_a.last.time) } }#_list.html.erb
 format.json{render json: @tweets}
 end
 end
