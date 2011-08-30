@@ -13,14 +13,16 @@
 
 	</ul>
   <div id="divFeatured" class="dash ui-corner-all">
-   <div class="dashBody">
-     <div class="left">
-    <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>"><img width="32" height="32" src="<%= @featured.profileImgUrl %>" alt=""/></a>
+   <div class="dashBody" style="text-align:center">
+     <div>
+
+
+    <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>"><img width="150"  src="<%= @featured.large %>" alt=""/></a>
     
     </div>
     <div>
       <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>">
-    <%= @featured.name %>
+    <h3><%= @featured.name %></h3>
   </a></div>
      <div><%= @featured.followers %> - followers</div>
   </div>
