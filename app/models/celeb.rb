@@ -126,7 +126,6 @@ REDUCE
     collection.mapreduce(map, reduce,{:out => "tags"})
 
   end
-
 has_many :tweets do
   def today
   #  today = 1.days.ago.to_i * 1000

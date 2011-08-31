@@ -1,11 +1,27 @@
 Tweetflick::Application.routes.draw do
 
+# Twitter Authentication routes
 match "/auth/:provider/callback" => "sessions#create"
 match '/auth/failure' => 'sessions#failure'
 match "/signout" => "sessions#destroy", :as => :signout
 match '/signin' => 'sessions#new', :as => :signin
+# Home Page
+get "home/index"
 
-  resources :tweets do
+#Sitemap
+match "/sitemap" => "sitemap#index"
+#Interactions
+match '/interact' => "interact#index", :as => 'interact'
+#Profile page
+match "/:name" => "celebs#profile", :as => 'profile'
+
+
+
+#default url
+root:to=>"home#index"
+
+
+  resources :tweets,:only => [] do
 collection do
 get 'feed/:time',:action=>'feed',:as => 'feed'
 get 'fanfeed/:time',:action=>'fanfeed',:as => 'fanfeed'
@@ -16,16 +32,12 @@ post 'follow/:id',:action=>'follow',:as => 'follow'
 post 'reply/:id',:action=>'reply',:as => 'reply'
     end
   end
-  resources :celebs do
+  resources :celebs,:only => [:show] do
   collection do
 get 'top/:count',:action=>'top'
 get 'feed/:id/:time',:action=>'feed',:as => 'feed'
     end
 end
-  get "home/index"
-    match "/sitemap" => "sitemap#index"
-  match "/:name" => "celebs#profile", :as => 'profile'
-root:to=>"home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

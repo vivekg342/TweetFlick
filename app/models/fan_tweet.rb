@@ -46,5 +46,7 @@ array=FanTweet.collection.group( {:keyf => keyf,:cond => cond ,:initial => {twee
 array.sort {|a,b| a["index"] <=> b["index"]}
 end
 
-
+   
+belongs_to :fandiscussion
+ belongs_to:fandisctweet
 end
