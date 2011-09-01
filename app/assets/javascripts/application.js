@@ -4,6 +4,18 @@
 jQuery.expr[':'].contains = function (a, i, m) {
     return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
 };
+
+$('#divCollapse').live('click',function(){
+if($('#divLeft').hasClass('widthList')){
+$('#divLeft').removeClass('widthList');
+$('#divLeft').tinyscrollbar();
+//$('#divCollapse').removeClass('widthCollapse');
+}else{
+$('#divLeft').addClass('widthList');
+//$('#divCollapse').addClass('widthCollapse');
+
+}
+});
 //if(!($.cookie('timezone'))) {
 //  current_time = new Date();
 //  $.cookie('timezone', current_time.getTimezoneOffset(), { path: '/', expires: 10 } );
