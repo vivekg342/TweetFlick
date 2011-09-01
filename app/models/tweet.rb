@@ -29,5 +29,6 @@ end
 #   Associations ::::::::::::::::::
     belongs_to:celeb
 belongs_to:celebdiscussion
+belongs_to:fandiscussion
     belongs_to:disctweet
 end

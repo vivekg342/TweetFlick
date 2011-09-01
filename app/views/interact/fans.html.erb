@@ -17,19 +17,17 @@
 </div>
 <div class="right" style="margin-right: 10px;">
 <div class="left">
-    <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => disc.btweet.celeb.screenName %>"><img width="32" height="32" src="<%= disc.btweet.celeb.profileImgUrl %>" alt=""/></a>
+    <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => disc.btweet.screenName %>"><img width="32" height="32" src="<%= disc.btweet.profileImgUrl %>" alt=""/></a>
     
     </div>
 <div style="margin-left:35px">
-  <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => disc.btweet.celeb.screenName %>">
-    <%= disc.btweet.celeb.name %>
+  <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => disc.btweet.screenName %>">
+    <%= disc.btweet.name %>
   </a>
 </div>
 <div class="clr"></div>
 </div>
 <div class="clr">
 </div>
-<%= render :partial => "interaction",:locals => {:disc => disc } %>
-</div>
 
-<%end%>
+<%= render :partial => "interaction",:locals => {:disc => disc } %>

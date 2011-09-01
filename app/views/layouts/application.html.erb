@@ -32,7 +32,6 @@
   <div id="loading" align="center">
     <%=  image_tag "loading.gif" %>
   </div>
-  <div id="wrap">
     <div id="header">
       <div id="innerHeader">
         <span id="logo">
@@ -66,24 +65,17 @@
       
       
     </div>
+  <div id="wrap">
+
     <div id="content">
       <%= yield %>
     </div>
-<div id="dialog-tweet" title="Reply">
-<p class="validateTips">Reply.</p>
-<form>
-  <fieldset>
-  <label for="tweet">Tweet</label>
-  <textarea  name="tweet" id="tweet" class="text ui-corner-all" ></textarea>
+  </div>
 
-</fieldset>
-</form>
-
-</div>
+<%= render :partial => "shared/dialog" %>
     <% if Rails.env.production? %>
     <%= render :partial => "shared/googleanalytics" %>
     <%end%>
-  </div>
   
   
 </body>
