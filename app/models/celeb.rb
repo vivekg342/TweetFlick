@@ -41,14 +41,14 @@ keyf = <<KEYF
  function(doc) {
 var weekday=new Array("Sun","Mon","Tue","Wed","Thu",
                 "Fri","Sat")
-                myDate = new Date(doc.time+475200)
+                
                 a=new Date(doc.time+475200)
                 a.setHours(0);
                 a.setMinutes(0);
                 a.setSeconds(0);
                 a.setMilliseconds(0);
 
-return {"day" : weekday[myDate.getDay()],"index":myDate.getDate(),"epoch":a.getTime()  }
+return {"day" : weekday[a.getDay()],"index":a.getDate(),"epoch":a.getTime()  }
 
  }
 KEYF

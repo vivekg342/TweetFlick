@@ -14,11 +14,11 @@ def profile
   begin
        
   @celeb = Celeb.first(conditions: {screenName: params[:name]})
-          @alphaCelebs=Celeb.order_by([[:name]])
+#          @alphaCelebs=Celeb.order_by([[:name]])
+#   @tags=Celeb.alltags
     @date = 0.days.ago.beginning_of_day.to_i * 1000
     @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15)
-    @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(15)
-    @tags=Celeb.alltags
+    @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(15) 
     images=Photo.where(:screenName => @celeb.screenName).order_by([[:time,:desc]]).limit(30)
     @imageStr=Array.new
   unless images.empty?
@@ -55,70 +55,21 @@ format.html {   render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweet
 format.json{render json: @tweets}
 end
 end
-  def top
-  @celebs=Celeb.sort(:followers).limit(params[:count])
+def list
+  @tags=Celeb.alltags
+  @alphaCelebs=Celeb.order_by([[:name]])
+  respond_to do |format|
+    format.html
+    format.json {render json: @alphaCelebs}
+  end
+end  
+def search
+  query= Regexp.new(params[:name],true)
+@celebs =Celeb.find(:all, :conditions => {:name => query }).only(:name,:screenName,:profileImgUrl).limit(15)
 respond_to do |format|
-format.html { render html: @celebs,:layout=>false}#top.html.erb
-format.json{render json: @celebs}
+  format.html
+  format.json{render json: @celebs}
 end
 end
-  # GET /celebs/new
-  # GET /celebs/new.json
-  def new
-    @celeb = Celeb.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @celeb }
-    end
-  end
-
-  # GET /celebs/1/edit
-  def edit
-    @celeb = Celeb.find(Integer(params[:id]))
-  end
-
-  # POST /celebs
-  # POST /celebs.json
-  def create
-    @celeb = Celeb.new(params[:celeb])
-
-    respond_to do |format|
-      if @celeb.save
-        format.html { redirect_to @celeb, notice: 'Celeb was successfully created.' }
-        format.json { render json: @celeb, status: :created, location: @celeb }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @celeb.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /celebs/1
-  # PUT /celebs/1.json
-  def update
-    @celeb = Celeb.find(params[:id])
-
-    respond_to do |format|
-      if @celeb.update_attributes(params[:celeb])
-        format.html { redirect_to @celeb, notice: 'Celeb was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @celeb.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /celebs/1
-  # DELETE /celebs/1.json
-  def destroy
-    @celeb = Celeb.find(params[:id])
-    @celeb.destroy
-
-    respond_to do |format|
-      format.html { redirect_to celebs_url }
-      format.json { head :ok }
-    end
-  end
 end

@@ -4,10 +4,10 @@
 <div class="divCeleb divTweet ui-corner-all">
   <div class="divImg">
 
-    <a target="_blank" href="<%= url_for :controller =>"celebs", :action => "profile", :name => tweet.celeb.screenName %>"><img width="32" height="32" src="<%= tweet.celeb.profileImgUrl %>" alt="<%= tweet.celeb.name %>"/></a></div>
+    <a  href="<%= url_for :controller =>"celebs", :action => "profile", :name => tweet.celeb.screenName %>"><img width="32" height="32" src="<%= tweet.celeb.profileImgUrl %>" alt="<%= tweet.celeb.name %>"/></a></div>
   <div class="tweetBody ui-corner-all" style="margin-left:40px;">
     <div class="divName">
-     <a target="_blank" href="<%= url_for :controller =>"celebs", :action => "profile", :name => tweet.celeb.screenName %>">
+     <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => tweet.celeb.screenName %>">
     <%= tweet.celeb.name %>
   </a>
 </div>

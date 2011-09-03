@@ -7,7 +7,8 @@ match "/signout" => "sessions#destroy", :as => :signout
 match '/signin' => 'sessions#new', :as => :signin
 # Home Page
 get "home/index"
-
+# About Page
+get "home/about"
 #Sitemap
 match "/sitemap" => "sitemap#index"
 #Interactions
@@ -35,6 +36,8 @@ post 'reply/:id',:action=>'reply',:as => 'reply'
   resources :celebs,:only => [:show] do
   collection do
 get 'top/:count',:action=>'top'
+get 'search/:name',:action=>'search',:as => 'search'
+get 'list', :action => 'list', :as => 'list'
 get 'feed/:id/:time',:action=>'feed',:as => 'feed'
     end
 end

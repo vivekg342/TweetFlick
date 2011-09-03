@@ -217,63 +217,7 @@ var $tabs=$('#divTabs').tabs(
         showMessage("failed !");
     });
 
-    $("#dialog:ui-dialog").dialog("destroy");
-
-    var tweet = $("#tweet"),
-        allFields = $([]).add(tweet);
-    tips = $(".validateTips");
-
-    function updateTips(t) {
-        tips.text(t).addClass("ui-state-highlight");
-        setTimeout(function () {
-            tips.removeClass("ui-state-highlight", 1500);
-        }, 500);
-    }
-
-    function checkLength(o, n, min, max) {
-        if (o.val().length > max || o.val().length < min) {
-            o.addClass("ui-state-error");
-            updateTips("Length of " + n + " must be between " + min + " and " + max + ".");
-            return false;
-        } else {
-            return true;
-        }
-    }
-    $("#dialog-tweet").dialog({
-        autoOpen: false,
-        height: 300,
-        width: 350,
-        modal: true,
-        buttons: {
-            "Reply": function () {
-                var bValid = true;
-                allFields.removeClass("ui-state-error");
-                bValid = bValid && checkLength(tweet, "Tweet", 0, 139);
-                if (bValid) {
-                    showLoadingImage();
-                    $.ajax({
-                        type: 'POST',
-                        url: tweetURL,
-                        data: {
-                            tweet: tweet.val()
-                        },
-                        dataType: 'json',
-                        success: function (response, textStatus, XMLHttpRequest) {
-                            hideLoadingImage();
-                            showMessage(response.message);
-                        }
-                    });
-                    $(this).dialog("close");
-                }
-            },
-            Cancel: function () {
-                $(this).dialog("close");
-            }
-        },
-        close: function () {
-            allFields.val("").removeClass("ui-state-error");
-        }
-      });
+    
     //Auto update every min
     window.setInterval(autoUpdate, 60000);
 

@@ -1,9 +1,88 @@
 //= require jquery
 //= require jquery_ujs
-
+$(function(){
 jQuery.expr[':'].contains = function (a, i, m) {
     return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
 };
+$('#inpSrch').blur(function() {
+ $('div#searchResults').html('');
+$('div#searchResults').hide();
+});
+
+$('#inpSrch').keyup(function () {
+   $('div#searchResults').html('');
+   text = $('#inpSrch').val();
+
+        if (text) {
+           $('div#searchResults').addClass('loading');
+		$('div#searchResults').show();
+		keySearch(text);
+        } else {
+           $('div#searchResults').removeClass('loading');
+	   $('div#searchResults').html('');
+	   $('div#searchResults').hide();
+        }
+});
+
+$("#dialog:ui-dialog").dialog("destroy");
+
+    var tweet = $("#tweet"),
+        allFields = $([]).add(tweet);
+    tips = $(".validateTips");
+
+    function updateTips(t) {
+        tips.text(t).addClass("ui-state-highlight");
+        setTimeout(function () {
+            tips.removeClass("ui-state-highlight", 1500);
+        }, 500);
+    }
+
+    function checkLength(o, n, min, max) {
+        if (o.val().length > max || o.val().length < min) {
+            o.addClass("ui-state-error");
+            updateTips("Length of " + n + " must be between " + min + " and " + max + ".");
+            return false;
+        } else {
+            return true;
+        }
+    }
+    $("#dialog-tweet").dialog({
+        autoOpen: false,
+        height: 300,
+        width: 350,
+        modal: true,
+        buttons: {
+            "Reply": function () {
+                var bValid = true;
+                allFields.removeClass("ui-state-error");
+                bValid = bValid && checkLength(tweet, "Tweet", 0, 139);
+                if (bValid) {
+                    showLoadingImage();
+                    $.ajax({
+                        type: 'POST',
+                        url: tweetURL,
+                        data: {
+                            tweet: tweet.val()
+                        },
+                        dataType: 'json',
+                        success: function (response, textStatus, XMLHttpRequest) {
+                            hideLoadingImage();
+                            showMessage(response.message);
+                        }
+                    });
+                    $(this).dialog("close");
+                }
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function () {
+            allFields.val("").removeClass("ui-state-error");
+        }
+      });
+
+
 
 $('#divCollapse').live('click',function(){
 if($('#divLeft').hasClass('widthList')){
@@ -16,11 +95,38 @@ $('#divLeft').addClass('widthList');
 
 }
 });
+});
 //if(!($.cookie('timezone'))) {
 //  current_time = new Date();
 //  $.cookie('timezone', current_time.getTimezoneOffset(), { path: '/', expires: 10 } );
 //}
+var searchresult=null;
+function keySearch(s){
+if(searchresult!=null){
+$('div#searchResults').html('');
+searchresult.abort();
+}
+searchresult =  $.ajax({
+                        url: '/celebs/search/'+s,
+                        dataType: 'json',
+                        success: function (response, textStatus, XMLHttpRequest) {
+			$('div#searchResults').removeClass('loading'); 			  
+			displayResults(response);                       
+			  
+                        }
+                    });
 
+}
+function displayResults(response){
+for (var i = 0; i <= response.length; i++) {
+try{
+var div=$('<div class="display_box" align="left"></div>');
+div.html(' <a href="/'+response[i].screenName+'"><img style="float:left" src="'+response[i].profileImgUrl+'" width="32" height="32" />' + response[i].name  +'</a>');
+$('div#searchResults').append(div);
+}catch(err){}
+}
+$('div#searchResults').append('<div class="display_box" align="center"><a href="/celebs/list"> <h2>View all celebs</h2></a></div>');
+}
 function showMessage(message) {
     $("div#divMessage").fadeToggle('slow');
     $("#message").html(message);

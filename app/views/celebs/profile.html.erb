@@ -3,7 +3,7 @@
   <%title @celeb.title_page %>
     <%ogimage @celeb.profileImgUrl %>
  <%set_meta( :keywords => @celeb.meta_keywords,:description => @celeb.meta_description)%>
-  <%=  render :partial => "tweets/list" %>
+
    <div id="divTabs">
 <div class="divProfile">
     
@@ -63,18 +63,19 @@ No tweets on this date.
           <div class="left column3">
             <%=  render :partial => "shared/fb" %>
             <div>
+<span id="noteImage" style="color:#000;font-weight:bold;display:none"> Recent images : <br /></span> 
               <input id="hdnImages" type="hidden" value="<%=  @imageStr.to_json %>" />
           <ul class="ulGallery jcarousel-skin-tango">
            
           </ul>
           
-          </div>
+          </div> <br /><br/>
   <div class="left column2">
     
     <div>
       
       <% unless @fantweets.nil? || @fantweets.empty? %>
-      <span style="color:#2F7A26;font-weight:bold"> Recent Fan Replies :</span>  <br />
+      <span style="color:#000;font-weight:bold"> Recent Fan Replies :</span>  <br />
       <ul class="divScrollable jcarousel-skin-fan">
         <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.last.time) } %>
       </ul>

@@ -1,4 +1,5 @@
-
+/*default link colors*/
+a:link,a:visited{text-decoration:none;color:#336699;}
 
 /**vertical tabs  */
 .ui-tabs-vertical {}
@@ -10,15 +11,14 @@
 .ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; }
 .ui-tabs-vertical .ui-state-default{background:transparent !important;}
 .ui-tabs-vertical .ui-state-active{background:transparent !important;}
-.ui-tabs-vertical .ui-state-active a{color:#46C830 !important;font-weight:bold;}
+.ui-tabs-vertical .ui-state-active a{color:#000 !important;font-weight:bold;}
 .verticaltab { padding: 10px 6px !important;}
 .verticaltab a {font-size:13px; }
-.dash td {border-bottom:1px dotted green }
 
 #divDashBoard td.dashCol{
   margin:0 15px;
   width:490px;
-  background:#F7F5F5}
+  }
 
 .right {float:right}
 .left {float:left}
@@ -44,16 +44,9 @@ width: 150px;
 #previewBlock table{padding:0px}
 #previewBlock table tr{padding:0px;margin:0px}
 #divDashBoard{}
-.dash{ color:#000;background:#F9F9F9 !important; width:210px; height:205px;margin:4px;}
+.dash{ color:#000;background:#F9F9F9 !important; width:200px; height:190px;margin:0 4px;}
  .dash .dashHead{
-background: rgb(64,150,238); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(64,150,238,1) 0%, rgba(64,150,238,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(64,150,238,1)), color-stop(100%,rgba(64,150,238,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, rgba(64,150,238,1) 0%,rgba(64,150,238,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, rgba(64,150,238,1) 0%,rgba(64,150,238,1) 100%); /* Opera11.10+ */
-background: -ms-linear-gradient(top, rgba(64,150,238,1) 0%,rgba(64,150,238,1) 100%); /* IE10+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4096ee', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
-background: linear-gradient(top, rgba(64,150,238,1) 0%,rgba(64,150,238,1) 100%); /* W3C */
+background: #FBFBFB;
 padding:8px 10px;
 color:white;
 font-weight:bold;
@@ -83,80 +76,96 @@ top:20%
 .hideMessage{position:relative;*position:static; float:right;}
 
 body{padding:0px;margin:0 2px;font-family:arial;font-size:12px;color:#000;
-background: #E8E4E4;
+background: #F4F4F4;
 }
-#logo{float:left; margin-left:10px;}
+#logo{float:left; margin:5px 0 0 10px;}
 #logo a{color:white; text-decoration:none;cursor:pointer}
 #logo a:link{color:white; text-decoration:none;cursor:pointer}
 #logo a:visited{color:white; text-decoration:none;cursor:pointer}
 
-/*ul#menu{ list-style:none;margin-left:100px;color:white;float:left;position:relative:top:8px} */
-/*ul#menu li {display:inline:padding:0px:margin:1px}*/
-/*ul#menu li a,a:link,a:visited{color:white; font-style:bold}*/
+#divSearch{margin:5px 40px 0 40px; float:left;width:300px;}
+#divSearch #searchResults{
+display:none;
+float:right; margin:0 2px;
+border-left:solid 1px #dedede;
+border-right:solid 1px #dedede;
+border-bottom:solid 1px #dedede;
+overflow:hidden;
+position:absolute;
+background-color:white;
+width:294px;}
+.display_box
+{
+padding:4px; 
+border-top:solid 1px #dedede; 
+font-size:12px; 
+height:30px;
+}
+.display_box:hover
+{
+background:#DDD;
+color:#FFFFFF;
+}
 
-#divLogin{float:right;text-align:left;margin: 1px 140px 0 0;padding:2px}
+.listCeleb{border 1px #DDD;margin:15px 50px 15px 60px ;width:200px}
+
+ul#menu{ list-style:none;margin-left:20px;color:white;float:left;} 
+ul#menu li {display:inline;padding:4px;margin:1px 5px}
+ul#menu li a{color:white; font-style:bold;font-size:12px}
+ul#menu li a:link{color:white; font-style:bold;font-size:12px}
+ul#menu li a:visited{color:white; font-style:bold;font-size:12px}
+ul#menu li:hover{background:#DDD}
+ul#menu li:hover a{color:black; font-style:bold;font-size:12px;}
+
+#divLogin{float:right;text-align:left;}
 
 #divLogin a{text-decoration:none; color:white;text-transform:uppercase;font-weight:bold;}
 
 #divLogin a:hover{text-decoration:underline; color:#7DBA06;}
 
 
-#content {margin:0 auto ;width:1000px;height:100%}
+#content {margin:0 auto ;width:1000px;height:100%;background:#EEE;border:2px solid #DDD;padding-left:2px;}
 
 #loading {height: 500px;display: none;position: fixed;margin-top: 250px; margin-left: 600px; z-index: 40; background-color: transparent;}
 
-.loading {background:url(<%= asset_path "loading.gif" %>) center center no-repeat !important;min-height:200px}
+.loading {background:#f5f5f5 url(<%= asset_path "loading.gif" %>) center center no-repeat !important;min-height:50px}
 
-
+h2{margin :2px}
 #header {
-background: #336699;
-  height:45px; color:white;position:fixed;top:0px;left:0px;width:100%;z-index:999;}
-#header #innerHeader{margin:0px 50px 0 50px;}
+background: #333333;
+  height:38px; color:white;position:fixed;top:0px;left:0px;width:100%;z-index:990;}
+ #innerHeader{z-index:999;position:fixed;margin:0 4px;width:990px}
 
-#wrap{margin:48px 0 0 181px;
+#wrap{margin:0px;
 background: transparent;
-border:1px dotted green;
+border:1px dotted #DDD;
 }
 
 #wrap #divContent{ width:100%;background:transparent;overflow:auto;padding:2px 0}
 
  #divTabs {
-background: #F7F5F5;
+
 position:relative;
 min-height:900px;
 }
 
- .divName{font-weight:bold; color:#2BB7DB;}
+ .divName{font-weight:bold; color:#336699;}
 .divName a:link,a:visited{text-decoration:none; color:#2BB7DB;}
  
 .divCeleb{
-background: rgb(249,252,247); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(249,252,247,1) 0%, rgba(245,249,240,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,252,247,1)), color-stop(100%,rgba(245,249,240,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* Opera11.10+ */
-background: -ms-linear-gradient(top, rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* IE10+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9fcf7', endColorstr='#f5f9f0',GradientType=0 ); /* IE6-9 */
-background: linear-gradient(top, rgba(249,252,247,1) 0%,rgba(245,249,240,1) 100%); /* W3C */
-border:1px solid #B2DDB4;
+background:  #FBFBFB;
+border: 1px solid #DDDDDD;
  padding:5px; margin-top:5px;pointer:click;font-size: 12px;color: #000;}
  .tweetBody .links { display:none;}
  .tweetBody .links a{ margin:0 5px}
  .tweetBody .links a:link,a:visited{ text-decoration: none;}
  .tweetBody a{ color:#8E3E3E !important;cursor:pointer;}
-.divTweet:hover {background:#FFEBEB;}
+.divTweet:hover {background:#E5E5E5;}
 .divTweet:hover .links{display:block; backround:white}
 
 .divScrollable li{min-height:71px;padding:0px !important;width:100%;}
 .divFan{
-background: rgb(238,238,238); /* Old browsers */
-background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(238,238,238,1)), color-stop(100%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Opera11.10+ */
-background: -ms-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* IE10+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
-background: linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
+background: #F3EFE0;border:1px solid #DDD;
 padding:5px; margin-top:5px;pointer:click;font-size: 11px;color: #000 !important;}
 
 .divImg{float:left;height:48px;margin-top:2px}
@@ -188,7 +197,7 @@ ul.tree li { margin: 0; padding:0 0 0 10px; line-height: 20px; color: #369; font
 
 
 #fixedTags {display:none;background: #FFF ; height:auto; color:#995833;position:fixed;top:35px;left:200px;width:200px;padding:10px;border:1px dotted #E81F1F;z-index:999;}
-.tags{margin:2px 2px 0 2px;padding:3px;float:left;color:green;}
+.tags{margin:2px 2px 0 2px;padding:3px;color:green;}
 .tagChecked{background:#336699;color:white;}
 
 #divCollapse{
@@ -204,13 +213,9 @@ color:#369;
 text-align:center;
 font-style:bold;
 }
-.widthCollapse{display:none;}
-@media screen and (max-width: 1000px) {
-    #wrap{margin-left:0;}
-    .widthList{display:none;}
-    .widthCollapse{display:block;}
-}
+
 #divLeft{
+display:none;
 background:#F9F9F9 !important;
 height:100%;
 max-height:100%;

@@ -33,19 +33,6 @@
     <%=  image_tag "loading.gif" %>
   </div>
     <div id="header">
-      <div id="innerHeader">
-        <span id="logo">
-         <a href="<%= root_url %>"> <h2 href="<%= root_url %>">TweetFlick</h2></a>
-        </span>
-  <!--   <ul id="menu">  
-  <li> <a href="<%= root_url %>">Home </a></li>
-</ul> 
--->
-        <div id="divLogin">
-          <%= render 'shared/navigation' %>
-        </div>
-        <div style="clear:both"></div>
-      </div>
       
       
       <div id="divMessage" class="clearBoth" align="center">
@@ -65,13 +52,33 @@
       
       
     </div>
-<div id="divCollapse" class="widthCollapse">
-Celebs
-</div>
   <div id="wrap">
 
     <div id="content">
-      <%= yield %>
+<div id="innerHeader">
+        <span id="logo">
+         <a href="<%= root_url %>"> <h2 href="<%= root_url %>">TweetFlick</h2></a>
+        </span>
+<div id="divSearch">
+
+<input id="inpSrch" style="width:100%" value="" name="" /> <br >
+<div id="searchResults"></div>
+</div>
+     <ul id="menu">  
+  <li> <a href="<%= root_url %>">Home </a></li>
+ <li> <a href="/celebs/list">All Celebs </a></li>
+ <li> <a href="/home/about">About</a></li>
+</ul> 
+
+        <div id="divLogin">
+          <%= render 'shared/navigation' %>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      
+
+<div style="margin-top:60px;">
+      <%= yield %></div>
     </div>
   </div>
 

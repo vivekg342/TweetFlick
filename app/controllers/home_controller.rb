@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
 
- @alphaCelebs=Celeb.order_by([[:name]])
+ #@alphaCelebs=Celeb.order_by([[:name]])
     @tweets=Tweet.order_by([[:time,:desc]]).limit(15)
         @fantweets=FanTweet.order_by([[:time,:desc]]).limit(15)
 @followCelebs=Celeb.order_by([[:followers,:desc]]).limit(5)
@@ -16,7 +16,7 @@ end
 @weekstats=Celeb.weekstats
 #@fanweekstats=FanTweet.weekstats
 @featured=Celeb.random
-@tags=Celeb.alltags
+#@tags=Celeb.alltags
 @tmstamp=@tweets.to_a.last.time
 @date = 0.days.ago.beginning_of_day.to_i * 1000
 

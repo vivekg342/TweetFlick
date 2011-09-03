@@ -32,6 +32,7 @@ $(window).scroll(function () {
 fanCarousel();
 var  images= $.parseJSON($('#hdnImages').val());
 if(images && images.length>0){
+$('#noteImage').show();
       $('.ulGallery').jcarousel({
         scroll: 1,
         size:images.length,
