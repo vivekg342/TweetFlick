@@ -15,12 +15,13 @@
 </div>
 
 <div class="pf_description ui-corner-all">
+<%unless @celeb.description.empty? %>
 <b>Description</b> <br />
 <p><%= @celeb.description %></p>
+<%end%>
 <div class="right">
 <%=raw @celeb.twitterlink %>&nbsp;&nbsp;
 </div>
-
 </div>
 
     <div class="pf_profile-content">
@@ -61,7 +62,7 @@ No tweets on this date.
 <%end%>
             </div>
           <div class="left column3">
-            <%=  render :partial => "shared/fb" %>
+
             <div>
 <span id="noteImage" style="color:#000;font-weight:bold;display:none"> Recent images : <br /></span> 
               <input id="hdnImages" type="hidden" value="<%=  @imageStr.to_json %>" />
@@ -69,7 +70,9 @@ No tweets on this date.
            
           </ul>
           
-          </div> <br /><br/>
+          </div> <br />            
+<span id="noteImage" style="color:#000;font-weight:bold;display:none"> Say something about <%=@celeb.name %> : <br /></span> 
+<%=  render :partial => "shared/fb" %>
   <div class="left column2">
     
     <div>
