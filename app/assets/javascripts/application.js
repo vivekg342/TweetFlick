@@ -56,6 +56,10 @@ function refreshSearch(){
         json = $.parseJSON(xhr.responseText);
         hideLoadingImage();
         showMessage(json.message);
+if(json.success=='login'){
+window.location='/auth/twitter';
+}
+
     });
     $('.celeb_ajax').live('ajax:error', function (event, xhr, status) {
         json = $.parseJSON(xhr.responseText);

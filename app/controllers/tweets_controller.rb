@@ -62,7 +62,7 @@ def follow
       current_user.follow(Integer(params[:id]))
 result={:success =>  "true", :message => "Following #{@c.name}!"}
  else
-  result={:success =>  "false",:message => "Failed !"}
+  result={:success =>  "login",:message => "Login needed !"}
  end
 rescue
   result={:success =>  "false",:message => "Failed !"}
@@ -83,7 +83,7 @@ end
       current_user.retweet(Integer(params[:id]))
       result=j.encode({:success =>  "true" , :message => "Retweeted!"} )
  else
-   result=j.encode({:success =>  "false" , :message => "Retweet failed "} )
+  result={:success =>  "login",:message => "Login needed !"}
  end
     respond_to do |format|
 format.html { redirect_to root_url }
@@ -96,7 +96,7 @@ def reply
       current_user.reply(params[:tweet],Integer(params[:id]))
 result={:success =>  "true", :message => "Replied!"}
  else
-   result={:success =>  "false", :message => "Reply failed "}
+  result={:success =>  "login",:message => "Login needed !"}
  end
 respond_to do |format|
 format.html { redirect_to root_url }#_list.html.erb
