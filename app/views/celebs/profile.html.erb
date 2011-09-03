@@ -33,7 +33,14 @@
 <%=image_tag "verified.png" %>
 <%end%>
 </h2>
-<div style="margin:2px"><span style="color:#2F7A26;">Location : </span><%= @celeb.location %></div><br />
+<%unless @celeb.location.empty? %>
+<div style="margin:2px">
+
+<span style="color:#2F7A26;">Location : </span><%= @celeb.location %>
+
+</div>
+<%end%>
+<br />
       <div><span style="color:#2F7A26;">Tags: </span>
     <%@celeb.tags.each do |tag| %>
         <i><%=  tag.to_s %></i>
