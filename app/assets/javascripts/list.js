@@ -14,7 +14,7 @@ function filterCelebs() {
         }
 
     }
-
+$('#inpSearch').watermark('Search for a celebrity');
     $('#inpSearch').keyup(function () {
         text = $('#inpSearch').val();
         if (text) {

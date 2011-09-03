@@ -13,16 +13,13 @@ def twitterlink
   "<a target=\"_blank\" href=\"http://twitter.com/#{self.screenName}\">#{img}</a>"
 end
 def title_page
-  tagStr=self.tags.join(" #{self.name},")+" #{self.name}"
-"#{self.name}-Follow #{self.name} and all your favourite celebs on Tweetflick. Check out #{self.name} tweets ,#{self.name} pics,#{self.name} mentions, follow #{self.name} ,#{tagStr}"
+  "Tweetflick - Indian movie celebrities at one place - #{self.name} home page"
 end
 def meta_keywords
-    tagStr=self.tags.join(" #{self.name},")+" #{self.name}"
-      tagStr2=self.tags.join(" #{self.name} tweets,")+" #{self.name}"
-  "#{self.name} twitter, #{self.name} twitter id, #{self.name} tweets,#{self.name} pictures, #{self.name} replies,#{self.name} mentions on twitter, #{self.name} stats, celebrity #{self.name}, #{self.screenName} twitter,#{self.name} bollywood, #{self.name} tollywood, #{tagStr}, #{tagStr2}"
+    "#{self.name} twitter , #{self.name} twitter , #{self.name} fans, #{self.name} images , #{self.name} internet, #{self.name} personal , #{self.name} bollywood, #{self.name} tollywood, #{self.name} kollywood, #{self.name} analytics, #{self.name} tweets, #{self.name} retweets, #{self.name} follow"
 end
 def meta_description
-   "Tweets from #{self.name} using his id #{self.screenName}. See all the tweets from #{self.name},replies, retweets, images etc. See who are mentioning and retweeting #{self.name} 's tweets and know more about your favorite celebrity #{self.name}"
+   " Real time Twitter feed, Analytics of  #{self.name} on Twitter. Follow , retweet, reply, see discussions , view image gallery , comment  of  #{self.name}."
 end
 def large
 #self.profileImgUrl.gsub!(/_([a-z0-9-]+).(png|gif|jpg|jpeg|JPG|JPEG|GIF|PNG)/, '.\2')

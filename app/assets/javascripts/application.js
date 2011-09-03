@@ -1,14 +1,21 @@
 //= require jquery
 //= require jquery_ujs
+//= require "jquery.watermark.min"
 $(function(){
 jQuery.expr[':'].contains = function (a, i, m) {
     return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
 };
-$('#inpSrch').blur(function() {
+
+$("body").not('#divSearch').click(function (evt) {
+ $('div#searchResults').html('');
+$('div#searchResults').hide();  
+$('#inpSrch').val('');
+});
+$('#divSearch').blur(function() {
  $('div#searchResults').html('');
 $('div#searchResults').hide();
 });
-
+$('#inpSrch').watermark('Search for a celebrity');
 $('#inpSrch').keyup(function () {
    $('div#searchResults').html('');
    text = $('#inpSrch').val();
@@ -120,8 +127,8 @@ searchresult =  $.ajax({
 function displayResults(response){
 for (var i = 0; i <= response.length; i++) {
 try{
-var div=$('<div class="display_box" align="left"></div>');
-div.html(' <a href="/'+response[i].screenName+'"><img style="float:left" src="'+response[i].profileImgUrl+'" width="32" height="32" />' + response[i].name  +'</a>');
+var div=$('<a  class="display_box" href="/'+response[i].screenName+'"></a>');
+div.html('<img style="float:left" src="'+response[i].profileImgUrl+'" width="32" height="32" />' + response[i].name +'</span>');
 $('div#searchResults').append(div);
 }catch(err){}
 }

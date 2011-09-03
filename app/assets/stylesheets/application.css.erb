@@ -76,7 +76,7 @@ top:20%
 .hideMessage{position:relative;*position:static; float:right;}
 
 body{padding:0px;margin:0 2px;font-family:arial;font-size:12px;color:#000;
-background: #F4F4F4;
+background: ##2B3E42;
 }
 #logo{float:left; margin:5px 0 0 10px;}
 #logo a{color:white; text-decoration:none;cursor:pointer}
@@ -96,6 +96,7 @@ background-color:white;
 width:294px;}
 .display_box
 {
+display:block;
 padding:4px; 
 border-top:solid 1px #dedede; 
 font-size:12px; 
@@ -124,17 +125,18 @@ ul#menu li:hover a{color:black; font-style:bold;font-size:12px;}
 #divLogin a:hover{text-decoration:underline; color:#7DBA06;}
 
 
-#content {margin:0 auto ;width:1000px;height:100%;background:#EEE;border:2px solid #DDD;padding-left:2px;}
+#content {margin:0 auto ;width:1000px;height:100%;background:#EEE;border:2px solid #DDD;}
 
 #loading {height: 500px;display: none;position: fixed;margin-top: 250px; margin-left: 600px; z-index: 40; background-color: transparent;}
 
 .loading {background:#f5f5f5 url(<%= asset_path "loading.gif" %>) center center no-repeat !important;min-height:50px}
 
+
 h2{margin :2px}
 #header {
 background: #333333;
   height:38px; color:white;position:fixed;top:0px;left:0px;width:100%;z-index:990;}
- #innerHeader{z-index:999;position:fixed;margin:0 4px;width:990px}
+ #innerHeader{z-index:999;position:fixed;margin:0;width:1000px}
 
 #wrap{margin:0px;
 background: transparent;
