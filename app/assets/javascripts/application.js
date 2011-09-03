@@ -16,8 +16,26 @@ $('#divSearch').blur(function() {
 $('div#searchResults').hide();
 });
 $('#inpSrch').watermark('Search for a celebrity');
-$('#inpSrch').keyup(function () {
-   $('div#searchResults').html('');
+$('#inpSrch').keyup(function (event) {
+
+key=event.keyCode;
+keychar = String.fromCharCode(key);
+keychar = keychar.toLowerCase();
+
+// alphas and numbers
+ if ((("abcdefghijklmnopqrstuvwxyz0123456789").indexOf(keychar) > -1))
+refreshSearch();
+
+
+  
+});
+function positionFocus(key){
+if ((key==null) || (key==0) || (key==8) || 
+    (key==9) || (key==13) || (key==27) )
+return;
+}
+function refreshSearch(){
+ $('div#searchResults').html('');
    text = $('#inpSrch').val();
 
         if (text) {
@@ -29,9 +47,7 @@ $('#inpSrch').keyup(function () {
 	   $('div#searchResults').html('');
 	   $('div#searchResults').hide();
         }
-});
-
-
+}
     $('.celeb_ajax').live('ajax:beforeSend', function (event, xhr, status) {
         showLoadingImage();
     });
@@ -141,6 +157,7 @@ searchresult =  $.ajax({
                     });
 
 }
+var focusElement=0;
 function displayResults(response){
 for (var i = 0; i <= response.length; i++) {
 try{
@@ -149,7 +166,10 @@ div.html('<img style="float:left" src="'+response[i].profileImgUrl+'" width="32"
 $('div#searchResults').append(div);
 }catch(err){}
 }
+$('div#searchResults display_box:first').focus();
+focusElement=0;
 $('div#searchResults').append('<div class="display_box" align="center"><a href="/celebs/list"> <h2>View all celebs</h2></a></div>');
+
 }
 function showMessage(message) {
     $("div#divMessage").fadeToggle('slow');

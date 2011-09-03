@@ -76,7 +76,7 @@ for (var i = 0; i < weekstats.length; i++) {
 //ticks.push(weekstats[i].day);
  d=new Date();
 d.setFullYear(weekstats[i].year,weekstats[i].month,weekstats[i].index);
-str='<a target="_blank" href="/tweets/archive/'+weekstats[i].epoch +'">'+weekstats[i].day+'</a>';
+str='<a href="/tweets/archive/'+weekstats[i].epoch +'">'+weekstats[i].day+'</a>';
 ticks.push(unescape(str));
         jqArray.push(weekstats[i].tweets);
 //  fanArray.push(fanweekstats[i].tweets);
