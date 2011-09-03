@@ -44,9 +44,7 @@ var weekday=new Array("Sun","Mon","Tue","Wed","Thu",
                 a.setMinutes(0);
                 a.setSeconds(0);
                 a.setMilliseconds(0);
-                var onejan = new Date(a.getFullYear(),0,1);
-              dayoftheyear= Math.ceil((a - onejan) / 86400000);
-return {"day" : weekday[a.getDay()],"index":dayoftheyear,"epoch":a.getTime()  }
+return {"day" : weekday[a.getDay()],"epoch":a.getTime()  }
 
  }
 KEYF
@@ -59,7 +57,7 @@ values.tweets+=1;
 }
 REDUCE
 array=Tweet.collection.group( {:keyf => keyf,:cond => cond ,:initial => {tweets:0},:reduce => reduce})
-array.sort {|a,b| a["index"] <=> b["index"]}
+array.sort {|a,b| a["epoch"] <=> b["epoch"]}
 end
 
 def self.mosttweetstoday
