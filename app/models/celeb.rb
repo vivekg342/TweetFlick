@@ -38,14 +38,15 @@ keyf = <<KEYF
  function(doc) {
 var weekday=new Array("Sun","Mon","Tue","Wed","Thu",
                 "Fri","Sat")
-                
-                a=new Date(doc.time+475200)
+
+                a=new Date(doc.time+475200);
                 a.setHours(0);
                 a.setMinutes(0);
                 a.setSeconds(0);
                 a.setMilliseconds(0);
-
-return {"day" : weekday[a.getDay()],"index":a.getDate(),"epoch":a.getTime()  }
+                var onejan = new Date(a.getFullYear(),0,1);
+              dayoftheyear= Math.ceil((a - onejan) / 86400000);
+return {"day" : weekday[a.getDay()],"index":dayoftheyear,"epoch":a.getTime()  }
 
  }
 KEYF

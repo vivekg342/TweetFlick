@@ -31,6 +31,23 @@ $('#inpSrch').keyup(function () {
         }
 });
 
+
+    $('.celeb_ajax').live('ajax:beforeSend', function (event, xhr, status) {
+        showLoadingImage();
+    });
+
+    $('.celeb_ajax').live('ajax:complete', function (event, xhr, status) {
+        json = $.parseJSON(xhr.responseText);
+        hideLoadingImage();
+        showMessage(json.message);
+    });
+    $('.celeb_ajax').live('ajax:error', function (event, xhr, status) {
+        json = $.parseJSON(xhr.responseText);
+        hideLoadingImage();
+        showMessage("failed !");
+    });
+
+
 $("#dialog:ui-dialog").dialog("destroy");
 
     var tweet = $("#tweet"),

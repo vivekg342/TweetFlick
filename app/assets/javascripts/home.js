@@ -42,32 +42,7 @@ function gettweets() {
 }
 
 
-  function showCeleb(path,id,label){
-     //showLoadingImage();
-    tabCount = $('#divTabs ul li').size();
-    if($('#div'+id).length>0){
-$('#divTabs').tabs("select",'div'+id);
-     
-    }
-    else {
-
-       $('#divTabs').append("<div id=\"div"+id+"\" class=\"loading tabCeleb\"></div>");
-       $('#divTabs').tabs("add","#div"+id,label);
-$('#divTabs').tabs("select",'div'+id);
-    }
-    selectedDiv.find('.ulGallery').jcarousel({scroll: 1 });
-    
-  selectedDiv = $("#div"+id);
-$.get(path,function(data){
-        $("#div"+id).html(data);
-          $("#div"+id).removeClass("loading");
-        path= selectedDiv.find('.hdnPath:last').val();
-      fanCarousel();
-        });
-
-  }
-
-
+  
   
 
 $(function(){
@@ -130,14 +105,9 @@ var vertTabs=$("#vertTabs").tabs({fx: { opacity: "toggle"}
                            .tabs("rotate", 2000, false);
                $("#vertTabs").removeClass('ui-corner-top').addClass('ui-corner-left');
 
-var $tabs=$('#divTabs').tabs(
-{tabTemplate: "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' style='float:right'>Remove Tab</span></li>"}
-);
 
 
-// Needed in profile
-
-    $("#divLeft").tinyscrollbar();
+  
 
 
     function mycarousel_itemLoadCallback(carousel, state) {
@@ -155,69 +125,6 @@ var $tabs=$('#divTabs').tabs(
         showDate();
     }
 
- function filterCelebs() {
-        if ($(".tagChecked").size() > 0) {
-            tagClass = "";
-            $(".tagChecked").each(function (index) {
-                tag = $(this).text().trim();
-                tagClass +=  '.' + tag + '_tag';
-            });
-            $(tagClass).fadeIn();
-            $('.alphaCeleb').not(tagClass).fadeOut();
-        } else {
-            $('.alphaCeleb').fadeIn();
-        }
-
-    }
-
-    $('#inpSearch').keyup(function () {
-        text = $('#inpSearch').val();
-        if (text) {
-            $('div.alphaCeleb').not(':contains(' + text + ')').fadeOut();
-        } else {
-            $('.alphaCeleb').fadeIn();
-        }
-    });
-    $('#toggleTags').click(function () {
-        $('#fixedTags').show('fade', {}, 1000);
-    });
-    $('#closefixedTag').click(function () {
-        $('#fixedTags').hide('fade', {}, 1000);
-    });
-    $('#fixedTags').blur(function () {
-        $('#fixedTags').hide('fade', {}, 1000);
-    })
-
-    $(".tags").click(function () {
-        if ($(this).hasClass("tagChecked")) {
-            $(this).removeClass("tagChecked");
-        } else {
-            $(this).addClass("tagChecked");
-        }
-
-        filterCelebs();
-    });
-    $("#divTabs span.ui-icon-close").live("click", function () {
-        var index = $("li", $tabs).index($(this).parent());
-        $tabs.tabs("remove", index);
-    });
-
-    $('.celeb_ajax').live('ajax:beforeSend', function (event, xhr, status) {
-        showLoadingImage();
-    });
-
-    $('.celeb_ajax').live('ajax:complete', function (event, xhr, status) {
-        json = $.parseJSON(xhr.responseText);
-        hideLoadingImage();
-        showMessage(json.message);
-    });
-    $('.celeb_ajax').live('ajax:error', function (event, xhr, status) {
-        json = $.parseJSON(xhr.responseText);
-        hideLoadingImage();
-        showMessage("failed !");
-    });
-
-    
     //Auto update every min
     window.setInterval(autoUpdate, 60000);
 
