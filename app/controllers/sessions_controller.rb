@@ -1,5 +1,15 @@
 class SessionsController < ApplicationController
 
+def check
+  unless !user_signed_in?
+    result={:success =>  "true"}
+  else
+        result={:success =>  "false"}
+  end
+    respond_to do |format|
+format.js {render :json => result}
+end
+end
   def create
   auth = request.env["omniauth.auth"]
   user = User.where(:provider => auth['provider'],

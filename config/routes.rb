@@ -3,6 +3,7 @@ Tweetflick::Application.routes.draw do
 # Twitter Authentication routes
 match "/auth/:provider/callback" => "sessions#create"
 match '/auth/failure' => 'sessions#failure'
+match '/auth/check' => 'sessions#check'
 match "/signout" => "sessions#destroy", :as => :signout
 match '/signin' => 'sessions#new', :as => :signin
 # Home Page

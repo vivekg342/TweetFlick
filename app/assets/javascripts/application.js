@@ -112,6 +112,9 @@ $("#dialog:ui-dialog").dialog("destroy");
                         success: function (response, textStatus, XMLHttpRequest) {
                             hideLoadingImage();
                             showMessage(response.message);
+			    if(json.success=='login'){
+				window.location='/auth/twitter';
+			     }
                         }
                     });
                     $(this).dialog("close");
@@ -209,11 +212,26 @@ function hideLoadingImage() {
 var tweetURL = '';
 
 function openTweetDialog(ele, id) {
+                            showLoadingImage();
     element = $(ele);
     val = (element.parents('div.tweetBody').find('input.screenName').val());
-    $('#tweet').val('@' + val + ' ');
     tweetURL = "/tweets/reply/" + id;
-    $("#dialog-tweet").dialog("open");
+  		$.ajax({
+                        type: 'POST',
+                        url: '/auth/check',
+                        dataType: 'json',
+                        success: function (response, textStatus, XMLHttpRequest) {
+                            hideLoadingImage();
+			    if(response.success=='true'){
+				  $("#dialog-tweet").dialog("open");
+				$('#tweet').focus();
+				$('#tweet').val('@' + val + ' ');
+			     }else{
+				showMessage('Login required');
+				window.location='/auth/twitter';
+			     }
+                        }
+                    });
 }
 var showDate = function showDate() {
         $('.divTime').each(function (index) {
