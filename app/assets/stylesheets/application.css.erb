@@ -4,7 +4,8 @@ a:link,a:visited{text-decoration:none;color:#336699;}
 /**vertical tabs  */
 .ui-tabs-vertical {}
 .ui-tabs-vertical .ui-tabs-nav { padding: 10px; float: left; }
-.ui-tabs-vertical .ui-widget-header{border:none;}
+.ui-tabs-vertical .ui-widget-header{border:none;background:none;}
+.ui-tabs-vertical .ui-widget-content{background:none;}
 .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom:1px dotted green !important ;border-right-width: 0 !important; margin: 0 -1px .2em 0; }
 .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
 .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
@@ -12,12 +13,11 @@ a:link,a:visited{text-decoration:none;color:#336699;}
 .ui-tabs-vertical .ui-state-default{background:transparent !important;}
 .ui-tabs-vertical .ui-state-active{background:transparent !important;}
 .ui-tabs-vertical .ui-state-active a{color:#000 !important;font-weight:bold;}
-.verticaltab { padding: 10px 6px !important;}
+.verticaltab { padding: 10px 0px !important;}
 .verticaltab a {font-size:13px; }
 
 #divDashBoard td.dashCol{
   width:490px;
-border-right:10px solid transparent;
   }
 
 .right {float:right}
@@ -53,10 +53,6 @@ font-weight:bold;
 font-size:13px;
 }
 
-#dialog-tweet{
-color:black;
-top:20%
-}
 #divMessage
 {
     background-color: #5C955C;
