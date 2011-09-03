@@ -13,7 +13,7 @@
 </div>
 <div><%= raw auto_link(tweet.link_twitter_user,:link =>:urls, :sanitize => false ,:html => { :target => '_blank' }) %></div>
 <div class="divTime">Updated <span class="epoch"><%= tweet.time %></span><span class="ltime"></span></div>
-<div style="height:15px">
+<div style="height:18px">
     <div class="links right">
      <%=  link_to image_tag("follow.png",:alt =>'follow',:width =>'18') +" follow" , follow_tweets_path(:id => tweet.celeb.id),:remote=> true, :method => :post , :class=>'celeb_ajax' , :title => 'retweet','data-type' => 'json' %> 
           <%=  link_to image_tag("retweet.png",:alt =>'retweet',:width =>'18') + " retweet", retweet_tweets_path(:id => tweet.id),:remote=> true , :method => :post , :class=>'celeb_ajax', :title => 'retweet', 'data-type' => 'json' %> 
