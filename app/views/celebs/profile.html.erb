@@ -11,17 +11,16 @@
   <div class="pf_divImg">
 <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => @celeb.screenName %>">      
 <img src="<%= @celeb.large %>" width="120" height="140"/> 
-</a>
+</a>&nbsp;
 </div>
 
 <div class="pf_description ui-corner-all">
+<%=raw @celeb.twitterlink %> 
 <%unless @celeb.description.empty? %>
 <b>Description</b> <br />
 <p><%= @celeb.description %></p>
 <%end%>
-<div class="right">
-<%=raw @celeb.twitterlink %>&nbsp;&nbsp;
-</div>
+<%= render :partial => 'shared/social' %>
 </div>
 
     <div class="pf_profile-content">
@@ -58,7 +57,7 @@ Statuses : <span style="color:blue"><%= @celeb.statuses %> </span>   &nbsp;&nbsp
     <div class="clr"></div>
       </div>
       <div style="clear:both"></div>
-    
+
   <div class="left column1">
 <%unless @tweets.empty? %>
     <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_celebs_path(@celeb,:time => @tweets.to_a.last.time)} %>

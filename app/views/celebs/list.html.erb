@@ -8,9 +8,9 @@
     <% end %>
     <a id="clearTags" style="cursor:pointer;color:#369" class="right">Clear All</a>
 </div>
-<div class="left" style="width:650px;border:1px solid #ddd">
-     &nbsp;Quick Search &nbsp; <input type="" id="inpSearch" value="" name="Search" />
-<br /><br />
+<div class="left" style="width:690px;border:1px solid #ddd;">
+ <%= render :partial => 'shared/social' %>
+     &nbsp;Quick Search &nbsp; <input type="" id="inpSearch" value="" name="Search" /><br /><br />
       <%  @alphaCelebs.each do |celeb| %>
         <%  tagClass = celeb.tags.join("_tag ") + "_tag" %>
           <div class="<%= tagClass %> left listCeleb" align="left">

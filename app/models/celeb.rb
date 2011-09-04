@@ -10,10 +10,10 @@ field :name,type: String
 
 def twitterlink
   img = "<img src=\"/assets/twitter-icon.png\" width=\"25\" height=\"25\" />"
-  "<a target=\"_blank\" href=\"http://twitter.com/#{self.screenName}\">#{img}</a>"
+  "<a target=\"_blank\" href=\"http://twitter.com/#{self.screenName}\" class=\"right\"> <span style=\"color:#369;font-size:11px;\">View on twitter</span> &nbsp; </a>"
 end
 def title_page
-  "Tweetflick - Indian movie celebrities at one place - #{self.name} home page"
+  "#{self.name} 's home page on Tweetflick- Indian celebrities at one place"
 end
 def meta_keywords
     "#{self.name} twitter , #{self.name} twitter , #{self.name} fans, #{self.name} images , #{self.name} internet, #{self.name} personal , #{self.name} bollywood, #{self.name} tollywood, #{self.name} kollywood, #{self.name} analytics, #{self.name} tweets, #{self.name} retweets, #{self.name} follow"
