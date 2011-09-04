@@ -92,8 +92,8 @@ $("#dialog:ui-dialog").dialog("destroy");
     }
     $("#dialog-tweet").dialog({
         autoOpen: false,
-        height: 300,
-        width: 350,
+        height: 280,
+        width: 650,
         modal: true,
         buttons: {
             "Reply": function () {
