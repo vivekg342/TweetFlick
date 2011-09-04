@@ -1,10 +1,8 @@
-<table width="100%" cellspacing="5">
-    <tr>
-      <td class="dashCol ui-corner-all" style="width:430px;">
+<div class="dashCol ui-corner-all" style="">
 
 <div id="vertTabs">
 
-<ul margin-right:auto>
+<ul>
       	<li style="" class="verticaltab"><a href="#divFeatured">Today's Featured Celeb</a></li>
         		<li style=" " class="verticaltab"><a href="#divTalkative">Today's Most Mentioned</a></li>
 		<li style=" " class="verticaltab"><a href="#divMentioned">Today's Most Talkative</a></li>
@@ -27,115 +25,91 @@
      <div><%= @featured.followers %> - followers</div>
   </div>
 </div>
+
   <div id="divFollowed" class="dash ui-corner-all" >
 
 
                 <div class="dashBody">
-                          <table>
-          <tbody>
 
 <%  @followCelebs.each do |celeb| %>
 
-            <tr>
-              <td>
-
+<div>
    <div class="left">
     <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb.screenName %>"><img width="32" height="32" src="<%= celeb.profileImgUrl %>" alt=""/></a>
     
     </div>
-   </td>
-   <td>
-     <div>
+     <div style="margin-left:40px">
       <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb.screenName %>">
     <%= celeb.name %>
-  </a></div>
-     <div><%= celeb.followers %> - followers</div>
-   </td>
-   </tr>
-
-
+  </a><br />
+     <%= celeb.followers %> - followers
+</div>
+<div class="clr"></div>
+</div>
   <% end %>
-        </tbody>
-        </table>
               
               </div>
                 </div>
                
-              <div id="divTalkative" class="dash ui-corner-all">
+<div id="divTalkative" class="dash ui-corner-all">
                     
                   <div class="dashBody">
-                                         <table>
-                                          <tbody>
 <%  @mentionCelebs[0..4].each do |celeb| %>
   <% unless celeb["celeb"].nil? %>
-            <tr>
-              <td>
-
+<div>
    <div class="left">
 
  <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb["celeb"]["screenName"] %>">
     <img width="32" height="32" src="<%= celeb["celeb"]["profileImgUrl"] %>" alt=""/>
 </a>
 </div>
-   </td>
-   <td>
-  <div>
+  <div style="margin-left:40px">
    <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb["celeb"]["screenName"] %>">
   <%= celeb["celeb"]["name"] %>
-</a>
+</a><br />
+    <%= celeb["tweets"].to_i %> - mentions
 </div>
-     <div><%= celeb["tweets"].to_i %> - mentions</div>
-   </td>
-   </tr>
+<div class="clr"></div>
+</div>
+  <% end %>
+  <% end %>
+            </div>
+            </div>
 
-  <% end %>
-  <% end %>
-        </tbody>
-        </table>
-              
-            </div>
-            </div>
-            
-                 <div id="divMentioned" class="dash ui-corner-all">
+
+<div id="divMentioned" class="dash ui-corner-all">
                   
                 <div class="dashBody">
-                     <table>
-          <tbody>
-
+     
 <%  @talkCelebs[0..4].each do |celeb| %>
-            <tr>
-              <td>
-
+     <div>
    <div class="left">
    <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb["celeb"]["screenName"] %>">
 <img width="32" height="32" src="<%= celeb["celeb"]["profileImgUrl"] %>" alt=""/>
 </a>
 </div>
-   </td>
-   <td>
+<div style="margin-left:40px">
 <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => celeb["celeb"]["screenName"] %>">
-  <div><%= celeb["celeb"]["name"] %>
-</a>
-</div>
-     <div><%= celeb["tweets"].to_i %> - tweets</div>
-   </td>
-   </tr>
+  <%= celeb["celeb"]["name"] %>
+</a><br />
+<%= celeb["tweets"].to_i %> - tweets
 
+</div>
+<div class="clr"></div>
+</div>
 
   <% end %>
-        </tbody>
-      </table>
                 </div>
                 </div>
-                
+
 
 </div>
-</td>
-<td class="dashCol ui-corner-all">
+</div>
+<div class="dashCol ui-corner-all" style="margin-left:65px">
   <span style="margin:5px 5px;font-weight:bold;">No of tweets over the last 6 days : </span> <br />
       <div id="divChartStats" style="width:100%;height:205px;padding:5px"></div>
       <input id="hdnweekstats"  type="hidden" value="<%= @weekstats.to_json %>"/>
       <input id="hdnfanweekstats"  type="hidden" value=""/>
-      </td>
-    </tr>
-</table>
+</div>
+
+<div class="clr"></div>

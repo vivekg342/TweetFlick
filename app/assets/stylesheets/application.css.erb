@@ -3,22 +3,22 @@ a:link,a:visited{text-decoration:none;color:#336699;}
 
 /**vertical tabs  */
 .ui-tabs-vertical {}
-.ui-tabs-vertical .ui-tabs-nav { padding: 10px; float: left; }
+.ui-tabs-vertical .ui-tabs-nav {  float: left; }
 .ui-tabs-vertical .ui-widget-header{border:none;background:none;}
 .ui-tabs-vertical .ui-widget-content{background:none;}
 .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom:1px dotted green !important ;border-right-width: 0 !important; margin: 0 -1px .2em 0; }
 .ui-tabs-vertical .ui-tabs-nav li a { display:block; }
-.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
-.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right; }
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; border-right-width: 1px; border-right-width: 1px; }
+.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: left; }
 .ui-tabs-vertical .ui-state-default{background:transparent !important;}
 .ui-tabs-vertical .ui-state-active{background:transparent !important;}
 .ui-tabs-vertical .ui-state-active a{color:#000 !important;font-weight:bold;}
 .verticaltab { padding: 10px 0px !important;}
 .verticaltab a {font-size:13px; }
 
-#divDashBoard td.dashCol{
-  width:460px;
-border:1px solid #ddd;
+
+#divDashBoard .dashCol{
+  width:435px;float:left;border:1px solid #DDD;height:240px;
   }
 
 .right {float:right}
@@ -44,8 +44,8 @@ width: 150px;
 #previewBlock{float:left;padding:2px;color: #000}
 #previewBlock table{padding:0px}
 #previewBlock table tr{padding:0px;margin:0px}
-#divDashBoard{}
-.dash{ color:#000;background:#F9F9F9 !important; width:200px; height:190px;margin:0 4px;}
+#divDashBoard{margin:10px; paddinng:5px;}
+.dash{ color:#000;background:#F9F9F9 !important; width:180px; height:190px;margin:0;}
  .dash .dashHead{
 background: #FBFBFB;
 padding:8px 10px;
@@ -111,12 +111,9 @@ color:#FFFFFF;
 .listCeleb{border 1px #DDD;margin:15px 50px 15px 60px ;width:200px}
 
 ul#menu{ list-style:none;margin-left:20px;color:white;float:left;} 
-ul#menu li {display:inline;padding:4px;margin:1px 5px}
-ul#menu li a{color:white; font-style:bold;font-size:12px}
-ul#menu li a:link{color:white; font-style:bold;font-size:12px}
-ul#menu li a:visited{color:white; font-style:bold;font-size:12px}
-ul#menu li:hover{background:#DDD}
-ul#menu li:hover a{color:black; font-style:bold;font-size:12px;}
+ul#menu li {display:inline;}
+ul#menu li a{color:white; font-style:bold;font-size:12px;padding:8px 6px}
+ul#menu li a:hover{background:#48484A;}
 
 #divLogin{float:right;text-align:left;}
 
@@ -125,7 +122,8 @@ ul#menu li:hover a{color:black; font-style:bold;font-size:12px;}
 #divLogin a:hover{text-decoration:underline; color:#7DBA06;}
 
 
-#content {margin:0 auto ;width:1000px;height:100%;background:#EEE;border:2px solid #DDD;}
+#content {margin:0 auto ;width:1000px;height:100%;}
+#content #inner{background:#EEE;padding:5px 10px;margin-top:55px;}
 
 #loading {height: 500px;display: none;position: fixed;margin-top: 250px; margin-left: 600px; z-index: 40; background-color: transparent;}
 
@@ -136,7 +134,7 @@ h2{margin :2px}
 #header {
 background: #333333;
   height:38px; color:white;position:fixed;top:0px;left:0px;width:100%;z-index:990;}
- #innerHeader{z-index:999;position:fixed;margin:0;width:1000px}
+ #innerHeader{z-index:999;position:fixed;margin:0;width:1000px;top:0;}
 
 #wrap{margin:0px;
 background: transparent;
@@ -185,7 +183,7 @@ padding:5px; margin-top:5px;pointer:click;font-size: 11px;color: #000 !important
 
 .column1 {width:450px;margin:0 10px 0 0;min-width:450px;min-height:200px}
 .column2 {width:330px;}
-.column3 {width:500px;}
+.column3 {width:520px;}
 
 /*
 ul.tree, ul.tree ul { list-style-type: none; background: url(<%= asset_path "vline.png" %>) repeat-y; margin: 0; padding: 0; }
@@ -199,7 +197,7 @@ ul.tree li { margin: 0; padding:0 0 0 10px; line-height: 20px; color: #369; font
 
 
 #fixedTags {display:none;background: #FFF ; height:auto; color:#995833;position:fixed;top:35px;left:200px;width:200px;padding:10px;border:1px dotted #E81F1F;z-index:999;}
-.tags{margin:2px 2px 0 2px;padding:3px;color:green;}
+.tags{margin:2px 2px 0 2px;padding:3px;color:green;cursor:pointer}
 .tagChecked{background:#336699;color:white;}
 
 #divCollapse{
