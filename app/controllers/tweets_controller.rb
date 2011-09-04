@@ -3,20 +3,18 @@ class TweetsController < ApplicationController
 def archive
       @date=Integer(params[:time])
           nextdate=@date+86400000
-           @alphaCelebs=Celeb.order_by([[:name]])
             @id=params[:id]
-@tags=Celeb.alltags
    unless params[:name].nil?
        @celeb = Celeb.first(conditions: {screenName: params[:name]})
-     @tweets=@celeb.tweets.order_by([[:time,:desc]]).where(:time => { "$lt" => nextdate, "$gte" => @date })
+     @tweets=@celeb.tweets.order_by([[:time,:desc]]).where(:time => { "$lt" => nextdate, "$gte" => @date }).only(:id,:time,:text,:celeb_id)
   else
-  @tweets=Tweet.order_by([[:time,:desc]]).where(:time => { "$lt" => nextdate, "$gte" => @date })
+  @tweets=Tweet.order_by([[:time,:desc]]).where(:time => { "$lt" => nextdate, "$gte" => @date }).only(:id,:time,:text,:celeb_id)
 end
 end
 
  def feed
 #  @tweets=Tweet.paginate({:order => :time.desc,:per_page => 15 , :page => Integer(params[:page])})
- @tweets=Tweet.order_by([[:time,:desc]]).limit(15).where(:time.lt =>Integer(params[:time]) )
+ @tweets=Tweet.order_by([[:time,:desc]]).limit(15).where(:time.lt =>Integer(params[:time]) ).only(:id,:time,:text,:celeb_id)
 respond_to do |format|
 format.html {   render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_tweets_path(:time => @tweets.to_a.last.time) } }#_list.html.erb
 format.json{render json: @tweets}
@@ -35,11 +33,11 @@ end
 def latest
    unless params[:id].nil?
      celeb = Celeb.find(Integer(params[:id]))
-     @tweets=celeb.tweets.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).limit(15)
-    @fantweets=FanTweet.order_by([[:time,:desc]]).where(:reply_to => celeb.screenName,:time.gt =>Integer(params[:time])).limit(15)
+     @tweets=celeb.tweets.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).only(:id,:time,:text,:celeb_id).limit(15)
+    @fantweets=FanTweet.order_by([[:time,:desc]]).where(:reply_to => celeb.screenName,:time.gt =>Integer(params[:time])).only(:id,:time,:text,:fan_id,:name,:screenName,:profileImgUrl).limit(15)
   else
-  @tweets=Tweet.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).limit(15)
-  @fantweets=FanTweet.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).limit(15)
+  @tweets=Tweet.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).only(:id,:time,:text,:celeb_id).limit(15)
+  @fantweets=FanTweet.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).only(:id,:time,:text,:fan_id,:name,:screenName,:profileImgUrl).limit(15)
 end
   unless @tweets.nil? || @tweets.empty?
   celebs= render_to_string :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets,:url => nil }

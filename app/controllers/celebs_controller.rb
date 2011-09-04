@@ -17,8 +17,8 @@ def profile
 #          @alphaCelebs=Celeb.order_by([[:name]])
 #   @tags=Celeb.alltags
     @date = 0.days.ago.beginning_of_day.to_i * 1000
-    @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15)
-    @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(15) 
+    @tweets=@celeb.tweets.order_by([[:time,:desc]]).only(:id,:time,:text,:celeb_id).limit(15)
+    @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).only(:id,:time,:text,:fan_id,:name,:screenName,:profileImgUrl).limit(15) 
     images=Photo.where(:screenName => @celeb.screenName).order_by([[:time,:desc]]).limit(30)
     @imageStr=Array.new
   unless images.empty?
@@ -48,7 +48,7 @@ end
   end
  def feed
    @celeb = Celeb.find(Integer(params[:id]))
-    @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15).where(:time.lt =>Integer(params[:time]) )
+    @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15).where(:time.lt =>Integer(params[:time]) ).only(:id,:time,:text,:celeb_id)
   
 respond_to do |format|
 format.html {   render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_celebs_path(:time => @tweets.to_a.last.time) } }#_list.html.erb
