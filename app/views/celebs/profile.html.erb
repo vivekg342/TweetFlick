@@ -19,6 +19,8 @@
 <%unless @celeb.description.empty? %>
 <b>Description</b> <br />
 <p><%= @celeb.description %></p>
+<%else %>
+<br /> <br />
 <%end%>
 <%= render :partial => 'shared/social' %>
 </div>
