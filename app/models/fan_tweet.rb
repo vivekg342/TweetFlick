@@ -18,7 +18,7 @@ def link_twitter_user
   if matches = @txt.scan(/.*?(@)((?:[a-z][a-z]+))(:|\s)/i)
     matches.each do |match|
     user = match[1]
-    @txt.gsub!(user, '<a href="http://twitter.com/' + user + '">' + user + '</a>')
+    @txt.gsub!(user, '<a target="_blank" href="http://twitter.com/' + user + '">' + user + '</a>')
     end
 		
 	end
