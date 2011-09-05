@@ -1,9 +1,8 @@
   <%= javascript_include_tag "interact" %>
 
 <h3>Celeb - Celeb Interactions </h3>
-  <%=  render :partial => "tweets/list" %>
 <%  @celebdiscs.each do |disc|%>
-<div class="column3" style="border:1px dotted green">
+<div style="border:1px dotted #DDD;padding:5px;margin:5px 0">
 <div class="left" style="margin-left: 10px;">
     <div class="left">
        <a href="<%= url_for :controller =>"celebs", :action => "profile", :name => disc.atweet.celeb.screenName %>"><img width="32"     height="32" src="<%= disc.atweet.celeb.profileImgUrl %>" alt=""/></a>

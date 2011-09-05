@@ -39,7 +39,6 @@ $('#noteImage').show();
         itemLoadCallback: {onBeforeAnimation: mycarousel_itemLoadCallback}
     });
   }
-    $("#divLeft").tinyscrollbar();
 
 
     function mycarousel_itemLoadCallback(carousel, state) {
@@ -54,6 +53,7 @@ $('#noteImage').show();
 
             carousel.add(i, images[i - 1]);
         }
+        showDate();
     }
 
     window.setInterval(autoUpdate, 60000);

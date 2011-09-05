@@ -102,7 +102,7 @@ ticks.push(unescape(str));
 var vertTabs=$("#vertTabs").tabs({fx: { opacity: "toggle"}
                                    })
                             .addClass('ui-tabs-vertical ui-helper-clearfix')
-                           .tabs("rotate", 2000, false);
+                           .tabs("rotate", 3000, false);
                $("#vertTabs").removeClass('ui-corner-top').removeClass('ui-widget-content ui-widget').addClass('ui-corner-left');
 
 

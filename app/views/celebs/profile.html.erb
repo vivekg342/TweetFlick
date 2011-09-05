@@ -17,11 +17,12 @@
 <div class="pf_description ui-corner-all">
 <%=raw @celeb.twitterlink %> 
 <%unless @celeb.description.empty? %>
-<b>Description</b> <br />
-<p><%= @celeb.description %></p>
+<b>Description</b> <br /><br />
+<p><%= @celeb.description %></p><br />
 <%else %>
 <br /> <br />
 <%end%>
+
 <%= render :partial => 'shared/social' %>
 </div>
 

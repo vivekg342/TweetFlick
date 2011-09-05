@@ -39,7 +39,8 @@ keyf = <<KEYF
 var weekday=new Array("Sun","Mon","Tue","Wed","Thu",
                 "Fri","Sat")
 
-                a=new Date(doc.time+475200);
+              //  a=new Date(doc.time+475200);
+                a=new Date(doc.time);
                 a.setHours(0);
                 a.setMinutes(0);
                 a.setSeconds(0);
@@ -48,7 +49,7 @@ return {"day" : weekday[a.getDay()],"epoch":a.getTime()  }
 
  }
 KEYF
-sixdays = 4.days.ago.beginning_of_day.to_i * 1000
+sixdays = 6.days.ago.to_i * 1000
 #sixdays = 6.days.ago.to_i * 1000
 cond = {:time => {'$gte' => sixdays }}
 reduce = <<REDUCE
