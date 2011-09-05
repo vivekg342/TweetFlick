@@ -1,0 +1,20 @@
+<div style="background:white;padding:2px 5px;margin:10px 0" class="ur-corner-all">
+<div  style="padding:0 10px;">
+       <a class="left" href="<%= url_for :controller =>"celebs", :action => "profile", :name => disc.atweet.celeb.screenName %>"><img width="32" height="32" src="<%= disc.atweet.celeb.profileImgUrl %>" alt=""/></a> 
+    <a class="right" href="<%= url_for :controller =>"celebs", :action => "profile", :name => disc.btweet.celeb.screenName %>"><img width="32" height="32" src="<%= disc.btweet.celeb.profileImgUrl %>" alt=""/></a> 
+<div class="clr">
+</div>
+
+</div>
+<div  style="padding:0 5px;">    
+  <a class="left" href="<%= url_for :controller =>"celebs", :action => "profile", :name => disc.btweet.celeb.screenName %>">
+    <%= disc.btweet.celeb.name %>
+  </a>
+  <a class="right" href="<%= url_for :controller =>"celebs", :action => "profile", :name => disc.atweet.celeb.screenName %>">
+    <%= disc.atweet.celeb.name %>
+  </a>
+<div class="clr">
+</div>
+
+</div>
+</div>

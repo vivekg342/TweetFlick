@@ -79,9 +79,7 @@ No tweets on this date.
            
           </ul>
           
-          </div> <br />            
-<span id="noteImage" style="color:#000;font-weight:bold;display:none"> Say something about <%=@celeb.name %> : <br /></span> 
-<%=  render :partial => "shared/fb" %>
+          </div>
   <div class="left column2">
     
     <div>
@@ -100,7 +98,9 @@ No tweets on this date.
        <%= render :partial => "shared/googleadsense" %>
     </div>
   <div class="clr"></div>
-  
+   <br />            
+<span id="noteImage" style="color:#000;font-weight:bold;display:none"> Say something about <%=@celeb.name %> : <br /></span> 
+<%=  render :partial => "shared/fb" %>
 </div>
   <div class="clr"></div>
 </div>
