@@ -18,7 +18,7 @@ def profile
 #   @tags=Celeb.alltags
     @date = 0.days.ago.beginning_of_day.to_i * 1000
     @tweets=@celeb.tweets.order_by([[:time,:desc]]).only(:id,:time,:text,:celeb_id).limit(15)
-    @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).only(:id,:time,:text,:fan_id,:name,:screenName,:profileImgUrl).limit(15) 
+    @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).only(:id,:time,:text,:fan_id,:name,:screenName,:reply_to,:profileImgUrl).limit(15) 
     images=Photo.where(:screenName => @celeb.screenName).order_by([[:time,:desc]]).limit(30)
     @imageStr=Array.new
   unless images.empty?

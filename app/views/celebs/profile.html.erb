@@ -50,12 +50,12 @@
       
       </div> <br />
  <div "padding:3px">
-Followers : <span style="color:blue"><%= @celeb.followers %> </span>  &nbsp;&nbsp;
-Friends :<span style="color:blue"><%= @celeb.friends %> </span>    &nbsp;&nbsp;
-Statuses : <span style="color:blue"><%= @celeb.statuses %> </span>   &nbsp;&nbsp;
+<span style="color:#2F7A26;">Followers : </span> <%= @celeb.followers %> &nbsp;&nbsp;
+<span style="color:#2F7A26;">Friends : </span><%= @celeb.friends %>    &nbsp;&nbsp;
+<span style="color:#2F7A26;">Statuses : </span><%= @celeb.statuses %>    &nbsp;&nbsp;
     </div><br /><br />
-<div> <span style="color:red"><%=@celeb.tweets.today %></span> - tweets today !  &nbsp;&nbsp;    
-<span style="color:red"> <%= FanTweet.todayby(@celeb.screenName) %></span>  mentions today !
+<div> <span style="color:#2F7A26;"><%=@celeb.tweets.today %></span> - tweets today !  &nbsp;&nbsp;    
+<span style="color:#2F7A26;"> <%= FanTweet.todayby(@celeb.screenName) %></span>  mentions today !
 </div>
     <div class="clr"></div>
       </div>

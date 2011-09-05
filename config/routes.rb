@@ -13,7 +13,7 @@ get "home/about"
 #Sitemap
 match "/sitemap" => "sitemap#index"
 #Interactions
-match '/interact' => "interact#index", :as => 'interact'
+#match '/interact' => "interact#index", :as => 'interact'
 #Profile page
 match "/:name" => "celebs#profile", :as => 'profile'
 

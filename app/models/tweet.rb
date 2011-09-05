@@ -16,7 +16,7 @@ def self.today
 end
 def link_twitter_user
   @txt= self.text
-  if matches = @txt.scan(/.*?(@)((?:[a-z][a-z]+))(:|\s)/i)
+  if matches = @txt.scan(/.*?(@)((?:[a-z0-9_][a-z0-9_]+))(:|\s)/i)
     matches.each do |match|
     user = match[1]
     @txt.gsub!(user, '<a target="_blank" href="http://twitter.com/' + user + '">' + user + '</a>')

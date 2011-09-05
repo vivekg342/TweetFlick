@@ -1,8 +1,8 @@
 class FanTweet
   include Mongoid::Document
 
-  field :reply_to,type: String
-  field :time,type: Integer
+  field :reply_to , type: String
+  field :time , type: Integer
   def self.today
      # today = 1.days.ago.to_i * 1000
     today = 0.days.ago.beginning_of_day.to_i * 1000
@@ -15,11 +15,15 @@ end
 end
 def link_twitter_user
   @txt= self.text
-  if matches = @txt.scan(/.*?(@)((?:[a-z][a-z]+))(:|\s)/i)
+  if matches = @txt.scan(/.*?(@)((?:[a-z0-9_][a-z0-9_]+))(:|\s)/i)
     matches.each do |match|
     user = match[1]
+    if (!user.nil?  and user == self.reply_to )
+    @txt.gsub!(user, '<a href="http://tweetflick.in/' + user + '">' + user + '</a>')      
+    else
     @txt.gsub!(user, '<a target="_blank" href="http://twitter.com/' + user + '">' + user + '</a>')
     end
+  end
 		
 	end
 	@txt

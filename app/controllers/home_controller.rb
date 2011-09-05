@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
  #@alphaCelebs=Celeb.order_by([[:name]])
     @tweets=Tweet.order_by([[:time,:desc]]).only(:id,:time,:text,:celeb_id).limit(15)
-        @fantweets=FanTweet.order_by([[:time,:desc]]).only(:id,:time,:text,:fan_id,:name,:screenName,:profileImgUrl).limit(15)
+        @fantweets=FanTweet.order_by([[:time,:desc]]).only(:id,:time,:text,:fan_id,:reply_to,:name,:screenName,:profileImgUrl).limit(15)
 @followCelebs=Celeb.order_by([[:followers,:desc]]).only(:name,:screenName,:profileImgUrl,:followers).limit(5)
 images=Photo.order_by([[:time,:desc]]).limit(30)
 @imageStr=Array.new
