@@ -34,10 +34,10 @@ def latest
    unless params[:id].nil?
      celeb = Celeb.find(Integer(params[:id]))
      @tweets=celeb.tweets.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).only(:id,:time,:text,:celeb_id).limit(15)
-    @fantweets=FanTweet.order_by([[:time,:desc]]).where(:reply_to => celeb.screenName,:time.gt =>Integer(params[:time])).only(:id,:time,:text,:fan_id,:name,:screenName,:reply_to,:profileImgUrl).limit(15)
+    @fantweets=FanTweet.order_by([[:time,:desc]]).where(:reply_to => celeb.screenName,:time.gt =>Integer(params[:time])).only(:id,:time,:text,:fan_id,:name,:screenName,:reply_to,:profileImgUrl).limit(5)
   else
   @tweets=Tweet.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).only(:id,:time,:text,:celeb_id).limit(15)
-  @fantweets=FanTweet.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).only(:id,:time,:text,:fan_id,:name,:screenName,:profileImgUrl).limit(15)
+  @fantweets=FanTweet.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).only(:id,:time,:text,:fan_id,:name,:screenName,:profileImgUrl).limit(5)
 end
   unless @tweets.nil? || @tweets.empty?
   celebs= render_to_string :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets,:url => nil }
