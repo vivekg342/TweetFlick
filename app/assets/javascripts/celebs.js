@@ -5,7 +5,7 @@ function fanCarousel(){
 selectedDiv.find('.divScrollable').jcarousel({
     vertical: true,
     start: 9,
-	auto: 2,
+	auto: 3,
         scroll: 1,
         itemFallbackDimension:75
   });
