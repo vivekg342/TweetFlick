@@ -90,12 +90,14 @@ width:180px;
 .hideMessage{position:relative;*position:static; float:right;}
 
 body{padding:0px;margin:0 2px;font-size:12px;color:#000;
-background: #2B3E42;font-family:"Lucida Grande", "Lucida Sans Unicode", "Tahoma"
+/*background: #2B3E42;*/
+background: url(<%= asset_path "gloss.jpg" %>);
+font-family:"Lucida Grande", "Lucida Sans Unicode", "Tahoma"
 }
 #logo{float:left; margin:5px 0 0 10px;}
-#logo a{color:white; text-decoration:none;cursor:pointer}
-#logo a:link{color:white; text-decoration:none;cursor:pointer}
-#logo a:visited{color:white; text-decoration:none;cursor:pointer}
+#logo a{color:black; text-decoration:none;cursor:pointer;font-size:20px}
+#logo a:link{color:black; text-decoration:none;cursor:pointer}
+#logo a:visited{color:black; text-decoration:none;cursor:pointer}
 
 #divSearch{margin:5px 40px 0 40px; float:left;width:300px;}
 #divSearch #searchResults{
@@ -128,10 +130,10 @@ color:#FFFFFF;
 }
 .listCeleb{border 1px #DDD;margin:15px 50px 15px 60px ;width:200px}
 
-ul#menu{ list-style:none;margin-left:20px;color:white;float:left;} 
+ul#menu{ list-style:none;margin-left:20px;color:black;float:left;} 
 ul#menu li {display:inline;}
-ul#menu li a{color:white; font-style:bold;font-size:12px;padding:8px 6px}
-ul#menu li a:hover{background:#2B3E42;color:#95CBE9}
+ul#menu li a{color:black; font-style:bold;font-size:13px;padding:8px 6px}
+ul#menu li a:hover{background:#BBBABA;color:#369}
 
 #divLogin{float:right;text-align:left;}
 
@@ -141,7 +143,7 @@ ul#menu li a:hover{background:#2B3E42;color:#95CBE9}
 
 
 #content {margin:0 auto ;width:1000px;height:100%;}
-#content #inner{background:#EEE;padding:5px 10px;margin-top:5px;}
+#content #inner{background:#EEE;padding:5px 10px;}
 
 #loading {height: 500px;display: none;position: fixed;margin-top: 250px; margin-left: 600px; z-index: 40; background-color: transparent;}
 
@@ -150,7 +152,7 @@ ul#menu li a:hover{background:#2B3E42;color:#95CBE9}
 
 h2{margin :2px}
 #header {
-background: #1b2b31;
+/*background: #1b2b31;*/
   height:38px; color:white;top:0px;left:0px;width:100%;z-index:990;}
  #innerHeader{z-index:999;position:absolute;margin:0;width:1000px;top:0;}
 
