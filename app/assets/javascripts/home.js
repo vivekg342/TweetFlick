@@ -188,7 +188,8 @@ for (var i = 1; i <= liFans.size(); i++) {
             carousel.add(i, liFans[i - 1]);
         }
 size= li.size()+liFans.size();
-carousel.options.size =(size> 50) ? 50 : size;
+if(size>50)size=50;
+carousel.options.size =size;
 carousel.setup();
 carousel.scroll(pos+carousel.first,false);
 }
