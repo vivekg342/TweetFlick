@@ -31,6 +31,7 @@ format.json{render json: @tweets}
 end
 end
 def latest
+  debugger
    unless params[:id].nil?
      celeb = Celeb.find(Integer(params[:id]))
      @tweets=celeb.tweets.order_by([[:time,:desc]]).where(:time.gt =>Integer(params[:time])).only(:id,:time,:text,:celeb_id).limit(15)

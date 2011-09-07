@@ -14,6 +14,7 @@ selectedDiv.find('.divScrollable').jcarousel({
     start: 9,
 	auto: 3,
         scroll: 1,
+	size:50,
         itemFallbackDimension:75
   });
 var carousel=selectedDiv.find('.divScrollable').data('jcarousel');
@@ -190,7 +191,6 @@ for (var i = 1; i <= liFans.size(); i++) {
 size= li.size()+liFans.size();
 if(size>50)size=50;
 carousel.options.size =size;
-carousel.setup();
 carousel.scroll(pos+carousel.first,false);
 }
 
