@@ -425,7 +425,6 @@
 
             return e;
         },
-
         /**
          * Removes an element for the given index from the list.
          *

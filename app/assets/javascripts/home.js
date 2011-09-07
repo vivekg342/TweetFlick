@@ -12,7 +12,7 @@ function fanCarousel(){
 selectedDiv.find('.divScrollable').jcarousel({
     vertical: true,
     start: 9,
-	auto: 2,
+	auto: 1,
         scroll: 1,
         itemFallbackDimension:75
   });
@@ -152,7 +152,7 @@ showDate();
 );
 
 }
-
+var tempdiv='';
 function updateClient(data){
  selectedDiv.find('.hdnLtstTime').val(data.time);
 celebs=data.celebs;
@@ -167,15 +167,29 @@ if(celebs){
 var carousel = divScroll.data('jcarousel');
 if(fans){
 tempdiv=$('<div style="display:none"></div>').html(fans);
-pos=tempdiv.find('li').size()+carousel.first;
-//tempdiv.find('li').each(function (index) {
-//carousel.add(0, $(this).html());
-//$('.divScrollable li:first').addClass('divFan divTweet ui-corner-all');
-//});
-//tempdiv.remove();
-divScroll.prepend(fans);
-carousel.reload();
-carousel.scroll(pos,true);
+pos=tempdiv.find('li').size();
+
+var li = carousel.list.children('li');
+
+        if (li.size() > 0) {
+		wh = 0, j =pos+1;
+		divScroll.find('li').each(function() {
+                carousel.format(this, j++);
+           	 });
+        }
+liFans=tempdiv.find('li');
+for (var i = 1; i <= liFans.size(); i++) {
+            if (carousel.has(i)) {
+                continue;
+            }
+
+         
+
+            carousel.add(i, liFans[i - 1]);
+        }
+carousel.options.size = li.size()+liFans.size();;
+carousel.setup();
+carousel.scroll(pos+carousel.first,false);
 }
 
 }

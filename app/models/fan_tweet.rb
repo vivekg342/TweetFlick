@@ -14,6 +14,7 @@ end
       where(:reply_to => name, :time.gte => today).count
 end
 def link_twitter_user
+
   @txt= self.text
   if matches = @txt.scan(/.*?(@)((?:[a-z0-9_][a-z0-9_]+))(:|\s)/i)
     matches.each do |match|

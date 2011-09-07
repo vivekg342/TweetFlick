@@ -1,4 +1,7 @@
+
+<% if Rails.env.production? %>
 <div style="margin-top:10px">
 
 <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:comments href="http://www.tweetflick.in/" num_posts="5" width="450"></fb:comments>
 </div>
+<%end%>

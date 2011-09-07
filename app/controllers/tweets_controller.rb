@@ -45,7 +45,6 @@ end
 unless @fantweets.nil?
   fans=render_to_string :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets }
 end
-  
   respond_to do |format|
 format.json{render json: {:celebs => celebs,:fans => fans,:time => Time.now.to_i * 1000 }}
 end
