@@ -15,6 +15,7 @@ match "/sitemap" => "sitemap#index"
 #Interactions
 #match '/interact' => "interact#index", :as => 'interact'
 #Profile page
+match "link/:name" => "celebs#link", :as => 'link'
 match "/:name" => "celebs#profile", :as => 'profile'
 
 
@@ -36,7 +37,6 @@ post 'reply/:id',:action=>'reply',:as => 'reply'
   end
   resources :celebs,:only => [:show] do
   collection do
-get 'top/:count',:action=>'top'
 get 'search/:name',:action=>'search',:as => 'search'
 get 'list', :action => 'list', :as => 'list'
 get 'feed/:id/:time',:action=>'feed',:as => 'feed'
