@@ -19,7 +19,7 @@ def link
     unless @celeb.nil?
       redirect_to profile_path(:name => @celeb.screenName)
     else
-      redirect_to 'http://twitter.com/#{params[:name]}'
+      redirect_to 'http://twitter.com/'+params[:name]
     end
 rescue Exception => e
   redirect_to root_url
