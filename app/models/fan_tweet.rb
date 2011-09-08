@@ -20,7 +20,7 @@ def link_twitter_user
     matches.each do |match|
     user = match[1]
 
-    @txt.gsub!(user, '<a target="_blank" href="http://tweetflick.in/link/' + user + '">' + user + '</a>')      
+    @txt.gsub!(user, '<a  href="http://tweetflick.in/link/' + user + '">' + user + '</a>')      
 
 
   end
