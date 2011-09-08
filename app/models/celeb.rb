@@ -23,7 +23,7 @@ def meta_description
 end
 def large
 #self.profileImgUrl.gsub!(/_([a-z0-9-]+).(png|gif|jpg|jpeg|JPG|JPEG|GIF|PNG)/, '.\2')
-self.profileImgUrl.gsub!(/_normal\.(?=png|gif|jpg|jpeg|bmp|JPG|JPEG|GIF|PNG|BMP +\z)/,'.\2')
+self.profileImgUrl.gsub!(/_normal\.(?=png|gif|jpg|jpeg|tiff|TIFF|bmp|JPG|JPEG|GIF|PNG|BMP +\z)/,'.\2')
 
 
 end
