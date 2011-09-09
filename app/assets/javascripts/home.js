@@ -64,6 +64,7 @@ var  images= $.parseJSON($('#hdnImages').val());
       selectedDiv.find('.ulGallery').jcarousel({
         scroll: 1,
          size:images.length,
+//    vertical: true,
         itemLoadCallback: {onBeforeAnimation: mycarousel_itemLoadCallback}
     });
     

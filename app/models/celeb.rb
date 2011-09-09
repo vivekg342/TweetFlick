@@ -24,8 +24,10 @@ end
 def large
 #self.profileImgUrl.gsub!(/_([a-z0-9-]+).(png|gif|jpg|jpeg|JPG|JPEG|GIF|PNG)/, '.\2')
 self.profileImgUrl.gsub!(/_normal\.(?=png|gif|jpg|jpeg|tiff|TIFF|bmp|JPG|JPEG|GIF|PNG|BMP +\z)/,'.\2')
-
-
+end
+def bigger
+#self.profileImgUrl.gsub!(/_([a-z0-9-]+).(png|gif|jpg|jpeg|JPG|JPEG|GIF|PNG)/, '.\2')
+self.profileImgUrl.gsub!(/_normal\.(?=png|gif|jpg|jpeg|tiff|TIFF|bmp|JPG|JPEG|GIF|PNG|BMP +\z)/,'_bigger.\2')
 end
 def self.random
        # Grabs a random entry from the MongoDB Entry.
