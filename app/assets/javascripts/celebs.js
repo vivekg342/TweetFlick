@@ -86,7 +86,8 @@ if(celebs){
   tempdiv.prependTo(selectedDiv.find('.column1'));
   tempdiv.fadeIn(3000);
 }
-
+ divScroll=selectedDiv.find('.divScrollable');
+var carousel = divScroll.data('jcarousel');
 if(fans){
 tempdiv=$('<div style="display:none"></div>').html(fans);
 pos=tempdiv.find('li').size();
