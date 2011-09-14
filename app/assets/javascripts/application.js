@@ -23,7 +23,7 @@ keychar = String.fromCharCode(key);
 keychar = keychar.toLowerCase();
 
 // alphas and numbers
- if ((("abcdefghijklmnopqrstuvwxyz0123456789").indexOf(keychar) > -1))
+ if ((("abcdefghijklmnopqrstuvwxyz0123456789").indexOf(keychar) > -1) || keychar === 8 || keychar === 46)
 refreshSearch();
 
 
