@@ -17,7 +17,10 @@
   <%= render :partial => "shared/googleadsense" %>
 </div>
 <div id="divFeed">
-<b style="float:left">Recent Tweets:</b> 
+<table><tr>
+<td class="column1"><b style="float:left">Recent Tweets:</b> </td>
+<td><b style="margin-left:10px;float:left">Recent Images:</b> </td>
+</tr></table>
   <div class="clr left column1">
 <%unless @tweets.empty? %>
   <%=  render :partial => "celebs/feed", :locals =>{ :tweets =>  @tweets ,:url=> feed_tweets_path(:time => @tweets.to_a.last.time) } %>
@@ -29,7 +32,6 @@ No tweets on this date.
 </div>
 <div class="left column3">
   <div>
-<b>Recent images :</b> <br />
   <input id="hdnImages" type="hidden" value="<%=  @imageStr.to_json %>" />
   <ul class="ulGallery jcarousel-skin-tango">
 

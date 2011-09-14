@@ -100,12 +100,13 @@ ticks.push(unescape(str));
         pointLabels: { show:true }
       }
 });
-
-var vertTabs=$("#vertTabs").tabs({fx: { opacity: "toggle"}
-                                   })
-                            .addClass('ui-tabs-vertical ui-helper-clearfix')
-                           .tabs("rotate", 3000, false);
-               $("#vertTabs").removeClass('ui-corner-top').removeClass('ui-widget-content ui-widget').addClass('ui-corner-left');
+$('#divCycle').cycle({
+pause:true,
+ sync:0,
+height:'165px',
+prev:   '#prev', 
+    next:   '#next'
+});
 
 
 

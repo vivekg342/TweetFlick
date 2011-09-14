@@ -10,4 +10,8 @@ end
 def ogtitle(otitle)
     content_for(:ogtitle, otitle.to_s)
 end
+
+def bigger(image)
+image.gsub!(/_normal\.(?=png|gif|jpg|jpeg|tiff|TIFF|bmp|JPG|JPEG|GIF|PNG|BMP +\z)/,'_bigger.\2')  
+end
 end

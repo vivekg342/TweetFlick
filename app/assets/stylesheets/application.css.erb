@@ -4,7 +4,7 @@ a:link,a:visited{text-decoration:none;color:#336699;}
   border: none;
 }
 
-#vertTabs{}
+#vertTabs{width:675px}
 /**vertical tabs  */
 .ui-tabs-vertical {}
 .ui-tabs-vertical .ui-tabs-nav {  float: left;margin-top:8px; }
@@ -17,8 +17,8 @@ a:link,a:visited{text-decoration:none;color:#336699;}
 .ui-tabs-vertical .ui-state-default{background:transparent !important;}
 .ui-tabs-vertical .ui-state-active{background:transparent !important;}
 .ui-tabs-vertical .ui-state-active a{color:#000 !important;font-weight:bold;}
-.verticaltab { padding: 10px 0px !important;}
-.verticaltab a {font-size:13px; }
+.verticaltab { }
+.verticaltab a {}
 
 /*About*/
 div#about{width:90%;margin:40px auto;border:1px solid #ddd;}
@@ -64,10 +64,11 @@ width: 150px;
 #previewBlock{float:left;padding:2px;color: #000}
 #previewBlock table{padding:0px}
 #previewBlock table tr{padding:0px;margin:0px}
-#divDashBoard{margin:10px; paddinng:5px;}
-.dash{ color:#000;background:#F9F9F9 !important;  height:210px;margin:0;}
+#divDashBoard{margin:10px 0; paddinng:5px;}
+.dash{ color:#000;margin:0;padding:5px 0;border:1px solid #ddd;width:100%;}
  .dash .dashBody{ margin-top :12px}
-
+.dash .mright{ margin:0 6px;min-width:122px;}
+#divFeatured .dashBody{margin:0 auto;width:400px; }
 #divMessage
 {
     background-color:  #333333;
@@ -90,12 +91,12 @@ body{padding:0px;margin:0 2px;font-size:12px;color:#000;
 background: url(<%= asset_path "gloss.jpg" %>);
 font-family:"Lucida Grande", "Lucida Sans Unicode", "Tahoma"
 }
-#logo{float:left; margin:5px 0 0 10px;}
+#logo{float:left; margin:5px 0 0 -30px;position:relative;}
 #logo a{color:black; text-decoration:none;cursor:pointer;font-size:20px}
 #logo a:link{color:black; text-decoration:none;cursor:pointer}
 #logo a:visited{color:black; text-decoration:none;cursor:pointer}
 
-#divSearch{margin:5px 40px 0 40px; float:left;width:300px;}
+#divSearch{margin:5px 0px 0 40px; float:left;width:300px;}
 #divSearch #searchResults{
 display:none;
 float:right; margin:0 2px;
@@ -138,7 +139,7 @@ ul#menu li a:hover{background:#BBBABA;color:#369}
 #divLogin a:hover{text-decoration:underline; color:#7DBA06;}
 
 
-#content {margin:0 auto ;width:1000px;height:100%;}
+#content {margin:0 auto ;width:1030px;height:100%;padding-left:30px}
 #content #inner{background:#EEE;padding:5px 10px;}
 
 #loading {height: 500px;display: none;position: fixed;margin-top: 250px; margin-left: 600px; z-index: 40; background-color: transparent;}
@@ -255,7 +256,7 @@ z-index:900;
 
 span.epoch{display:none;}
 
-.gadsense{position:absolute;top:300px;right:2px;;}
+.gadsense{position:absolute;top:200px;right:2px;;}
 
 
 .archive {margin:2px;background:#FBF7F7; padding:10px;}
