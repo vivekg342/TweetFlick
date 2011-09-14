@@ -9,7 +9,7 @@ images=Photo.order_by([[:time,:desc]]).limit(30)
 @imageStr=Array.new
 images.each do |image|
 urlstr=  url_for :controller =>"celebs", :action => "profile", :name => image.screenName
-@imageStr <<  "<li style=\"overflow:hidden\"><a target=\"_blank\" href=\"#{urlstr}\"><span style=\"white-space:nowrap\">#{image.name}</span></a><a target=\"_blank\" href=\"#{image.url}\"><img width=\"100\" height=\"75\" src=\"#{image.small}\"/></a><div class=\"divTime\"><span class=\"epoch\">#{image.time}</span><span class=\"ltime\">#{image.time}</span></div></li>"
+@imageStr <<  "<li style=\"overflow:hidden\"><a target=\"_blank\" href=\"#{urlstr}\"><span style=\"white-space:nowrap\">#{image.name}</span></a><a target=\"_blank\" href=\"#{image.url}\"><img width=\"84\" height=\"60\" src=\"#{image.small}\"/></a><div class=\"divTime\"><span class=\"epoch\">#{image.time}</span><span class=\"ltime\">#{image.time}</span></div></li>"
 end
 @mentionCelebs=Celeb.mostmentionedtoday
 @talkCelebs=Celeb.mosttweetstoday
