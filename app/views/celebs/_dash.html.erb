@@ -7,7 +7,7 @@
 
   <div id="divFeatured" class="dash ui-corner-all">
                 <div class="dashBody">
-    <a class="left" href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>"><img width="130" height="145"  src="<%= bigger(@featured.profileImgUrl) %>" alt=""/></a>
+    <a class="left" href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>"><img width="130" height="145"  src="<%= @featured.large %>" alt=""/></a>
 <div style="margin-left : 200px"><b>Featured celeb of the day- </b> <br /><br /><br />
    <a style="font-size:20px" href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>">
     <%= @featured.name %>
