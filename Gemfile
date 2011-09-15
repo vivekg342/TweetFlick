@@ -3,7 +3,7 @@ require 'rubygems'
 #require 'mongo'
 source 'http://gemcutter.org'
 
-gem 'rails', '3.1.0.rc5'
+gem 'rails', '3.1.0.rc8'
 gem 'jquery-rails', '>= 1.0.12'
 #gem "mongo_mapper"
 gem "mongoid"
