@@ -48,11 +48,10 @@ No tweets on this date.
 </ul>
       <% end %>
 </div>
-
+<%=  render :partial => "shared/fb" %>
 
 
 </div>
-<%=  render :partial => "shared/fb" %>
 <input class="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />
 </div>
 <div class="clr"></div>
