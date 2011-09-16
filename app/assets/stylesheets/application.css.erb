@@ -5,21 +5,52 @@ a:link,a:visited{text-decoration:none;color:#336699;}
 }
 
 #vertTabs{width:675px}
-/**vertical tabs  */
-.ui-tabs-vertical {}
-.ui-tabs-vertical .ui-tabs-nav {  float: left;margin-top:8px; }
-.ui-tabs-vertical .ui-widget-header{border:none;background:none;}
-.ui-tabs-vertical .ui-widget-content{background:none;}
-.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-bottom:1px dotted green !important ;border-right-width: 0 !important; margin: 0 -1px .2em 0; }
-.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
-.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-selected { padding-bottom: 0; border-right-width: 1px; border-right-width: 1px; }
-.ui-tabs-vertical .ui-tabs-panel { padding: 1em; float: right;margin-right:5px; }
-.ui-tabs-vertical .ui-state-default{background:transparent !important;}
-.ui-tabs-vertical .ui-state-active{background:transparent !important;}
-.ui-tabs-vertical .ui-state-active a{color:#000 !important;font-weight:bold;}
-.verticaltab { }
-.verticaltab a {}
-
+.TranslucentBackgroundForPopUp
+{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: Black;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    z-index: 1200;
+    height: 100%;
+    width: 100%;
+}
+#dialog-tweet{
+width:510px;height:130px; position: fixed;
+padding:10px;
+z-index: 1400;
+top: 50%;
+  left: 50%;
+  margin-top: -65px;
+  margin-left: -255px;
+background:#E2E0E3;
+border:1px solid #ddd;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+#dialog-tweet textarea{
+width: 505px;
+height: 55px;
+margin:0px;
+}
+#dialog-tweet label{
+float: left;
+color: #333;
+font-size: 20px;
+font-weight: normal;
+line-height: 1.1;
+margin: 3px 45px 5px 0;
+}
+#dialog-tweet  span{
+padding: 2px 15px 3px;
+background-position: 0 -200px;
+cursor: pointer;
+display: inline-block;
+font-size:15px;
+}
 /*About*/
 div#about{width:90%;margin:40px auto;border:1px solid #ddd;}
 div#about p {padding:20px; }

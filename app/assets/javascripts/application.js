@@ -68,80 +68,39 @@ window.location='/auth/twitter';
     });
 
 
-$("#dialog:ui-dialog").dialog("destroy");
 
-    var tweet = $("#tweet"),
-        allFields = $([]).add(tweet);
-    tips = $(".validateTips");
 
-    function updateTips(t) {
-        tips.text(t).addClass("ui-state-highlight");
-        setTimeout(function () {
-            tips.removeClass("ui-state-highlight", 1500);
-        }, 500);
-    }
-
-    function checkLength(o, n, min, max) {
-        if (o.val().length > max || o.val().length < min) {
-            o.addClass("ui-state-error");
-            updateTips("Length of " + n + " must be between " + min + " and " + max + ".");
-            return false;
-        } else {
-            return true;
-        }
-    }
-    $("#dialog-tweet").dialog({
-        autoOpen: false,
-        height: 280,
-        width: 650,
-        modal: true,
-        buttons: {
-            "Reply": function () {
-                var bValid = true;
-                allFields.removeClass("ui-state-error");
-                bValid = bValid && checkLength(tweet, "Tweet", 0, 139);
-                if (bValid) {
+$('#tweet').keydown(function (event) {
+if ($('#tweet').val().length > 140) {
+		$('#tweet').val($('#tweet').val().substring(0, 140));
+	}
+$('#spnChars').html(140-$('#tweet').val().length); 
+});
+ 
+$('#btnClose').click(function(){hideDialog();});
+$("#btnTweet").click(function(){
                     showLoadingImage();
+			    hideDialog();
                     $.ajax({
                         type: 'POST',
                         url: tweetURL,
                         data: {
-                            tweet: tweet.val()
+                            tweet: $('#tweet').val().substring(0, 140)
                         },
                         dataType: 'json',
                         success: function (response, textStatus, XMLHttpRequest) {
-                            hideLoadingImage();
+				hideLoadingImage();
                             showMessage(response.message);
-			    if(json.success=='login'){
+			    if(response.success=='login'){
 				window.location='/auth/twitter';
 			     }
+
                         }
-                    });
-                    $(this).dialog("close");
-                }
-            },
-            Cancel: function () {
-                $(this).dialog("close");
-            }
-        },
-        close: function () {
-            allFields.val("").removeClass("ui-state-error");
-        }
-      });
-
-
-
-$('#divCollapse').live('click',function(){
-if($('#divLeft').hasClass('widthList')){
-$('#divLeft').removeClass('widthList');
-$('#divLeft').tinyscrollbar();
-//$('#divCollapse').removeClass('widthCollapse');
-}else{
-$('#divLeft').addClass('widthList');
-//$('#divCollapse').addClass('widthCollapse');
-
-}
+                   });
 });
+
+ $('.TranslucentBackgroundForPopUp').click(function(){hideDialog();});
+
 });
 //if(!($.cookie('timezone'))) {
 //  current_time = new Date();
@@ -223,9 +182,10 @@ function openTweetDialog(ele, id) {
                         success: function (response, textStatus, XMLHttpRequest) {
                             hideLoadingImage();
 			    if(response.success=='true'){
-				  $("#dialog-tweet").dialog("open");
+				showDialog();
 				$('#tweet').focus();
 				$('#tweet').val('@' + val + ' ');
+				$('#spnChars').html(140-$('#tweet').val().length);
 			     }else{
 				showMessage('Login required');
 				window.location='/auth/twitter';
@@ -250,3 +210,12 @@ function showPreview(id) {
     $(id).show();
 
 }
+ function hideDialog() {
+            $('.TranslucentBackgroundForPopUp').css('display', 'none');
+            $('#dialog-tweet').css('display', 'none');
+        }
+        function showDialog() {
+            $('.TranslucentBackgroundForPopUp').css('display', 'block');
+            $('#dialog-tweet').css('display', 'block');
+        }
+
