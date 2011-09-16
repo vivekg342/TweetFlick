@@ -91,6 +91,8 @@ No tweets on this date.
       <ul class="divScrollable jcarousel-skin-fan">
         <%=  render :partial => "tweets/fanfeed", :locals =>{ :tweets =>  @fantweets ,:url=> fanfeed_tweets_path(:time => @fantweets.to_a.last.time) } %>
       </ul>
+<% else %>
+<div style="margin:auto" align="center"> No recent tweets found. </div>
       <% end %>
     </div>
         <input class="hdnLtstTime" value="<%= Time.now.to_i * 1000 %>" type="hidden" name="" />
