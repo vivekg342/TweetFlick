@@ -2,7 +2,7 @@
 <%title 'Celebrity search page at tweetflick.in'%>
 <%set_meta( :keywords => "twitter celebrities , twitter fans, celeb tweets, celebrity tweets,bollywood tweets,tollywood tweets,tolly  tweets,bolly tweets,bolly pics,tolly pictures,bolly pictures,tolly pictures , celebrity analytics , fan discussions, indian movie stars , movie stars on twitter , bollywood social media" , :description => " Search for your favourite celeb at tweetflick.in")%>
 
-<div style="width:120px" class="left">
+<div style="width:120px;margin-top:60px" class="left">
 <b>Filter by tags : </b> <br /> <br />
 <%@tags.each do |tag| %>
   <%unless tag.to_s.empty? %>
@@ -11,9 +11,9 @@
     <% end %>
     <a id="clearTags" style="cursor:pointer;color:#369" class="right">Clear All</a>
 </div>
-<div class="left" style="width:690px;border:1px solid #ddd;">
+<div class="left" style="width:670px;border:1px solid #ddd;">
  <%= render :partial => 'shared/social' %>
-     &nbsp;Quick Search &nbsp; <input type="" id="inpSearch" value="" name="Search" /><br /><br />
+<br /><br />     &nbsp;Quick Search &nbsp; <input type="" id="inpSearch" value="" name="Search" /><br /><br />
       <%  @alphaCelebs.each do |celeb| %>
         <%  tagClass = celeb.tags.join("_tag ") + "_tag" %>
           <div class="<%= tagClass %> left listCeleb" align="left">
