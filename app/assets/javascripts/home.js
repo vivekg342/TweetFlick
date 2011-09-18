@@ -100,6 +100,7 @@ ticks.push(unescape(str));
         pointLabels: { show:true }
       }
 });
+/*
 $('#divCycle').cycle({
 pause:true,
  sync:0,
@@ -107,8 +108,8 @@ height:'165px',
 prev:   '#prev', 
     next:   '#next'
 });
-
-
+*/
+bannerRotator('#vertTabs', 500, 5000, true);
 
   
 

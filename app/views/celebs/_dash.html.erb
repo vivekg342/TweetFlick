@@ -1,11 +1,8 @@
 
 <div id="vertTabs" class="left ui-corner-all">
-<div class="right" style="margin-right:15px;position:relative;z-index:100">
-<a href="#" id="prev">prev</a>&nbsp;&nbsp;&nbsp;<a href="#" id="next">next</a>
-</div>
-<div id="divCycle">
+<ul id="divCycle">
 
-  <div id="divFeatured" class="dash ui-corner-all">
+  <li id="divFeatured" class="dash ui-corner-all">
                 <div class="dashBody">
     <a class="left" href="<%= url_for :controller =>"celebs", :action => "profile", :name => @featured.screenName %>"><img width="130" height="145"  src="<%= @featured.large %>" alt=""/></a>
 <div style="margin-left : 200px"><b>Featured celeb of the day- </b> <br /><br /><br />
@@ -17,9 +14,9 @@
 
 <div class="clr"></div>               
 </div>   
-</div>
+</li>
 
-  <div id="divFollowed" class="dash ui-corner-all" >
+  <li id="divFollowed" class="dash ui-corner-all" >
 
 <div style="margin-left : 200px"><b>Celebs who are followed the most </b></div><br />
                 <div class="dashBody">
@@ -41,9 +38,9 @@
   <% end %>
 <div class="clr"></div>              
               </div>
-                </div>
+                </li>
                
-<div id="divTalkative" class="dash ui-corner-all">
+<li id="divTalkative" class="dash ui-corner-all">
 <div style="margin-left : 200px"><b>Celebs who were replied the most today </b></div><br /> 
                   <div class="dashBody">
 <%  @mentionCelebs[0..4].each do |celeb| %>
@@ -65,10 +62,10 @@
   <% end %>
 <div class="clr"></div>
             </div>
-            </div>
+            </li>
 
 
-<div id="divMentioned" class="dash ui-corner-all">
+<li id="divMentioned" class="dash ui-corner-all">
 
 <div style="margin-left : 200px"><b>Celebs who shared the most tweets today  </b></div><br />
                 <div class="dashBody">
@@ -91,10 +88,10 @@
   <% end %>
 <div class="clr"></div>
                 </div>
-                </div>
+                </li>
 
                   
-</div> 
+</ul> 
 
 </div>
 <div class="right ui-corner-all">
