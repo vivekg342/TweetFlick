@@ -243,6 +243,6 @@ function showPreview(id) {
 function showSuggestBox(){
             $('.TranslucentBackgroundForPopUp').css('display', 'block');
             $('#suggestbox').css('display', 'block');
-	    $('#suggestbox :input').val('');	
+	    $('#suggestbox td :input').val('');	
 
 }
