@@ -62,7 +62,14 @@ REDUCE
 array=Tweet.collection.group( {:keyf => keyf,:cond => cond ,:initial => {tweets:0},:reduce => reduce})
 array.sort {|a,b| a["epoch"] <=> b["epoch"]}
 end
-
+def self.featured
+  begin
+  id= Celeb.db["featured"].find_one()['_id']
+Celeb.find(id)
+rescue 
+  Celeb.random
+end
+end
 def self.mosttweetstoday
 keyf = <<KEYF
 function(doc) {
