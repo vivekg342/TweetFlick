@@ -1,4 +1,4 @@
-<div id="dialog-tweet" style="display:none">
+<div id="dialog-tweet" class="popDialog" style="display:none">
 
 <div style="zoom:1;clear:both"> 
 
@@ -11,10 +11,27 @@
 
 <div id="tweetControls" style="text-align:right">
 <span><button type="button" id="btnTweet">Tweet</button> &nbsp;
-<button type="button" id="btnClose">Cancel</button>
+<button type="button" class="btnClose">Cancel</button>
 </span>
 </div>
 
 </div>
+<div id="suggestbox" class="popDialog" style="display:none">
+<%= form_tag('/home/suggest',:remote => true,'data-type' => 'json',:class=>'form_ajax celeb_ajax') do %>
+<table>
+<tr>
+<td>Celeb name : </td> <td>  <%= text_field_tag(:cname ,'', :class => 'required') %> </td>
+</tr>
+<tr><td>Twitter Id : </td> <td> <%= text_field_tag(:cid) %></td></tr>
+<tr><td>Email :  </td> <td> <%= email_field_tag(:cemail) %> </td></tr>
+<tr><td>Comments : </td> <td><%= text_area_tag(:comments) %></td></tr>
+</table>
+<div style="text-align:right">
+  <%= submit_tag("Submit") %>
+<button type="button" class="btnClose">Cancel</button>
+</div>
+<% end %>
+</div>
+
 <div class="TranslucentBackgroundForPopUp" style="display: none">
     </div>

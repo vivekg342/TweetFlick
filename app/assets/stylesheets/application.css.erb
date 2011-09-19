@@ -3,7 +3,19 @@ a:link,a:visited{text-decoration:none;color:#336699;}
 :link img {
   border: none;
 }
+.ui-corner-all {
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
 
+}
+#suggest{
+position:fixed;top:50%;margin-top: -84px;background:#7E80F4 url(<%= asset_path "suggest.png" %>) 2px center no-repeat;
+height:168px;width:30px;left:0px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
 .TranslucentBackgroundForPopUp
 {
     position: fixed;
@@ -16,20 +28,25 @@ a:link,a:visited{text-decoration:none;color:#336699;}
     height: 100%;
     width: 100%;
 }
-#dialog-tweet{
-width:510px;height:130px; position: fixed;
+.popDialog{
+width:510px; position: fixed;padding:5px;
 padding:10px;
 z-index: 1400;
 top: 50%;
   left: 50%;
   margin-top: -65px;
   margin-left: -255px;
-background:#E2E0E3;
+background:#F1F1F1;
 border:1px solid #ddd;
 -moz-border-radius: 5px;
 -webkit-border-radius: 5px;
 border-radius: 5px;
 }
+#suggestbox span{
+width:100px
+}
+
+
 #dialog-tweet textarea{
 width: 505px;
 height: 55px;

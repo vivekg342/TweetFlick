@@ -11,14 +11,17 @@
   <meta property="fb:app_id" content="162610627152827">
   
   <%= stylesheet_link_tag    "application" %>
-  <%= stylesheet_link_tag    "jquery-ui-1.8.15.custom" %>
+  <!--
+Jquery UI
+<%= stylesheet_link_tag    "jquery-ui-1.8.15.custom" %>
+<%= javascript_include_tag "jquery-ui-1.8.15.custom.min" %> -->
 <link rel="shortcut icon"  type="image/x-icon" href="/favicon.ico" />  
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag "jquery-ui-1.8.15.custom.min" %>
+  
   <%= javascript_include_tag "pretty" %>
   <%= javascript_include_tag "bannerRotator" %>
 <!--  <%= javascript_include_tag "jquery.tinyscrollbar.min" %>-->
-  <%= javascript_include_tag "jquery.jcarousel" %>
+  <%= javascript_include_tag "jquery.jcarousel.min" %>
   <%= javascript_include_tag "jquery.jqplot.min" %>
   <!--[if lt IE 9]>  <%= javascript_include_tag "excanvas.min" %><![endif]-->
   <%= javascript_include_tag "plugins/jqplot.categoryAxisRenderer.min" %>
@@ -80,12 +83,13 @@
       </div>
       
 
-<div id="inner" class="ui-corner-top">
+<div id="inner" class="ui-corner-all">
       <%= yield %>
 </div>
     </div>
   </div>
 
+<a id="suggest" href="#"></a>
 <%= render :partial => "shared/dialog" %>
     <% if Rails.env.production? %>
     <%= render :partial => "shared/googleanalytics" %>

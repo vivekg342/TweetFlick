@@ -28,4 +28,31 @@ respond_to do |format|
     
     end
 
+def suggest
+  begin
+   auth = request.env["omniauth.auth"]
+    unless !user_signed_in?
+     # current_user.update_status(@tweet.text)
+  #  @c = Celeb.first(conditions: {id: Integer(params[:id])}) || FanTweet.first(conditions: {fan_id: Integer(params[:id])})
+debugger
+suggest= Suggest.new
+
+suggest.name = params[:cname]
+suggest.userName = params[:cid]
+suggest.email = params[:cemail]
+suggest.comments = params[:comments]
+suggest.save
+result={:success =>  "true", :message => "Thank you."}
+ else
+  result={:success =>  "login",:message => "Login needed !"}
+ end
+rescue
+  result={:success =>  "false",:message => "Failed !"}
+end
+respond_to do |format|
+format.html { redirect_to root_url }#_list.html.erb
+format.js {render :json => result}
+end
+end
+
 end

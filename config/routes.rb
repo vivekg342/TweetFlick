@@ -10,6 +10,7 @@ match '/signin' => 'sessions#new', :as => :signin
 get "home/index"
 # About Page
 get "home/about"
+post "home/suggest" ,:as => 'suggest'
 #Sitemap
 match "/sitemap" => "sitemap#index"
 #Interactions

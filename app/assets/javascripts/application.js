@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require "jquery.watermark.min"
+//= require "jquery.validate.min"
 $(function(){
 jQuery.expr[':'].contains = function (a, i, m) {
     return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
@@ -48,10 +49,14 @@ function refreshSearch(){
 	   $('div#searchResults').hide();
         }
 }
+$('.form_ajax').validate();
     $('.celeb_ajax').live('ajax:beforeSend', function (event, xhr, status) {
         showLoadingImage();
     });
-
+    $('.form_ajax').live('ajax:beforeSend', function (event, xhr, status) {
+	 showLoadingImage();	
+	 hideDialog();
+    });
     $('.celeb_ajax').live('ajax:complete', function (event, xhr, status) {
         json = $.parseJSON(xhr.responseText);
         hideLoadingImage();
@@ -77,7 +82,7 @@ if ($('#tweet').val().length > 140) {
 $('#spnChars').html(140-$('#tweet').val().length); 
 });
  
-$('#btnClose').click(function(){hideDialog();});
+$('.btnClose').click(function(){hideDialog();});
 $("#btnTweet").click(function(){
                     showLoadingImage();
 			    hideDialog();
@@ -100,7 +105,24 @@ $("#btnTweet").click(function(){
 });
 
  $('.TranslucentBackgroundForPopUp').click(function(){hideDialog();});
+$('#suggest').click(function(){ 
+                            showLoadingImage();
+$.ajax({
+                        type: 'POST',
+                        url: '/auth/check',
+                        dataType: 'json',
+                        success: function (response, textStatus, XMLHttpRequest) {
+                            hideLoadingImage();
+			    if(response.success=='true'){
+			showSuggestBox();
+			     }else{
+				showMessage('Login required');
+				window.location='/auth/twitter';
+			     }
+                        }
+                    });
 
+});
 });
 //if(!($.cookie('timezone'))) {
 //  current_time = new Date();
@@ -212,10 +234,15 @@ function showPreview(id) {
 }
  function hideDialog() {
             $('.TranslucentBackgroundForPopUp').css('display', 'none');
-            $('#dialog-tweet').css('display', 'none');
+            $('.popDialog').css('display', 'none');
         }
         function showDialog() {
             $('.TranslucentBackgroundForPopUp').css('display', 'block');
             $('#dialog-tweet').css('display', 'block');
         }
+function showSuggestBox(){
+            $('.TranslucentBackgroundForPopUp').css('display', 'block');
+            $('#suggestbox').css('display', 'block');
+	    $('#suggestbox :input').val('');	
 
+}
