@@ -54,13 +54,8 @@ end
   # GET /celebs/1.json
   def show
     @celeb = Celeb.find(Integer(params[:id]))
-    @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15)
-    @fantweets=FanTweet.where(:reply_to => @celeb.screenName).order_by([[:time,:desc]]).limit(15)
-    respond_to do |format|
-      format.html { render html: @celeb,:layout=>false}# show.html.erb
-      format.json { render json: @celeb }
-    end
-  end
+redirect_to profile_path(:name => @celeb.screenName)
+     end
  def feed
    @celeb = Celeb.find(Integer(params[:id]))
     @tweets=@celeb.tweets.order_by([[:time,:desc]]).limit(15).where(:time.lt =>Integer(params[:time]) ).only(:id,:time,:text,:celeb_id)

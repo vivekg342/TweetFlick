@@ -13,7 +13,7 @@ def twitterlink
   "<a target=\"_blank\" href=\"http://twitter.com/#{self.screenName}\" class=\"right\"> <span style=\"color:#369;font-size:11px;\">View on twitter</span> &nbsp; </a>"
 end
 def title_page
-  "#{self.name} 's home page on Tweetflick- Indian celebrities at one place"
+  "#{self.name} on Twitter - #{self.name} Twitter ID - #{self.name} Tweets & Messages - Tweetflick.in"
 end
 def meta_keywords
     "#{self.name} twitter , #{self.name} twitter , #{self.name} fans, #{self.name} images , #{self.name} internet, #{self.name} personal , #{self.name} bollywood, #{self.name} tollywood, #{self.name} kollywood, #{self.name} analytics, #{self.name} tweets, #{self.name} retweets, #{self.name} follow"
