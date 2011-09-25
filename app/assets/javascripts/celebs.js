@@ -1,11 +1,15 @@
 function fanCarousel(){
     showDate();
+
+size=$('.divScrollable li').size();
+start=9;
+if(size<9)start=0;
     if(!selectedDiv)
     selectedDiv=$('.divProfile');
 selectedDiv.find('.divScrollable').jcarousel({
     vertical: true,
     size:50,
-    start: 9,
+    start: start,
 	auto: 3,
         scroll: 1,
         itemFallbackDimension:75
