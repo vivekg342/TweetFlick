@@ -6,15 +6,18 @@ function getmorefantweets() {
     });
 }
 function fanCarousel(){
+size=$('.divScrollable li').size();
+start=9;
+if(size<9)start=0;
     showDate();
     if(!selectedDiv)
     selectedDiv=$('.divProfile');
 selectedDiv.find('.divScrollable').jcarousel({
     vertical: true,
-    start: 9,
+    start: start,
 	auto: 3,
         scroll: 1,
-	size:50,
+	size:size,
         itemFallbackDimension:75
   });
 var carousel=selectedDiv.find('.divScrollable').data('jcarousel');
