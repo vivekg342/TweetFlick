@@ -8,7 +8,7 @@ if(size<9)start=0;
     selectedDiv=$('.divProfile');
 selectedDiv.find('.divScrollable').jcarousel({
     vertical: true,
-    size:50,
+    size:size,
     start: start,
 	auto: 3,
         scroll: 1,
@@ -115,7 +115,10 @@ for (var i = 1; i <= liFans.size(); i++) {
             carousel.add(i, liFans[i - 1]);
         }
 size= li.size()+liFans.size();
-if(size>50)size=50;
+if(size>50)
+size=50;
+else
+size=size;
 carousel.options.size =size;
 carousel.scroll(pos+carousel.first,false);
 
