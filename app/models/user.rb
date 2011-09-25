@@ -65,7 +65,6 @@ ret = client.follow(id)
 
 end
 def retweet(id)
-
 Twitter.configure do |config|
                config.oauth_token = token
        config.oauth_token_secret = secret

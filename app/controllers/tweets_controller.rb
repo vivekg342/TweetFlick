@@ -72,16 +72,18 @@ end
 end
 
  def retweet
- 
+   begin
    auth = request.env["omniauth.auth"]
-   j = ActiveSupport::JSON
     unless !user_signed_in?
      # current_user.update_status(@tweet.text)
       current_user.retweet(Integer(params[:id]))
-      result=j.encode({:success =>  "true" , :message => "Retweeted!"} )
+      result={:success =>  "true" , :message => "Retweeted!"}
  else
   result={:success =>  "login",:message => "Login needed !"}
  end
+rescue
+  result={:success =>  "false",:message => "Failed !"}
+end
     respond_to do |format|
 format.html { redirect_to root_url }
 format.js {render :json => result}
