@@ -1,6 +1,6 @@
 development:
-  host: 107.22.223.147
-  database: TweetFlick
+  hots: localhost
+  database: tweetflick
 
 test:
   host: localhost
@@ -8,13 +8,7 @@ test:
 
 # set these environment variables on your prod server
 production:
-  host: 107.22.223.147
-  #<%= ENV['MONGOID_HOST'] %>
-  #port: <%= ENV['MONGOID_PORT'] %>
-  #username: <%= ENV['MONGOID_USERNAME'] %>
-  #password: <%= ENV['MONGOID_PASSWORD'] %>
-  database: TweetFlick
-  #<%= ENV['MONGOID_DATABASE'] %>
+  uri: <%= ENV['MONGOLAB_URI'] %>
   # slaves:
   #   - host: slave1.local
   #     port: 27018
